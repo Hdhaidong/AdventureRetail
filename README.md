@@ -8,7 +8,7 @@
 
 | # | 项目 | PM 分支 | 源码仓 | 路线 | 版本 | 状态 | 下一步 |
 |---|------|---------|--------|------|------|------|--------|
-| 1 | Target 运营助手 · DSH 版 | [`dsh-target-ops`](../../tree/dsh-target-ops) | 待建 | DSH 插件 | 0.1.0 | 🟡 装配完成，待重启验证 | DHs Desktop 装配验证（重启验证 25 工具/审批/面板） |
+| 1 | Target 运营助手 · DSH 版 | [`dsh-target-ops`](../../tree/dsh-target-ops) | 无（不建仓，源码=工作区+装配副本） | DSH 插件 | 0.1.0 | 🟡 装配完成，待重启验证 | DHs Desktop 装配验证（重启验证 25 工具/审批/面板） |
 | 2 | pi-kernel（内核 + Target/CRM/Retail 插件） | [`pi-kernel`](../../tree/pi-kernel) | [Hdhaidong/pi-kernel](https://github.com/Hdhaidong/pi-kernel) | PI mono 底座 | 0.9.0 | 🟢 测试清偿完成 139/139 | target.connect 联调 |
 | 3 | 稳卖调研 Agent（wenmai） | [`wenmai-agent`](../../tree/wenmai-agent) | [Hdhaidong/wenmai-agent](https://github.com/Hdhaidong/wenmai-agent) | DSH 母体 | 1.0.0 | 🟢 已发布 | 插件测试挂载 |
 | 4 | Target 学习教练 | [`target-coach-client`](../../tree/target-coach-client) | [Hdhaidong/target-coach-client](https://github.com/Hdhaidong/target-coach-client) | PI mono | 1.0.0 | 🟢 已发布 | 测试挂载 npm test |
