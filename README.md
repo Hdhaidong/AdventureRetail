@@ -2,15 +2,15 @@
 
 管理全部在营项目的工作任务与进度，按统一 SDLC 流程（见 [PROCESS.md](PROCESS.md)）运转。**main 分支 = 总览看板 + 流程规范**；**每个项目一条专属分支，分支名与其 GitHub 源码仓一一对应**，分支内维护流程档案与管理文件。
 
-更新日期：2026-10-05 · 隶属 Hdhaidong 产品组合（双路线矩阵：每产品 DSH 插件 + PI mono 两个技术底座）
+更新日期：2026-10-05 · 隶属 Hdhaidong 产品组合（双路线矩阵：每产品 dsh 插件 + PI mono 两个技术底座）
 
 ## 一、项目矩阵（总览看板）
 
 | # | 项目 | PM 分支 | 源码仓 | 路线 | 版本 | SDLC 阶段 | 下一步 |
 |---|------|---------|--------|------|------|-----------|--------|
-| 1 | Target 运营助手 · DSH 版 | [`dsh-target-ops`](../../tree/dsh-target-ops) | 无（不建仓，源码=工作区+装配副本） | DSH 插件 | 0.1.0 | 🟡 P4 测试（待 DHs Desktop 验证） | DHs Desktop 装配验证（重启验证 25 工具/审批/面板） |
+| 1 | Target 运营助手 · dsh 版 | [`dsh-target-ops`](../../tree/dsh-target-ops) | 无（不建仓，源码=工作区+装配副本） | dsh 插件 | 0.1.0 | 🟡 P4 测试（待 dsh Desktop 验证） | dsh Desktop 装配验证（重启验证 25 工具/审批/面板） |
 | 2 | pi-kernel（内核 + Target/CRM/Retail 插件） | [`pi-kernel`](../../tree/pi-kernel) | [Hdhaidong/pi-kernel](https://github.com/Hdhaidong/pi-kernel) | PI mono 底座 | 0.9.0 | 🟢 P6 运维 | target.connect 联调 |
-| 3 | 稳卖调研 Agent（wenmai） | [`wenmai-agent`](../../tree/wenmai-agent) | [Hdhaidong/wenmai-agent](https://github.com/Hdhaidong/wenmai-agent) | DSH 母体 | 1.0.0 | 🟢 P6 运维 | 插件测试挂载 |
+| 3 | 稳卖调研 Agent（wenmai） | [`wenmai-agent`](../../tree/wenmai-agent) | [Hdhaidong/wenmai-agent](https://github.com/Hdhaidong/wenmai-agent) | dsh 母体 | 1.0.0 | 🟢 P6 运维 | 插件测试挂载 |
 | 4 | Target 学习教练 | [`target-coach-client`](../../tree/target-coach-client) | [Hdhaidong/target-coach-client](https://github.com/Hdhaidong/target-coach-client) | PI mono | 1.0.0 | 🟢 P6 运维 | 测试挂载 npm test |
 | 5 | insightmarketplac Home Depot | [`insightmarketplac-client`](../../tree/insightmarketplac-client) | [Hdhaidong/insightmarketplac-client](https://github.com/Hdhaidong/insightmarketplac-client) | PI mono | 1.0.0 | 🟢 P6 运维（文案缺陷待修） | 文案修正（技能清单=11） |
 | 6 | 稳卖 Wayfair 学堂 | [`wenmai-learn-wayfair`](../../tree/wenmai-learn-wayfair) | [Hdhaidong/wenmai-learn-wayfair](https://github.com/Hdhaidong/wenmai-learn-wayfair) | PI mono | 1.0.0 | 🟢 P6 运维 | Wayfair 运营版（待规划） |
@@ -47,4 +47,4 @@ P0 需求 → P1 规格 → P2 设计 → P3 开发 → P4 测试 → P5 发布 
 
 ## 五、双路线总纲
 
-每个产品两条路线、两个技术底座（既定方针）：**DSH 插件路线**（宿主 DSH Desktop）与 **PI mono 路线**（pi-kernel 内嵌 Electron 客户端）。域规则演进双侧同步；一侧变更需在对端分支 TASKS.md 立同步任务。范本：wenmai-agent（DSH）/ tg-coach（PI mono）。
+每个产品两条路线、两个技术底座（既定方针）：**dsh 插件路线**（宿主 dsh Desktop）与 **PI mono 路线**（pi-kernel 内嵌 Electron 客户端）。域规则演进双侧同步；一侧变更需在对端分支 TASKS.md 立同步任务。范本：wenmai-agent（dsh）/ tg-coach（PI mono）。
