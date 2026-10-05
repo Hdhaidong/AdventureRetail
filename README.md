@@ -8,7 +8,7 @@
 
 | # | 项目 | PM 分支 | 源码仓 | 路线 | 版本 | SDLC 阶段 | 下一步 |
 |---|------|---------|--------|------|------|-----------|--------|
-| 1 | Target 运营助手 · dsh 版 | [`dsh-target-ops`](../../tree/dsh-target-ops) | 无（不建仓，源码=工作区+装配副本） | dsh 插件 | 0.1.0 | 🟡 P4 测试（待 dsh Desktop 验证） | dsh Desktop 装配验证（重启验证 25 工具/审批/面板） |
+| 1 | Target 运营助手 · dsh 版 | [`dsh-target-ops`](../../tree/dsh-target-ops) | 无独立仓（源码归档=本仓 dsh-target-ops 分支 plugin/） | dsh 插件 | 0.1.0 | 🟡 P4 测试（待 DHs Desktop 验证） | DHs Desktop 装配验证（重启验证 25 工具/审批/面板） |
 | 2 | pi-kernel（内核 + Target/CRM/Retail 插件） | [`pi-kernel`](../../tree/pi-kernel) | [Hdhaidong/pi-kernel](https://github.com/Hdhaidong/pi-kernel) | PI mono 底座 | 0.9.0 | 🟢 P6 运维 | target.connect 联调 |
 | 3 | 稳卖调研 Agent（wenmai） | [`wenmai-agent`](../../tree/wenmai-agent) | [Hdhaidong/wenmai-agent](https://github.com/Hdhaidong/wenmai-agent) | dsh 母体 | 1.0.0 | 🟢 P6 运维 | 插件测试挂载 |
 | 4 | Target 学习教练 | [`target-coach-client`](../../tree/target-coach-client) | [Hdhaidong/target-coach-client](https://github.com/Hdhaidong/target-coach-client) | PI mono | 1.0.0 | 🟢 P6 运维 | 测试挂载 npm test |
@@ -47,4 +47,4 @@ P0 需求 → P1 规格 → P2 设计 → P3 开发 → P4 测试 → P5 发布 
 
 ## 五、双路线总纲
 
-每个产品两条路线、两个技术底座（既定方针）：**dsh 插件路线**（宿主 dsh Desktop）与 **PI mono 路线**（pi-kernel 内嵌 Electron 客户端）。域规则演进双侧同步；一侧变更需在对端分支 TASKS.md 立同步任务。范本：wenmai-agent（dsh）/ tg-coach（PI mono）。
+每个产品两条路线、两个技术底座（既定方针）：**dsh 插件路线**（宿主 DHs Desktop）与 **PI mono 路线**（pi-kernel 内嵌 Electron 客户端）。域规则演进双侧同步；一侧变更需在对端分支 TASKS.md 立同步任务。范本：wenmai-agent（dsh）/ tg-coach（PI mono）。
