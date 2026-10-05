@@ -2,7 +2,7 @@
 
 管理全部在营项目的工作任务与进度，按统一 SDLC 流程（见 [PROCESS.md](PROCESS.md)）运转。**main 分支 = 总览看板 + 流程规范**；**每个项目一条专属分支，分支名与其 GitHub 源码仓一一对应**，分支内维护流程档案与管理文件。
 
-更新日期：2026-10-05 · 隶属 Hdhaidong 产品组合（双路线矩阵：每产品 dsh 插件 + PI mono 两个技术底座）
+更新日期：2026-10-06 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / PI mono / Qoder Cloud Agents 多个技术底座）
 
 ## 一、项目矩阵（总览看板）
 
@@ -15,6 +15,7 @@
 | 5 | insightmarketplac Home Depot | [`insightmarketplac-client`](../../tree/insightmarketplac-client) | [Hdhaidong/insightmarketplac-client](https://github.com/Hdhaidong/insightmarketplac-client) | PI mono | 1.0.0 | 🟢 P6 运维（文案缺陷待修） | 文案修正（技能清单=11） |
 | 6 | 稳卖 Wayfair 学堂 | [`wenmai-learn-wayfair`](../../tree/wenmai-learn-wayfair) | [Hdhaidong/wenmai-learn-wayfair](https://github.com/Hdhaidong/wenmai-learn-wayfair) | PI mono | 1.0.0 | 🟢 P6 运维 | Wayfair 运营版（待规划） |
 | 7 | Adventure Retail 业务平台 | [`adventure-platform`](../../tree/adventure-platform) | [Hdhaidong/adventure-platform](https://github.com/Hdhaidong/adventure-platform) | 平台侧 SaaS | — | 🟢 P6 运维 | bundle 构建管线化 |
+| 8 | Target 工作台 · Qoder 底座多租户版 | [`target-qoder-workbench`](../../tree/target-qoder-workbench) | 无独立仓（本地 D:/dsh-build/target-qoder-workbench） | Qoder Cloud Agents | 0.2.0-dev | 🟡 P3 开发（v0.1.0 多租户 27 冒烟全过，店铺运营批进行中） | 店铺运营批收尾 → 阿里云 ECS 部署 |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
 
