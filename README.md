@@ -14,7 +14,7 @@
 | 4 | Target 学习教练 | [`target-coach-client`](../../tree/target-coach-client) | [Hdhaidong/target-coach-client](https://github.com/Hdhaidong/target-coach-client) | PI mono | 1.0.0 | 🟢 P6 运维 | 测试挂载 npm test |
 | 5 | insightmarketplac Home Depot | [`insightmarketplac-client`](../../tree/insightmarketplac-client) | [Hdhaidong/insightmarketplac-client](https://github.com/Hdhaidong/insightmarketplac-client) | PI mono | 1.0.0 | 🟢 P6 运维（文案缺陷待修） | 文案修正（技能清单=11） |
 | 6 | 稳卖 Wayfair 学堂 | [`wenmai-learn-wayfair`](../../tree/wenmai-learn-wayfair) | [Hdhaidong/wenmai-learn-wayfair](https://github.com/Hdhaidong/wenmai-learn-wayfair) | PI mono | 1.0.0 | 🟢 P6 运维 | Wayfair 运营版（待规划） |
-| 7 | Adventure Retail 业务平台 | [`adventure-platform`](../../tree/adventure-platform) | [Hdhaidong/adventure-platform](https://github.com/Hdhaidong/adventure-platform) | 平台侧 SaaS | — | 🟢 P6 运维 | bundle 构建管线化 |
+| 7 | Adventure Retail 业务平台 | [`adventure-platform`](../../tree/adventure-platform) | [Hdhaidong/adventure-platform](https://github.com/Hdhaidong/adventure-platform) | 平台侧 SaaS | 2.0.0-dev | 🟡 P3 开发（v2.0 注册开放制迭代：v1 基线 P6 运维不回退） | M1 注册批 → M2 能力下发 → M3 数据拉取配置 → M4 50 用户验收 |
 | 8 | Target 工作台 · Qoder 底座多租户版 | [`target-qoder-workbench`](../../tree/target-qoder-workbench) | 无独立仓（本地 D:/dsh-build/target-qoder-workbench） | Qoder Cloud Agents | 0.2.0-dev | 🟡 P3 开发（v0.1.0 多租户 27 冒烟全过，店铺运营批进行中） | 店铺运营批收尾 → 阿里云 ECS 部署 |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
