@@ -18,11 +18,12 @@
 
 门禁规则：**阶段只能向后流转**；回退（如发布后发现缺陷）在 TASKS.md 记缺陷任务，修复后重走 P4→P5；每个门禁通过时更新 PROJECT.yaml 的 `sdlc.stage` 并在 PROGRESS.md 记一行。
 
-## 二、进度跟踪机制（三层）
+## 二、进度跟踪机制（四层）
 
 1. **PROJECT.yaml → `sdlc` 块**：`stage`（当前阶段，取 P0-P6 中最靠后的已通过门禁 + 当前活动阶段）、`gates`（已通过的门禁列表带日期）——一眼看项目走到哪。
 2. **TASKS.md**：按里程碑/任务勾选，进行中任务置顶；缺陷与迭代需求新增条目。
 3. **PROGRESS.md**：倒序时间线，一条一事件（含门禁通过、版本发布、缺陷修复）。
+4. **ISSUES.md**：问题清单（阻塞/缺陷/风险集中登记）——项目内问题编号 ISS-N；跨项目或仓库级问题登 main 分支 ISSUES.md 编号 PI-N；问题解决后勾销并回写 TASKS/PROGRESS；TASKS.md 立修复任务引用 ISS 编号。
 
 main 看板状态列与各分支 `sdlc.stage` 对齐，每周同步一次。
 
@@ -30,12 +31,13 @@ main 看板状态列与各分支 `sdlc.stage` 对齐，每周同步一次。
 
 ```
 PROJECT.yaml    # 元数据 + SDLC 阶段
-SOW.md          # P1 规格
+SOW.md          # P1 规格（任务书）
 00-REQ.md       # P0 需求规格
 01-DESIGN.md    # P2 设计
 02-TEST.md      # P4 测试记录
 03-RELEASE.md   # P5/P6 发布与运维记录
 TASKS.md        # 任务清单（含缺陷/迭代循环）
+ISSUES.md       # 问题清单（阻塞/缺陷/风险）
 PROGRESS.md     # 进度日志（倒序）
 ```
 
