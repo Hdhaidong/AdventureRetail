@@ -18,6 +18,7 @@
 | 8 | Target 工作台 · Qoder 底座多租户版 | [`target-qoder-workbench`](../../tree/target-qoder-workbench) | 无独立仓（本地 D:/dsh-build/target-qoder-workbench） | Qoder Cloud Agents | 0.2.0-dev | 🟡 P3 开发（店铺运营批 M2-1~M2-12 已完成 137 项回归全过，M2.13 自动化批进行中） | M2.13 自动化与任务部署批 → v0.2.0 收口发布 → 阿里云 ECS 部署 |
 | 9 | 教练端家族（coach-agent + coach-studio + 14 学员端） | [`coach-family`](../../tree/coach-family) | 多仓聚合：[coach-agent](https://github.com/Hdhaidong/coach-agent) + [coach-studio](https://github.com/Hdhaidong/coach-studio) + 14 × `*-coach-client`（4 仓待开发） | PI mono | 0.0.0 | 🟡 P1 规格完成（2026-10-07 立项，M1 三学员端待启动） | M1-1 etsy-coach-client 骨架派生（→ costco → influencer）→ M2 coach-studio 设计 |
 | 10 | Lowe's 运营助手 AI · 家装垂类 | [`lowes-ops-client`](../../tree/lowes-ops-client) | [Hdhaidong/lowes-ops-client](https://github.com/Hdhaidong/lowes-ops-client) | PI mono | 0.1.0 | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过） | T1 01-DESIGN 架构设计 → T2 Lowe's 技能清单 → T3 审批门控设计 |
+| 11 | Home Depot 运营工作台 · 家装垂直 | [`homedepot-dsh-workbench`](../../tree/homedepot-dsh-workbench) | [Hdhaidong/homedepot-dsh-workbench](https://github.com/Hdhaidong/homedepot-dsh-workbench) | DSH 工作台（非插件） | 0.1.0-dev | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过，宣传图 01-09 已归档源码仓） | 01-DESIGN 草案评审（Agent live 底座定稿）→ P3 开发 M1 多租户平台批 |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
 
