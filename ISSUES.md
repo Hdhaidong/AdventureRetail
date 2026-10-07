@@ -21,3 +21,4 @@
 | [homedepot-ops-workbench](../../tree/homedepot-ops-workbench) | 3（ISS-1~3） | ISS-2 preset 激活/工作台后端对接待规划 / ISS-3 真实数据源 M5 另行立项 |
 | [adventure-retail-agent](../../tree/adventure-retail-agent) | 3（ISS-1~3） | ISS-1 等阿里云 ECS 凭据（可与 tqw 同机）/ ISS-2 等 Qoder PAT（M2 Agent 会话批） |
 | [ezinq-study](../../tree/ezinq-study) | 0 | 调研项目（EZinq + 印度价格监视 SaaS → adventure-platform 能力建议） |
+| [wayfair-ops-client](../../tree/wayfair-ops-client) | 3（ISS-1~3） | ISS-1 WF-202/303/305 内容素材责任人待指定（甲方运营侧补位，D4 决议遗留） |
