@@ -2,7 +2,7 @@
 
 管理全部在营项目的工作任务与进度，按统一 SDLC 流程（见 [PROCESS.md](PROCESS.md)）运转。**main 分支 = 总览看板 + 流程规范**；**每个项目一条专属分支，分支名与其 GitHub 源码仓一一对应**（家族级聚合分支为例外，一条分支管多仓，如 [`coach-family`](../../tree/coach-family)），分支内维护流程档案与管理文件。组合级阻塞与缺口统一登记于 [ISSUES.md](ISSUES.md)（问题清单）。
 
-更新日期：2026-10-08 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / DSH 客户端派生 / PI mono / Qoder Cloud Agents / 平台侧 SaaS 多个技术底座）· **组合战略：稳卖学堂（wenmai）为调研对象，其业务模式与能力全部以 Adventure Retail 品牌线实现**（wenmai 家族 = 调研成果；Adventure Retail = 实现载体；ezinq-study 同模式）
+更新日期：2026-10-08 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / DSH 客户端派生 / PI mono / Qoder Cloud Agents / 平台侧 SaaS 多个技术底座）· **组合战略：稳卖学堂（wenmai）为调研对象，其业务模式与能力全部以 Adventure Retail 品牌线实现**（wenmai 家族 = 调研成果；Adventure Retail = 实现载体；ezinq-study 同模式）· **发布优先级（2026-10-08 定稿）：target-qoder-workbench（美国 Target 工作台）组合内最先发布**
 
 ## 一、项目矩阵（总览看板）
 
@@ -15,7 +15,7 @@
 | 5 | insightmarketplac Home Depot · 隶属 AR 研究层（兼 DSH 基座宿主） | [`insightmarketplac-client`](../../tree/insightmarketplac-client) | [Hdhaidong/insightmarketplac-client](https://github.com/Hdhaidong/insightmarketplac-client) | PI mono | 1.0.0 | 🟢 P6 运维（文案缺陷待修） | 文案修正（技能清单=11） |
 | 6 | 稳卖 Wayfair 学堂 · 隶属 AR 研究层 | [`wenmai-learn-wayfair`](../../tree/wenmai-learn-wayfair) | [Hdhaidong/wenmai-learn-wayfair](https://github.com/Hdhaidong/wenmai-learn-wayfair) | PI mono | 1.0.0 | 🟢 P6 运维 | Wayfair 运营版（待规划；如立项以 Adventure Retail 品牌实现） |
 | 7 | Adventure Retail 业务平台 | [`adventure-platform`](../../tree/adventure-platform) | [Hdhaidong/adventure-platform](https://github.com/Hdhaidong/adventure-platform) | 平台侧 SaaS | 2.0.0-dev | 🟡 P3 开发（I1 代码完成，余 I1-5a 生产部署待用户确认 + I1-5b e2e） | I1-5a 部署 → I1-5b e2e → I2 能力下发（已细化 a/b/c）→ I3 拉取 → I4 50 用户验收（北极星=50 注册用户） |
-| 8 | Target 工作台 · Qoder 底座多租户版 | [`target-qoder-workbench`](../../tree/target-qoder-workbench) | 无独立仓（本地 D:/dsh-build/target-qoder-workbench） | Qoder Cloud Agents | 0.2.0-dev | 🟡 P3 开发（店铺运营批 M2-1~M2-12 已完成 137 项回归全过，M2.13 自动化批进行中） | M2.13 自动化与任务部署批 → v0.2.0 收口发布 → 阿里云 ECS 部署 |
+| 8 | Target 工作台 · Qoder 底座多租户版 **🔴 最先发布** | [`target-qoder-workbench`](../../tree/target-qoder-workbench) | 无独立仓（代码宿主=本仓 tqw 分支，2026-10-08 起入库；前端源码 M2.14-1 补入中） | Qoder Cloud Agents | 0.2.0-dev | 🟡 P3 开发（店铺运营批 M2-1~M2-12 已完成 137 项回归全过；2026-10-08 发布优先级定稿·美国最先） | **M2.14 发布关键路径批**：前端源码入库（ISS-6）→ v0.2.0 收口（ISS-3）→ M3 ECS 部署（🔴 等凭据）→ US 发布验收（Mock 先行，PAT 到位切 Live）；M2.13 自动化批顺延 v0.2.1 |
 | 9 | 教练端家族（coach-agent + coach-studio + 14 学员端） | [`coach-family`](../../tree/coach-family) | 多仓聚合：[coach-agent](https://github.com/Hdhaidong/coach-agent) + [coach-studio](https://github.com/Hdhaidong/coach-studio) + 14 × `*-coach-client`（4 仓待开发） | PI mono | 0.0.0 | 🟡 P1 规格完成（2026-10-07 立项，M1 三学员端待启动） | M1-1 etsy-coach-client 骨架派生（→ costco → influencer）→ M2 coach-studio 设计 |
 | 10 | Lowe's 运营助手 AI · 家装垂类 | [`lowes-ops-client`](../../tree/lowes-ops-client) | [Hdhaidong/lowes-ops-client](https://github.com/Hdhaidong/lowes-ops-client) | DSH 客户端派生 | 0.1.0 | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过；T2 技能清单 13 技能 ✅；2026-10-08 路线定稿 DSH 派生，T1 PI mono 架构作废） | T1b 01-DESIGN v2 重写（照 target-ops-client 母版）→ T3 审批门控设计 |
 | 11 | Home Depot 运营助手 · 家装垂直 | [`homedepot-ops-workbench`](../../tree/homedepot-ops-workbench) | [Hdhaidong/homedepot-ops-workbench](https://github.com/Hdhaidong/homedepot-ops-workbench) | DSH 客户端派生 | 0.1.0-dev | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过；同日路线定稿=DSH 客户端派生·更名 homedepot-ops-workbench） | 01-DESIGN 草案评审 → P3 开发 M1 客户端派生批（DSH 基座 + flavor 落地） |
