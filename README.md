@@ -2,7 +2,7 @@
 
 管理全部在营项目的工作任务与进度，按统一 SDLC 流程（见 [PROCESS.md](PROCESS.md)）运转。**main 分支 = 总览看板 + 流程规范**；**每个项目一条专属分支，分支名与其 GitHub 源码仓一一对应**（家族级聚合分支为例外，一条分支管多仓，如 [`coach-family`](../../tree/coach-family)），分支内维护流程档案与管理文件。组合级阻塞与缺口统一登记于 [ISSUES.md](ISSUES.md)（问题清单）。
 
-更新日期：2026-10-07 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / PI mono / Qoder Cloud Agents 多个技术底座）
+更新日期：2026-10-08 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / PI mono / Qoder Cloud Agents 多个技术底座）· **组合战略：稳卖学堂（wenmai）为调研对象，其业务模式与能力全部以 Adventure Retail 品牌线实现**（wenmai 家族 = 调研成果；Adventure Retail = 实现载体）
 
 ## 一、项目矩阵（总览看板）
 
