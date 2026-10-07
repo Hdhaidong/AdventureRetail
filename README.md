@@ -19,6 +19,7 @@
 | 9 | 教练端家族（coach-agent + coach-studio + 14 学员端） | [`coach-family`](../../tree/coach-family) | 多仓聚合：[coach-agent](https://github.com/Hdhaidong/coach-agent) + [coach-studio](https://github.com/Hdhaidong/coach-studio) + 14 × `*-coach-client`（4 仓待开发） | PI mono | 0.0.0 | 🟡 P1 规格完成（2026-10-07 立项，M1 三学员端待启动） | M1-1 etsy-coach-client 骨架派生（→ costco → influencer）→ M2 coach-studio 设计 |
 | 10 | Lowe's 运营助手 AI · 家装垂类 | [`lowes-ops-client`](../../tree/lowes-ops-client) | [Hdhaidong/lowes-ops-client](https://github.com/Hdhaidong/lowes-ops-client) | PI mono | 0.1.0 | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过） | T1 01-DESIGN 架构设计 → T2 Lowe's 技能清单 → T3 审批门控设计 |
 | 11 | Home Depot 运营助手 · 家装垂直 | [`homedepot-ops-workbench`](../../tree/homedepot-ops-workbench) | [Hdhaidong/homedepot-ops-workbench](https://github.com/Hdhaidong/homedepot-ops-workbench) | PI mono | 0.1.0-dev | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过；同日路线定稿=DSH 客户端派生·更名 homedepot-ops-workbench） | 01-DESIGN 草案评审 → P3 开发 M1 客户端派生批（DSH 基座 + flavor 落地） |
+| 12 | Adventure Retail Agent · 三底座产品线 | [`adventure-retail-agent`](../../tree/adventure-retail-agent) | 标准仓 [Hdhaidong/adventure-retail-agent](https://github.com/Hdhaidong/adventure-retail-agent)（Qoder 底座宿主）+ DSH 基座宿主 insightmarketplac-client + [pi-kernel](https://github.com/Hdhaidong/pi-kernel) | 三底座聚合（DSH / PI mono / Qoder Cloud Agents） | 0.1.0-dev | 🟡 P2 设计（2026-10-07 立项，P0/P1 门禁通过；M0 三底座归口完成；DSH/PI mono 载体已有，Qoder 底座为主增量） | 01-DESIGN 草案评审 → P3 开发 M1 Qoder 工作台平台批（照 tqw 架构） |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
 
