@@ -15,7 +15,7 @@
 | 项目分支 | 问题数 | 关键阻塞 |
 |----------|--------|----------|
 | [adventure-platform](../../tree/adventure-platform) | 4（ISS-1~4） | I1-5a 生产部署待用户确认 |
-| [target-qoder-workbench](../../tree/target-qoder-workbench) | 6（ISS-1~6） | M3 等服务器凭据（🔴 升发布关键路径 M2.14-3）/ M4 等 Qoder PAT（不阻塞发布）/ ISS-6 前端源码未入库（M2.14-1） |
+| [target-qoder-workbench](../../tree/target-qoder-workbench) | 7（ISS-1~7；3/5/6/7 已闭环） | M3 等服务器凭据（🔴 M2.14-3，唯一发布阻塞）/ M4 等 Qoder PAT（不阻塞发布，Mock 先行上线） |
 | [dsh-target-ops](../../tree/dsh-target-ops) | 4（ISS-1~4） | TC-35 需用户在 dsh Desktop 手动验证 |
 | [coach-family](../../tree/coach-family) | 2（ISS-1~2） | ISS-1 coach-agent 平台清单缺口（M2-1 设计定案） |
 | [homedepot-ops-workbench](../../tree/homedepot-ops-workbench) | 3（ISS-1~3） | ISS-2 preset 激活/工作台后端对接待规划 / ISS-3 真实数据源 M5 另行立项 |
