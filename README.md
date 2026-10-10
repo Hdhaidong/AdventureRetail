@@ -23,6 +23,7 @@
 | 13 | EZinq + 价格监视 SaaS 调研 · B2B list 管理 · 隶属 AR 研究层 | [`ezinq-study`](../../tree/ezinq-study) | 无独立仓（外部产品调研） | 研究层调研 | 0.1.0 | 🟡 P0 调研（2026-10-08 立项，EZinq 基线已捕获 + 印度赛道五家初筛） | M2 EZinq 能力矩阵细化 → M3 印度 SaaS 赛道深挖（几万 list 规模口径）→ M4 报告 + adventure-platform 能力建议（list 管理 + 价格监视） |
 | 14 | Wayfair 运营助手 · 家居垂类（学习+运营一体） | [`wayfair-ops-client`](../../tree/wayfair-ops-client) | [Hdhaidong/wayfair-ops-client](https://github.com/Hdhaidong/wayfair-ops-client) | DSH 客户端派生 | 0.1.0 | 🟡 P2 设计（M1 学习内容落库 ✅ 2026-10-08：18 条目 / FAQ 10 / 题库 42 题，337 项校验全通过，源码仓 5c44869；wenmai-learn-wayfair M3 运营版实现载体） | M2 DSH 派生与品牌适配（T11–T14，照 target-ops-client 母版）→ M3 运营能力对齐 |
 | 15 | Adventure Affiliate · 种草×联盟营销×红人经纪 Agent | [`adventure-affiliate`](../../tree/adventure-affiliate) | 待建（M0 T-1） | PI mono | 0.1.0-dev | 🟡 P1 规格（2026-10-10 立项：三向匹配 + 红人经纪 + 5 渠道；YooFinds 确认为第 5 渠道；对标美印双市场完成；归口 adventure-retail-agent） | M0 T-1 源码仓创建 + pi-mono v1.1.0 脚手架（ISS-1..4 待拍板）→ M1 达人池与联盟登记 |
+| 16 | Adventure Retail 猎头版 · 跨境人才猎头 flavor（adventure-headhunt） | [`adventure-headhunt`](../../tree/adventure-headhunt) | 待建（M1 DSH 派生，母版 target-ops-client） | DSH 客户端派生 | 0.1.0 | 🟡 P0 需求（2026-10-10 立项：客户端猎头 flavor 版 · 四项拍板；域名 talent.adventureretail.com 登记标准仓坐标表；DSH 第 5 flavor · 首个业务域 flavor——人才撮合） | M1 DSH 基座派生 + 品牌适配（ISS-1 安装包名/App ID 待拍板）→ M2 猎头能力对齐（人才库/岗位库/匹配/成单/提成）→ M3 出包 + talent 门户 |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
 
