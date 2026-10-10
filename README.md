@@ -24,6 +24,7 @@
 | 14 | Wayfair 运营助手 · 家居垂类（学习+运营一体） | [`wayfair-ops-client`](../../tree/wayfair-ops-client) | [Hdhaidong/wayfair-ops-client](https://github.com/Hdhaidong/wayfair-ops-client) | DSH 客户端派生 | 0.1.0 | 🟡 P2 设计（M1 学习内容落库 ✅ 2026-10-08：18 条目 / FAQ 10 / 题库 42 题，337 项校验全通过，源码仓 5c44869；wenmai-learn-wayfair M3 运营版实现载体） | M2 DSH 派生与品牌适配（T11–T14，照 target-ops-client 母版）→ M3 运营能力对齐 |
 | 15 | Adventure Affiliate · 种草×联盟营销×红人经纪 Agent | [`adventure-affiliate`](../../tree/adventure-affiliate) | 待建（M0 T-1） | PI mono | 0.1.0-dev | 🟡 P1 规格（2026-10-10 立项：三向匹配 + 红人经纪 + 5 渠道；YooFinds 确认为第 5 渠道；对标美印双市场完成；归口 adventure-retail-agent） | M0 T-1 源码仓创建 + pi-mono v1.1.0 脚手架（ISS-1..4 待拍板）→ M1 达人池与联盟登记 |
 | 16 | Adventure Retail 猎头版 · 跨境人才猎头 flavor（adventure-headhunt） | [`adventure-headhunt`](../../tree/adventure-headhunt) | 待建（M1 DSH 派生，母版 target-ops-client） | DSH 客户端派生 | 0.1.0 | 🟡 P0 需求（2026-10-10 立项：客户端猎头 flavor 版 · 四项拍板；域名 talent.adventureretail.com 登记标准仓坐标表；DSH 第 5 flavor · 首个业务域 flavor——人才撮合） | M1 DSH 基座派生 + 品牌适配（ISS-1 安装包名/App ID 待拍板）→ M2 猎头能力对齐（人才库/岗位库/匹配/成单/提成）→ M3 出包 + talent 门户 |
+| 17 | Adventure Retail 展会版 · 跨境展会情报+撮合 flavor（adventure-expo） | [`adventure-expo`](../../tree/adventure-expo) | 待建（M1 DSH 派生，母版 target-ops-client） | DSH 客户端派生 | 0.1.0 | 🟡 P0 需求（2026-10-11 立项：情报+撮合综合版 · 四项拍板；覆盖=美国/澳洲/加拿大/欧洲/土耳其五大海外市场+国内展；域名 expo.adventureretail.com 登记标准仓坐标表；DSH 第 6 flavor · 第 2 个业务域 flavor——展会情报+撮合） | M1 DSH 基座派生 + 品牌适配（ISS-1 安装包名/App ID 待拍板）→ M2 展会能力对齐（日历/参展商/新品情报 + 建联/跟进/提成）→ M3 出包 + expo 门户 |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
 
