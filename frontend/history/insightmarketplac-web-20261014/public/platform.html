@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据与模型平台 — Adventure Retail · insightmarketplac</title>
+<meta name="description" content="insightmarketplac 数据与模型平台：模型凭证与数据通道统一签发，经 MCP 加密下发到 Adventure Retail 客户端；配额计量、审批留痕、凭证不落地。">
+<style>
+  :root {
+    --bg: #0a0b0e;
+    --bg-soft: #101318;
+    --ink: #f2f4f8;
+    --ink-dim: #9aa3b2;
+    --ink-faint: #5c6472;
+    --accent: #4f8dff;
+    --ok: #34d399;
+    --line: rgba(255,255,255,.08);
+    --font: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,11,14,.85), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .nav-brand {
+    font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-brand .by { font-size: 12px; font-weight: 500; color: var(--ink-faint); margin-left: 10px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-link { font-size: 14px; color: var(--ink-dim); text-decoration: none; transition: color .2s; }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+  .nav-cta {
+    font-size: 14px; color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 9px 22px;
+    transition: border-color .25s, background .25s;
+  }
+  .nav-cta:hover { border-color: var(--accent); background: rgba(79,141,255,.08); }
+
+  .hero {
+    padding: 180px 0 100px;
+    background:
+      radial-gradient(900px 420px at 80% -10%, rgba(79,141,255,.14), transparent 60%),
+      var(--bg);
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .section-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .hero-title {
+    margin-top: 18px;
+    font-size: clamp(34px, 5.5vw, 64px);
+    font-weight: 800; letter-spacing: -.04em; line-height: 1.05;
+  }
+  .hero-sub {
+    margin-top: 22px;
+    font-size: 16px; color: var(--ink-dim); line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* pipeline diagram */
+  .pipe { padding: 40px 0 120px; }
+  .pipe-track {
+    margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; gap: 0;
+    align-items: stretch;
+  }
+  .pipe-node {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 16px; padding: 34px 30px;
+    display: flex; flex-direction: column;
+  }
+  .pipe-tag {
+    align-self: flex-start;
+    font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(79,141,255,.35); border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .pipe-node h3 { margin-top: 18px; font-size: 20px; font-weight: 700; letter-spacing: -.015em; }
+  .pipe-node p { margin-top: 12px; font-size: 14px; color: var(--ink-dim); line-height: 1.8; }
+  .pipe-arrow {
+    display: grid; place-items: center;
+    color: var(--ink-faint);
+  }
+  .pipe-arrow svg { display: block; }
+
+  /* capability list */
+  .caps { padding: 120px 0; background: var(--bg-soft); }
+  .section-title {
+    margin-top: 16px;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700; letter-spacing: -.03em; line-height: 1.15;
+  }
+  .caps-list { margin-top: 72px; border-top: 1px solid var(--line); }
+  .cap-row {
+    display: grid; grid-template-columns: 80px 1fr 1.2fr;
+    gap: 32px; align-items: baseline;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--line);
+    transition: background .3s, padding-left .3s;
+  }
+  .cap-row:hover { background: rgba(255,255,255,.02); padding-left: 16px; }
+  .cap-num { font-size: 13px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+  .cap-name { font-size: 24px; font-weight: 650; letter-spacing: -.02em; }
+  .cap-desc { font-size: 15px; color: var(--ink-dim); line-height: 1.75; }
+
+  /* security band */
+  .sec { padding: 120px 0; }
+  .sec-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .sec-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px; padding: 30px;
+  }
+  .sec-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(79,141,255,.12); color: var(--accent);
+  }
+  .sec-card h3 { margin-top: 18px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+  .sec-card p { margin-top: 10px; font-size: 14px; color: var(--ink-dim); line-height: 1.8; }
+
+  /* trial band */
+  .trial {
+    padding: 140px 0;
+    text-align: center;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+  }
+  .trial .section-title { max-width: 620px; margin-left: auto; margin-right: auto; }
+  .trial-sub {
+    margin: 22px auto 0;
+    font-size: 15px; color: var(--ink-dim); line-height: 1.75;
+    max-width: 480px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 44px;
+    background: var(--accent); color: #fff;
+    font-size: 15px; font-weight: 600;
+    padding: 15px 34px; border-radius: 999px;
+    text-decoration: none;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -8px rgba(79,141,255,.55);
+  }
+  .trial-meta { margin-top: 20px; font-size: 13px; color: var(--ink-faint); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--ink-faint);
+  }
+  footer .f-brand { font-weight: 700; color: var(--ink-dim); }
+  footer .f-contact a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--line); transition: color .2s, border-color .2s; }
+  footer .f-contact a:hover { color: #6ea8ff; border-color: currentColor; }
+
+  @media (max-width: 860px) {
+    nav { padding: 16px 24px; }
+    .nav-brand .by { display: none; }
+    .wrap { padding: 0 24px; }
+    .hero { padding: 140px 0 72px; }
+    .pipe { padding: 24px 0 80px; }
+    .pipe-track { grid-template-columns: 1fr; gap: 12px; }
+    .pipe-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .cap-row { grid-template-columns: 1fr; gap: 10px; padding: 32px 0; }
+    .cap-row:hover { padding-left: 0; }
+    .sec-grid { grid-template-columns: 1fr; }
+    .caps, .sec { padding: 80px 0; }
+    .trial { padding: 100px 0; }
+    footer { flex-direction: column; gap: 10px; padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Adventure Retail<span class="by">insightmarketplac 出品</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">首页</a>
+    <a class="nav-link" href="products.html">产品矩阵</a>
+    <a class="nav-link active" href="platform.html">数据平台</a>
+    <a class="nav-cta" href="index.html#download">下载客户端</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="section-label">Platform</p>
+    <h1 class="hero-title">模型与数据，<br>从平台安全下发。</h1>
+    <p class="hero-sub">客户端不内置任何密钥。模型凭证与数据通道由 insightmarketplac 平台统一签发，经 MCP 加密通道下发到 Adventure Retail 客户端——打开即用，全程可管可控。</p>
+  </div>
+</header>
+
+<!-- pipeline -->
+<section class="pipe">
+  <div class="wrap">
+    <p class="section-label reveal">How It Works</p>
+    <h2 class="section-title reveal">一条加密通道，连接平台与客户端。</h2>
+    <div class="pipe-track">
+      <div class="pipe-node reveal">
+        <span class="pipe-tag">Platform</span>
+        <h3>平台统一签发</h3>
+        <p>模型凭证、数据通道接入凭证由平台侧统一管理与签发，支持 24 小时试用与激活码订阅两种发放方式，按账户计量配额。</p>
+      </div>
+      <div class="pipe-arrow reveal" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
+      </div>
+      <div class="pipe-node reveal">
+        <span class="pipe-tag">MCP Channel</span>
+        <h3>MCP 加密下发</h3>
+        <p>凭证经加密通道下发，客户端只看到标准化的业务工具接口——检索、网页抓取、零售数据查询，看不到上游数据源的名称与密钥。</p>
+      </div>
+      <div class="pipe-arrow reveal" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
+      </div>
+      <div class="pipe-node reveal">
+        <span class="pipe-tag">Client</span>
+        <h3>客户端接入即用</h3>
+        <p>Adventure Retail 客户端首次启动输入激活码即可开通，无需任何手动配置。15 项专项技能全部经由这条数据通道工作。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- capabilities -->
+<section class="caps">
+  <div class="wrap">
+    <p class="section-label reveal">Capabilities</p>
+    <h2 class="section-title reveal">平台侧提供的六件事。</h2>
+    <div class="caps-list">
+      <div class="cap-row reveal">
+        <span class="cap-num">01</span>
+        <h3 class="cap-name">凭证下发</h3>
+        <p class="cap-desc">模型与数据凭证由平台统一签发、加密下发、按周期轮换。客户端零配置接入，凭证过期自动失效，可随时吊销。</p>
+      </div>
+      <div class="cap-row reveal">
+        <span class="cap-num">02</span>
+        <h3 class="cap-name">数据通道</h3>
+        <p class="cap-desc">信息检索、网页抓取、零售数据查询三类能力经一条 MCP 通道提供。客户端调用的是业务工具，不接触上游数据源本身。</p>
+      </div>
+      <div class="cap-row reveal">
+        <span class="cap-num">03</span>
+        <h3 class="cap-name">试用与激活</h3>
+        <p class="cap-desc">新用户首次启动即享 24 小时免费试用，无需提供任何凭证；正式使用由运营方签发激活码，有效期内凭证自动下发。</p>
+      </div>
+      <div class="cap-row reveal">
+        <span class="cap-num">04</span>
+        <h3 class="cap-name">审批门控</h3>
+        <p class="cap-desc">只读任务自动执行；涉及写操作的任务一律暂停在人工审批门，由你确认后才执行，全程留痕、可追溯。</p>
+      </div>
+      <div class="cap-row reveal">
+        <span class="cap-num">05</span>
+        <h3 class="cap-name">传输优化</h3>
+        <p class="cap-desc">针对网速一般与多用户并发场景：查询结果压缩传输、增量同步、重复请求合并，链路不拥塞，高峰时段多个客户端同时使用也保持顺畅。</p>
+      </div>
+      <div class="cap-row reveal">
+        <span class="cap-num">06</span>
+        <h3 class="cap-name">数据仓预留</h3>
+        <p class="cap-desc">通道预留标准化数据仓库接口。后续可把你的历史经营数据（订单、库存、广告）接入为辅助数据源，与实时调研结果联合分析，让助手的判断贴合你的生意。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- security -->
+<section class="sec">
+  <div class="wrap">
+    <p class="section-label reveal">Security</p>
+    <h2 class="section-title reveal">三条底线，写进架构里。</h2>
+    <div class="sec-grid">
+      <div class="sec-card reveal">
+        <span class="sec-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        </span>
+        <h3>凭证不落地</h3>
+        <p>密钥加密存储于本地安全区，不进入明文配置文件，无法被导出、截屏或转述。页面与文档中也绝不展示真实凭证。</p>
+      </div>
+      <div class="sec-card reveal">
+        <span class="sec-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <h3>数据源脱敏</h3>
+        <p>客户端界面、技能说明与输出报告中只出现业务能力描述，不出现上游数据源与第三方品牌名称。</p>
+      </div>
+      <div class="sec-card reveal">
+        <span class="sec-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/><path d="M9 14l2 2 4-4"/></svg>
+        </span>
+        <h3>全程留痕</h3>
+        <p>每次凭证签发、每次审批通过、每次写操作执行，都在平台侧留下审计记录，可按账户回溯。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- trial -->
+<section class="trial">
+  <div class="wrap">
+    <p class="section-label reveal">Get Started</p>
+    <h2 class="section-title reveal">先试用，再决定。</h2>
+    <p class="trial-sub reveal">下载客户端，首次启动即开通 24 小时免费试用——模型与数据由平台自动下发，不需要你准备任何账号或密钥。</p>
+    <a class="btn-primary reveal" href="https://github.com/Hdhaidong/insightmarketplac-promo/releases">
+      下载 Windows 客户端
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14m0 0l-5.5-5.5M12 17l5.5-5.5M4 21h16"/></svg>
+    </a>
+    <p class="trial-meta reveal">Windows 10 / 11（64 位）· 免费试用 1 天 · 激活码订阅</p>
+  </div>
+</section>
+
+<footer>
+  <span class="f-brand">Adventure Retail · insightmarketplac 出品</span>
+  <span class="f-contact">
+    联系方式：<a href="mailto:haidong.zhou@outlook.com">haidong.zhou@outlook.com</a>
+  </span>
+  <span>© 2026 insightmarketplac. All rights reserved.</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+
+</body>
+</html>

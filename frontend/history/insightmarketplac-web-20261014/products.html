@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品矩阵 — Adventure Retail · insightmarketplac</title>
+<meta name="description" content="Adventure Retail 客户端产品矩阵：73 个业务产品覆盖选品调研、广告投放、发布管理、内容定制、平台学习、客服售后、数据采集、销售开发与履约管理。">
+<style>
+  :root {
+    --bg: #0a0b0e;
+    --bg-soft: #101318;
+    --ink: #f2f4f8;
+    --ink-dim: #9aa3b2;
+    --ink-faint: #5c6472;
+    --accent: #4f8dff;
+    --line: rgba(255,255,255,.08);
+    --font: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,11,14,.9), transparent);
+    backdrop-filter: blur(6px);
+  }
+  .nav-brand {
+    font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-brand .by { font-size: 12px; font-weight: 500; color: var(--ink-faint); margin-left: 10px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-link { font-size: 14px; color: var(--ink-dim); text-decoration: none; transition: color .2s; }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+  .nav-cta {
+    font-size: 14px; color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 9px 22px;
+    transition: border-color .25s, background .25s;
+  }
+  .nav-cta:hover { border-color: var(--accent); background: rgba(79,141,255,.08); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 180px 0 100px;
+    text-align: center;
+    background:
+      radial-gradient(800px 400px at 50% -10%, rgba(79,141,255,.12), transparent 60%),
+      var(--bg);
+  }
+  .hero-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .hero-title {
+    margin-top: 18px;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800; letter-spacing: -.04em; line-height: 1.08;
+  }
+  .hero-sub {
+    margin: 22px auto 0;
+    font-size: 16px; color: var(--ink-dim); line-height: 1.75;
+    max-width: 560px;
+  }
+  .hero-stats {
+    margin: 56px auto 0;
+    display: flex; justify-content: center; gap: 72px; flex-wrap: wrap;
+  }
+  .hstat { text-align: center; }
+  .hstat b {
+    display: block;
+    font-size: 34px; font-weight: 800; letter-spacing: -.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hstat b i { font-style: normal; color: var(--accent); }
+  .hstat span { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-faint); }
+
+  /* ── Flagship ── */
+  .flag { padding: 96px 0 0; }
+  .flag-card {
+    max-width: 1200px; margin: 0 auto; padding: 0 48px;
+  }
+  .flag-inner {
+    display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+    background: linear-gradient(135deg, rgba(79,141,255,.14), rgba(79,141,255,.03) 55%),
+                var(--bg-soft);
+    border: 1px solid rgba(79,141,255,.3);
+    border-radius: 20px; padding: 44px 48px;
+  }
+  .flag-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .flag-inner h2 { margin-top: 12px; font-size: 30px; font-weight: 800; letter-spacing: -.025em; }
+  .flag-inner .flag-desc { margin-top: 12px; font-size: 14px; color: var(--ink-dim); line-height: 1.8; }
+  .flag-skills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .flag-skill {
+    font-size: 12px; color: var(--ink-dim);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+  }
+  .flag-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 22px;
+    background: var(--accent); color: #fff;
+    font-size: 14px; font-weight: 600;
+    padding: 12px 26px; border-radius: 999px; text-decoration: none;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+  }
+  .flag-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px -8px rgba(79,141,255,.55); }
+
+  /* ── Featured ── */
+  .featured { padding: 96px 0 0; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .featured-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .section-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .featured-note { font-size: 13px; color: var(--ink-faint); }
+  .featured-grid {
+    margin-top: 40px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .fcard {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 16px; padding: 30px;
+    display: flex; flex-direction: column;
+    transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s;
+  }
+  .fcard:hover { transform: translateY(-4px); border-color: rgba(79,141,255,.4); }
+  .fcard-top { display: flex; align-items: center; gap: 10px; }
+  .fcard-rank {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    color: var(--accent);
+  }
+  .fcard-cat {
+    font-size: 11px; color: var(--ink-faint);
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  }
+  .fcard h3 { margin-top: 16px; font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+  .fcard p { margin-top: 10px; font-size: 14px; color: var(--ink-dim); line-height: 1.75; flex: 1; }
+  .fcard a {
+    margin-top: 20px; align-self: flex-start;
+    font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .fcard a:hover { text-decoration: underline; }
+
+  /* ── Matrix ── */
+  .matrix { padding: 120px 0; }
+  .matrix-title {
+    margin-top: 16px;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; letter-spacing: -.03em;
+  }
+  .matrix-sub { margin-top: 12px; font-size: 15px; color: var(--ink-dim); }
+
+  .matrix-tools {
+    margin-top: 48px;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    position: sticky; top: 68px; z-index: 20;
+    background: rgba(10,11,14,.88);
+    backdrop-filter: blur(10px);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tab {
+    font-size: 13px; color: var(--ink-dim);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 18px; cursor: pointer;
+    background: transparent;
+    transition: color .2s, border-color .2s, background .2s;
+  }
+  .tab:hover { color: var(--ink); border-color: rgba(255,255,255,.2); }
+  .tab.on {
+    color: #fff; background: var(--accent); border-color: var(--accent);
+  }
+  .tab b { font-weight: 600; margin-left: 4px; opacity: .75; }
+  .search { margin-left: auto; position: relative; }
+  .search input {
+    width: 240px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 10px 18px 10px 40px;
+    font-size: 13px; color: var(--ink); outline: none;
+    transition: border-color .2s;
+  }
+  .search input:focus { border-color: var(--accent); }
+  .search input::placeholder { color: var(--ink-faint); }
+  .search svg {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--ink-faint); pointer-events: none;
+  }
+
+  .p-grid {
+    margin-top: 32px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .pcard {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px;
+    transition: border-color .25s, transform .25s;
+  }
+  .pcard:hover { border-color: rgba(79,141,255,.35); transform: translateY(-2px); }
+  .pcard .p-cat { font-size: 11px; color: var(--ink-faint); letter-spacing: .04em; }
+  .pcard h4 { margin-top: 8px; font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
+  .pcard p { margin-top: 6px; font-size: 12.5px; color: var(--ink-dim); line-height: 1.65; }
+  .empty {
+    margin-top: 32px; padding: 60px 0;
+    text-align: center; color: var(--ink-faint); font-size: 14px;
+    border: 1px dashed var(--line); border-radius: 12px;
+    display: none;
+  }
+
+  /* ── One client banner ── */
+  .onecard {
+    margin: 40px auto 120px;
+    max-width: 1200px; padding: 0 48px;
+  }
+  .onecard-inner {
+    background: linear-gradient(135deg, rgba(79,141,255,.16), rgba(79,141,255,.04) 60%),
+                var(--bg-soft);
+    border: 1px solid rgba(79,141,255,.35);
+    border-radius: 20px;
+    padding: 64px 56px;
+    display: flex; justify-content: space-between; align-items: center; gap: 40px;
+  }
+  .onecard h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 750; letter-spacing: -.025em; }
+  .onecard p { margin-top: 12px; font-size: 14px; color: var(--ink-dim); line-height: 1.7; max-width: 520px; }
+  .onecard .btn-primary { flex: none; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #fff;
+    font-size: 15px; font-weight: 600;
+    padding: 15px 34px; border-radius: 999px;
+    text-decoration: none;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -8px rgba(79,141,255,.55);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--ink-faint);
+  }
+  footer .f-brand { font-weight: 700; color: var(--ink-dim); }
+  footer .f-contact a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--line); transition: color .2s, border-color .2s; }
+  footer .f-contact a:hover { color: #6ea8ff; border-color: currentColor; }
+
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 1080px) {
+    .p-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 860px) {
+    nav { padding: 16px 24px; }
+    .nav-brand .by { display: none; }
+    .wrap { padding: 0 24px; }
+    .hero { padding: 140px 0 72px; }
+    .hero-stats { gap: 36px; }
+    .flag { padding: 64px 0 0; }
+    .flag-card { padding: 0 24px; }
+    .flag-inner { grid-template-columns: 1fr; padding: 32px 28px; }
+    .featured { padding: 64px 0 0; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .p-grid { grid-template-columns: repeat(2, 1fr); }
+    .matrix { padding: 80px 0; }
+    .matrix-tools { position: static; }
+    .search { margin-left: 0; width: 100%; }
+    .search input { width: 100%; }
+    .onecard { margin-bottom: 80px; padding: 0 24px; }
+    .onecard-inner { flex-direction: column; align-items: flex-start; padding: 40px 28px; }
+    footer { flex-direction: column; gap: 10px; padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Adventure Retail<span class="by">insightmarketplac 出品</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">首页</a>
+    <a class="nav-link active" href="products.html">产品矩阵</a>
+    <a class="nav-link" href="platform.html">数据平台</a>
+    <a class="nav-cta" href="#download">下载客户端</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <p class="hero-label">Product Matrix</p>
+  <h1 class="hero-title">一个智能体内核，<br>73 个业务产品。</h1>
+  <p class="hero-sub">所有产品共用同一个内核：感知、工具、记忆、模型、审批，一次接入，持续进化。Adventure Retail 专项客户端已开放下载，其余业务产品按同一内核陆续交付。</p>
+  <div class="hero-stats">
+    <div class="hstat"><b>73</b><span>业务产品</span></div>
+    <div class="hstat"><b>9</b><span>条产品线</span></div>
+    <div class="hstat"><b>24<i>h</i></b><span>免费试用</span></div>
+    <div class="hstat"><b><i>MCP</i></b><span>数据统一下发</span></div>
+  </div>
+</header>
+
+<!-- Flagship -->
+<section class="flag">
+  <div class="flag-card">
+    <div class="flag-inner reveal">
+      <div>
+        <span class="flag-label">Flagship · 现已开放</span>
+        <h2>Adventure Retail 专项客户端</h2>
+        <p class="flag-desc">家装零售垂直平台的一站式运营 AI 助手：选品、调研、速览、运营 15 项专项技能，数据经平台 MCP 通道加密下发，安装即用。</p>
+        <div class="flag-skills">
+          <span class="flag-skill">潜力品挖掘</span>
+          <span class="flag-skill">单品 Go/No-Go</span>
+          <span class="flag-skill">历史赢家复盘</span>
+          <span class="flag-skill">品类市场调研</span>
+          <span class="flag-skill">竞品深挖</span>
+          <span class="flag-skill">用户评论之声</span>
+          <span class="flag-skill">跨渠道对比</span>
+          <span class="flag-skill">价格速查</span>
+          <span class="flag-skill">库存速览</span>
+          <span class="flag-skill">容量测算</span>
+          <span class="flag-skill">趋势速览</span>
+          <span class="flag-skill">广告投放</span>
+          <span class="flag-skill">Listing 优化</span>
+          <span class="flag-skill">利润测算</span>
+          <span class="flag-skill">促销策划</span>
+        </div>
+      </div>
+      <div>
+        <a class="flag-cta" href="https://github.com/Hdhaidong/insightmarketplac-promo/releases">
+          下载 Windows 客户端
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14m0 0l-5.5-5.5M12 17l5.5-5.5M4 21h16"/></svg>
+        </a>
+        <p class="flag-desc" style="margin-top:16px; font-size:12.5px;">Windows 10 / 11（64 位）· 免费试用 1 天 · 激活码订阅</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="featured">
+  <div class="wrap">
+    <div class="featured-head">
+      <div>
+        <p class="section-label">Featured</p>
+        <h2 class="matrix-title">精选产品</h2>
+      </div>
+      <span class="featured-note">精选三个最常用产品，完整矩阵见下方</span>
+    </div>
+    <div class="featured-grid">
+      <div class="fcard reveal">
+        <div class="fcard-top">
+          <span class="fcard-rank">TOP 1</span>
+          <span class="fcard-cat">选品 · 调研</span>
+        </div>
+        <h3>市场调研报告</h3>
+        <p>输入品类词，输出结构化市场调研报告：规模、竞争格局、价格带分布与趋势判断，数据说话、出处可查。</p>
+        <a href="#matrix" data-jump="市场调研报告">查看产品 →</a>
+      </div>
+      <div class="fcard reveal">
+        <div class="fcard-top">
+          <span class="fcard-rank">TOP 2</span>
+          <span class="fcard-cat">选品 · 调研</span>
+        </div>
+        <h3>竞品持续监控</h3>
+        <p>对重点竞品建立持续监控，价格变动、榜单排名变化、新上架动态第一时间推送到客户端。</p>
+        <a href="#matrix" data-jump="竞品持续监控">查看产品 →</a>
+      </div>
+      <div class="fcard reveal">
+        <div class="fcard-top">
+          <span class="fcard-rank">TOP 3</span>
+          <span class="fcard-cat">发布 · 管理</span>
+        </div>
+        <h3>多平台批量上架</h3>
+        <p>一次整理商品资料，批量生成多个平台的规范上架内容，写操作经审批门后执行。</p>
+        <a href="#matrix" data-jump="多 SKU 批量上新">查看产品 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Matrix -->
+<section class="matrix" id="matrix">
+  <div class="wrap">
+    <p class="section-label">All Products</p>
+    <h2 class="matrix-title">完整产品矩阵</h2>
+    <p class="matrix-sub">按业务域浏览 73 个产品。所有能力均可通过客户端自然语言调用。</p>
+
+    <div class="matrix-tools" id="download">
+      <div class="tabs" id="tabs"></div>
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="q" type="text" placeholder="搜索产品…" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="p-grid" id="grid"></div>
+    <div class="empty" id="empty">没有匹配的产品，换个关键词试试</div>
+  </div>
+</section>
+
+<!-- One client banner -->
+<section class="onecard">
+  <div class="onecard-inner">
+    <div>
+      <h2>所有产品，都在同一个客户端里。</h2>
+      <p>不需要逐一下载安装——Adventure Retail 专项客户端已内置 15 项家装零售运营技能，其余产品按同一内核陆续交付。模型与数据凭证由平台经 MCP 通道安全下发。</p>
+    </div>
+    <a class="btn-primary" href="https://github.com/Hdhaidong/insightmarketplac-promo/releases">
+      下载客户端
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14m0 0l-5.5-5.5M12 17l5.5-5.5M4 21h16"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="f-brand">Adventure Retail · insightmarketplac 出品</span>
+  <span class="f-contact">
+    联系方式：<a href="mailto:haidong.zhou@outlook.com">haidong.zhou@outlook.com</a>
+  </span>
+  <span>© 2026 insightmarketplac. All rights reserved.</span>
+</footer>
+
+<script>
+const CATS = [
+  { id: 'all',     name: '全部' },
+  { id: 'scout',   name: '选品 · 调研' },
+  { id: 'ads',     name: '广告 · 投放' },
+  { id: 'publish', name: '发布 · 管理' },
+  { id: 'content', name: '内容 · 定制' },
+  { id: 'learn',   name: '平台 · 学习' },
+  { id: 'cs',      name: '客服 · 售后' },
+  { id: 'data',    name: '数据 · 采集' },
+  { id: 'sales',   name: '销售 · 开发' },
+  { id: 'ops',     name: '履约 · 管理' },
+];
+
+const P = [
+  // ── 选品 · 调研 (14) ──
+  { c: 'scout', n: '市场调研报告', d: '给品类词，输出市场规模、竞争格局、价格带与趋势判断的结构化报告' },
+  { c: 'scout', n: '竞品深度调研', d: '拆解竞品店铺的流量结构、产品线布局与运营策略' },
+  { c: 'scout', n: '客户之声 VOC 分析', d: '聚合用户评论，提炼高频痛点、期望与购买驱动因素' },
+  { c: 'scout', n: '跨平台对比调研', d: '同一品类在多个渠道的供需、价格与竞争强度对比' },
+  { c: 'scout', n: '竞品持续监控', d: '价格变动、榜单排名变化、新品上架动态持续跟踪推送' },
+  { c: 'scout', n: '竞品促销异动侦测', d: '监控竞品促销频率、折扣深度与节奏变化，及时预警' },
+  { c: 'scout', n: '关键词排名监控', d: '重点关键词下商品排名的日常跟踪与波动提醒' },
+  { c: 'scout', n: '单品 Go/No-Go 决策', d: '对单个候选品做流量、竞争、毛利、风险全链路裁决' },
+  { c: 'scout', n: '品类历史数据挖掘', d: '复盘历史赢家与失败案例，提炼可复用的成功因子' },
+  { c: 'scout', n: '潜力产品挖掘', d: '扫描趋势与需求信号，过滤红海，筛出潜力候选' },
+  { c: 'scout', n: '系统化选品', d: '按你的供应链与资金约束，建立可复制的选品流程' },
+  { c: 'scout', n: '短视频热品选品', d: '追踪短视频渠道热品趋势，评估跟品价值与时效' },
+  { c: 'scout', n: '直播电商选品', d: '直播渠道热品与场次表现分析，评估供货机会' },
+  { c: 'scout', n: '家居垂类选品', d: '家居家装垂类的季节节奏、风格趋势与机会品类挖掘' },
+
+  // ── 广告 · 投放 (4) ──
+  { c: 'ads', n: '电商平台广告优化', d: '广告结构、关键词、出价逐项诊断，给出降本增效路线' },
+  { c: 'ads', n: '短视频广告投放', d: '短视频渠道广告素材方向、受众与投放节奏建议' },
+  { c: 'ads', n: '直播电商广告', d: '直播引流投放计划与场次 ROI 复盘优化' },
+  { c: 'ads', n: '家居垂类广告', d: '家装零售场景的广告打法：季节节奏、词路组合与预算分配' },
+
+  // ── 发布 · 管理 (31) ──
+  { c: 'publish', n: 'Listing 标题工坊', d: '按搜索规则与买家搜索词，批量产出高相关标题' },
+  { c: 'publish', n: '五点描述优化', d: '卖点排序、参数取舍、场景化表达，逐条重写' },
+  { c: 'publish', n: '北美综合电商上架', d: '生成符合北美头部综合电商平台规范的上架内容' },
+  { c: 'publish', n: '北美连锁零售上架', d: '适配北美连锁零售线上商城的商品资料与属性模板' },
+  { c: 'publish', n: '欧美刊登平台上架', d: '拍卖/刊登式平台的标题、描述与类目属性填充' },
+  { c: 'publish', n: '俄语区综合平台上架', d: '俄语区综合电商的商品信息本地化与上架内容生成' },
+  { c: 'publish', n: '俄语区规格表上架', d: '按俄语区头部平台的规格表模板批量填充商品参数' },
+  { c: 'publish', n: '拉美多站点上架', d: '拉美多站点西语/葡语商品内容生成与差异适配' },
+  { c: 'publish', n: '澳洲供货平台上架', d: '澳洲本土供货型平台的商品资料与供货信息整理' },
+  { c: 'publish', n: '全托管平台上架', d: '全托管模式的供货信息、报价单与核价资料准备' },
+  { c: 'publish', n: '快时尚平台上架', d: '快时尚跨境平台的轻小件商品上架内容生成' },
+  { c: 'publish', n: '东南亚六站上架', d: '东南亚六国站点商品内容批量生成与本地化合规' },
+  { c: 'publish', n: '东南亚七站上架', d: '东南亚七站点平台的类目属性与多语言内容适配' },
+  { c: 'publish', n: '跨境速卖平台上架', d: '面向全球买家的跨境速卖平台商品信息生成' },
+  { c: 'publish', n: '内容电商上架', d: '短视频/直播渠道小店商品卡内容与卖点提炼' },
+  { c: 'publish', n: '手工艺平台上架', d: '手工艺/定制品平台的风格化商品描述与故事文案' },
+  { c: 'publish', n: '韩国电商上架', d: '韩语商品内容生成与本土平台规范适配' },
+  { c: 'publish', n: '日本电商上架', d: '日语商品内容生成与本土平台规范适配' },
+  { c: 'publish', n: '日本二手平台上架', d: '二手/中古平台的商品状态描述与定价建议' },
+  { c: 'publish', n: '家居垂类平台上架', d: '家居垂类平台的场景图说明与规格属性上架' },
+  { c: 'publish', n: '报关单证制作', d: '按出口目的地要求生成报关单证草案与要素清单' },
+  { c: 'publish', n: '单证模板匹配', d: '根据贸易条款与品类自动匹配对应单证模板' },
+  { c: 'publish', n: '项目管理', d: '上新、改版、促销等项目任务拆解与进度跟踪' },
+  { c: 'publish', n: '商品卖点诊断', d: '从评论与竞品对比中诊断卖点表达的薄弱环节' },
+  { c: 'publish', n: '详情页逐屏结构', d: '按转化逻辑逐屏规划详情页的内容结构与呈现顺序' },
+  { c: 'publish', n: '种草笔记生成', d: '生成符合社区氛围的种草笔记初稿，供人工润色' },
+  { c: 'publish', n: '带货脚本生成', d: '按直播/短视频节奏生成带货脚本框架与话术要点' },
+  { c: 'publish', n: '客群异议预测', d: '预测目标客群可能的购买异议并准备应答口径' },
+  { c: 'publish', n: '上新合规检查', d: '上架前扫描敏感词、错类目、资质与政策雷区' },
+  { c: 'publish', n: '多 SKU 批量上新', d: '多变体商品的属性矩阵整理与批量上新执行' },
+  { c: 'publish', n: '智能生产上架流水线', d: '从资料整理到内容生成再到上架的自动化流水线' },
+
+  // ── 内容 · 定制 (9) ──
+  { c: 'content', n: '主图白底规范化', d: '按平台主图规范生成白底图处理方案与检查清单' },
+  { c: 'content', n: '副图场景化方案', d: '规划副图的卖点分工、场景搭配与信息层级' },
+  { c: 'content', n: '品牌富内容设计', d: '品牌故事、对比图表与场景模块的富内容页面方案' },
+  { c: 'content', n: '短视频达人建联', d: '筛选匹配达人，生成建联话术与合作方案' },
+  { c: 'content', n: '内容定制', d: '按你的品牌调性定制图文内容方向与产出计划' },
+  { c: 'content', n: '爆款商品图复刻', d: '拆解爆款图的构图与信息要素，输出复刻拍摄方案' },
+  { c: 'content', n: '视觉灵感舱', d: '按品类聚合优秀视觉案例，建立可复用的灵感库' },
+  { c: 'content', n: '自动化套图', d: '一套素材批量生成多规格、多场景的商品图' },
+  { c: 'content', n: 'Vlog 视频导演', d: '品牌 Vlog 的分镜脚本、拍摄清单与剪辑结构' },
+
+  // ── 平台 · 学习 (1) ──
+  { c: 'learn', n: '家居垂类平台运营学习', d: '家居垂类平台规则、算法偏好与运营方法的结构化学习路径' },
+
+  // ── 客服 · 售后 (6) ──
+  { c: 'cs', n: '邮件客服', d: '按场景生成专业得体的英文客服邮件回复' },
+  { c: 'cs', n: '在线聊天客服', d: '常见问题的即时应答话术与升级转人工规则' },
+  { c: 'cs', n: '差评挽回', d: '差评场景分析、补救方案与合规的买家沟通策略' },
+  { c: 'cs', n: 'FAQ 知识库', d: '从历史咨询中沉淀高频问题与标准答案库' },
+  { c: 'cs', n: '工单管理', d: '售后工单分类、优先级排序与处理进度跟踪' },
+  { c: 'cs', n: '退换货处理', d: '退换货政策解读、个案处理建议与成本测算' },
+
+  // ── 数据 · 采集 (4) ──
+  { c: 'data', n: '平台评论采集', d: '合规采集公开商品评论，结构化入库供分析' },
+  { c: 'data', n: '平台商品采集', d: '合规采集公开商品信息，构建竞品与品类数据库' },
+  { c: 'data', n: '内容趋势采集', d: '采集内容社区公开趋势信号，发现潜在热品' },
+  { c: 'data', n: '货源信息采集', d: '采集批发货源公开信息，比价与供应商初筛' },
+
+  // ── 销售 · 开发 (3) ──
+  { c: 'sales', n: 'AI 销售助理', d: '客户跟进提醒、沟通纪要与商机阶段管理' },
+  { c: 'sales', n: '电商导购智能体', d: '面向到店买家的导购问答与商品推荐逻辑' },
+  { c: 'sales', n: '商业选址评估', d: '基于人流、竞品与消费力的线下选址评估模型' },
+
+  // ── 履约 · 管理 (1) ──
+  { c: 'ops', n: '订单履约工作台', d: '订单状态汇总、异常履约预警与处理建议' },
+];
+
+const grid = document.getElementById('grid');
+const tabsEl = document.getElementById('tabs');
+const qEl = document.getElementById('q');
+const emptyEl = document.getElementById('empty');
+let cat = 'all';
+let q = '';
+
+const catName = (id) => (CATS.find(c => c.id === id) || {}).name || '';
+
+function renderTabs() {
+  const counts = {};
+  for (const p of P) counts[p.c] = (counts[p.c] || 0) + 1;
+  tabsEl.innerHTML = CATS.map(c => {
+    const n = c.id === 'all' ? P.length : (counts[c.id] || 0);
+    if (c.id !== 'all' && !n) return '';
+    return `<button class="tab${cat === c.id ? ' on' : ''}" data-cat="${c.id}">${c.name}<b>${n}</b></button>`;
+  }).join('');
+}
+
+function render() {
+  const list = P.filter(p =>
+    (cat === 'all' || p.c === cat) &&
+    (!q || p.n.toLowerCase().includes(q) || p.d.toLowerCase().includes(q))
+  );
+  grid.innerHTML = list.map(p => `
+    <div class="pcard">
+      <span class="p-cat">${catName(p.c)}</span>
+      <h4>${p.n}</h4>
+      <p>${p.d}</p>
+    </div>`).join('');
+  emptyEl.style.display = list.length ? 'none' : 'block';
+}
+
+tabsEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('.tab');
+  if (!btn) return;
+  cat = btn.dataset.cat;
+  renderTabs();
+  render();
+});
+
+qEl.addEventListener('input', () => {
+  q = qEl.value.trim().toLowerCase();
+  render();
+});
+
+document.querySelectorAll('[data-jump]').forEach(a => {
+  a.addEventListener('click', () => {
+    const kw = a.dataset.jump;
+    cat = 'all';
+    q = kw.toLowerCase();
+    qEl.value = kw;
+    renderTabs();
+    render();
+  });
+});
+
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  }
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+renderTabs();
+render();
+</script>
+
+</body>
+</html>

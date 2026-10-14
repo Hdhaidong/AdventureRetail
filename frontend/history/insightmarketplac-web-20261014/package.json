@@ -1,0 +1,12 @@
+{
+  "name": "insightmarketplac-web",
+  "version": "1.0.0",
+  "description": "insightmarketplac data platform",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy . --project-name=insightmarketplac-web"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>adventure-ads · Adventure Retail 多平台统一广告投放</title>
+<style>
+:root{
+  --bg:#0d1117; --bg2:#161b22; --bg3:#1c2330; --line:#2a3342;
+  --tx:#e6edf3; --tx2:#8b98a9; --tx3:#5c6a7d;
+  --brand:#ff7a1a; --brand2:#ffb37a;
+  --ok:#3fb950; --warn:#d29922; --err:#f85149; --info:#58a6ff;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--tx);font:14px/1.6 "Segoe UI","Microsoft YaHei",system-ui,sans-serif;min-height:100vh}
+a{color:var(--info);text-decoration:none}
+
+header{display:flex;align-items:center;gap:16px;padding:14px 28px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.logo{display:flex;align-items:baseline;gap:10px}
+.logo .mark{font-size:19px;font-weight:800;letter-spacing:.5px;color:var(--tx)}
+.logo .mark em{color:var(--brand);font-style:normal}
+.logo .sub{font-size:12px;color:var(--tx2)}
+.hstatus{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--err);display:inline-block}
+.dot.ok{background:var(--ok)}
+
+.tabs{display:flex;gap:6px;padding:12px 28px;border-bottom:1px solid var(--line);background:var(--bg2);flex-wrap:wrap}
+.tab{padding:6px 16px;border:1px solid var(--line);border-radius:20px;background:transparent;color:var(--tx2);cursor:pointer;font-size:13px}
+.tab:hover{color:var(--tx);border-color:var(--tx3)}
+.tab.on{background:var(--brand);border-color:var(--brand);color:#14100b;font-weight:700}
+.tab .cnt{font-size:11px;opacity:.75;margin-left:4px}
+
+main{max-width:1240px;margin:0 auto;padding:24px 28px 60px}
+.banner{display:flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid #3b2e1a;background:#241c10;color:var(--warn);border-radius:var(--radius);font-size:13px;margin-bottom:20px}
+
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.card .k{font-size:12px;color:var(--tx2)}
+.card .v{font-size:22px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.card .v.na{color:var(--tx3);font-weight:400;font-size:16px}
+.card .u{font-size:11px;color:var(--tx3);margin-left:2px}
+
+.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:start}
+@media(max-width:960px){.grid2{grid-template-columns:1fr}.cards{grid-template-columns:repeat(3,1fr)}}
+
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.panel h3{font-size:13px;font-weight:700;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--tx);display:flex;align-items:center;gap:8px}
+.panel h3 .tag{font-size:11px;font-weight:400;color:var(--tx3)}
+.panel .body{padding:16px}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{ text-align:left;padding:8px 12px;color:var(--tx2);font-weight:600;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid #202836;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+th.num{text-align:right}
+
+.empty{padding:36px 20px;text-align:center;color:var(--tx3);font-size:13px}
+.empty .big{font-size:26px;margin-bottom:8px;opacity:.5}
+
+.pf{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.pf-amazon{background:#1f2d3d;color:#ff9900}
+.pf-google{background:#1f2a38;color:#8ab4f8}
+.pf-meta{background:#252041;color:#a5b4fc}
+.pf-tiktok{background:#2b1f2b;color:#f78ac1}
+.pf-walmart{background:#14355c;color:#ffc220}
+.pf-target{background:#3a1414;color:#ff6b6b}
+.pf-bestbuy{background:#14224a;color:#7fa8ff}
+
+.st{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px}
+.st-draft{background:#2a3342;color:var(--tx2)}
+.st-pending{background:#33290f;color:var(--warn)}
+.st-approved{background:#12261a;color:var(--ok)}
+.st-rejected{background:#331a1c;color:var(--err)}
+.st-live{background:#122b3d;color:var(--info)}
+
+label{display:block;font-size:12px;color:var(--tx2);margin:12px 0 4px}
+input[type=text],input[type=number],input[type=date],select{
+  width:100%;padding:8px 10px;background:var(--bg3);border:1px solid var(--line);border-radius:6px;color:var(--tx);font-size:13px;outline:none}
+input:focus{border-color:var(--brand)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chk label{display:flex;align-items:center;gap:5px;margin:0;padding:5px 10px;border:1px solid var(--line);border-radius:6px;cursor:pointer;font-size:12px;color:var(--tx)}
+.chk input{accent-color:var(--brand)}
+.btn{display:inline-block;padding:8px 18px;border:none;border-radius:6px;background:var(--brand);color:#14100b;font-size:13px;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--brand2)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--tx2);font-weight:400}
+.btn.ghost:hover{color:var(--tx);border-color:var(--tx3)}
+.btn.sm{padding:3px 10px;font-size:12px}
+.btn.ok{background:var(--ok)}
+.btn.err{background:transparent;border:1px solid var(--err);color:var(--err)}
+.mt{margin-top:16px}
+.hint{font-size:11px;color:var(--tx3);margin-top:10px}
+
+.conn{padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;background:var(--bg3)}
+.conn .top{display:flex;align-items:center;gap:10px}
+.conn .nm{font-size:13px;font-weight:600;min-width:86px}
+.conn .cs{font-size:11px;color:var(--err);margin-left:auto}
+.conn .cs.saved{color:var(--warn)}
+.conn .cs.verified{color:var(--ok)}
+.conn input{flex:1;min-width:0}
+.conn .fields{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.conn .fields input,.conn .fields select{padding:5px 8px;font-size:12px}
+.vres{margin-top:8px;font-size:12px;padding:6px 10px;border-radius:6px;display:none}
+.vres.ok{display:block;color:var(--ok);background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.25)}
+.vres.err{display:block;color:var(--err);background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.25)}
+.vres.info{display:block;color:var(--tx2);background:var(--bg2);border:1px solid var(--line)}
+footer{max-width:1240px;margin:0 auto;padding:0 28px 40px;font-size:11px;color:var(--tx3)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--bg3);border:1px solid var(--line);border-radius:8px;padding:10px 20px;font-size:13px;display:none;z-index:9;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span class="mark">Adventure <em>Retail</em></span>
+    <span class="sub">adventure-ads · 多平台统一广告投放 · v0.1.0 M1</span>
+  </div>
+  <div class="hstatus"><a href="./sop.html" style="margin-right:14px;font-size:13px">投放 SOP →</a><span class="dot" id="svcDot"></span><span id="svcTxt">平台 API 未连接 · 离线态</span></div>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<main>
+  <div class="banner">⚠ 本工作台处于<b>离线态</b>：尚未连接任何平台广告 API，指标与活动列表如实留空，不编造示例数据。连接凭证仅在右下方「平台连接」保存到本机。</div>
+
+  <div class="cards">
+    <div class="card"><div class="k">总花费</div><div class="v na" id="kSpend">—</div></div>
+    <div class="card"><div class="k">曝光</div><div class="v na" id="kImpr">—</div></div>
+    <div class="card"><div class="k">点击</div><div class="v na" id="kClicks">—</div></div>
+    <div class="card"><div class="k">CTR</div><div class="v na" id="kCtr">—</div></div>
+    <div class="card"><div class="k">ACOS</div><div class="v na" id="kAcos">—</div></div>
+    <div class="card"><div class="k">ROAS</div><div class="v na" id="kRoas">—</div></div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div class="panel" style="margin-bottom:20px">
+        <h3>广告活动 Campaigns <span class="tag">跨平台统一视图</span></h3>
+        <div class="body" style="padding:0">
+          <table>
+            <thead><tr><th>平台</th><th>活动名称</th><th>状态</th><th class="num">日预算</th><th class="num">花费</th><th class="num">ACOS</th><th>来源</th></tr></thead>
+            <tbody id="campBody"></tbody>
+          </table>
+          <div class="empty" id="campEmpty"><div class="big">∅</div>暂无活动数据 —— 连接平台 API 并完成授权后，此处展示统一拉取的 campaign 列表</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>审批闸门 · 投放计划队列 <span class="tag">提交 ≠ 生效 · 批准后执行</span></h3>
+        <div class="body" style="padding:0">
+          <table>
+            <thead><tr><th>计划</th><th>平台</th><th class="num">总预算</th><th class="num">目标ACOS</th><th>窗口</th><th>状态</th><th>操作</th></tr></thead>
+            <tbody id="planBody"></tbody>
+          </table>
+          <div class="empty" id="planEmpty"><div class="big">✎</div>还没有投放计划 —— 从右侧创建，提交后进入本队列等待批准</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel" style="margin-bottom:20px">
+        <h3>新建投放计划</h3>
+        <div class="body">
+          <label>计划名称</label>
+          <input type="text" id="fName" placeholder="例：Q4 主推SKU-广告计划">
+          <label>投放平台（可多选）</label>
+          <div class="chk" id="fPlats"></div>
+          <div class="row2">
+            <div><label>总预算（USD）</label><input type="number" id="fBudget" min="0" step="1" placeholder="3000"></div>
+            <div><label>目标 ACOS（%）</label><input type="number" id="fAcos" min="0" max="200" step="1" placeholder="25"></div>
+          </div>
+          <div class="row2">
+            <div><label>开始日期</label><input type="date" id="fStart"></div>
+            <div><label>结束日期</label><input type="date" id="fEnd"></div>
+          </div>
+          <div class="mt"><button class="btn" id="fSubmit">提交计划 → 进入审批队列</button></div>
+          <div class="hint">提交后计划处于「待审批」状态；批准后进入执行队列（M1 仅记录执行态，实际下发需平台 API 连接后启用）。</div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom:20px">
+        <h3>平台连接 <span class="tag">凭证仅存本机 localStorage</span></h3>
+        <div class="body" id="connList"></div>
+      </div>
+
+      <div class="panel">
+        <h3>数据管理</h3>
+        <div class="body">
+          <button class="btn ghost sm" id="btnExport">导出计划 JSON</button>
+          <button class="btn err sm" id="btnWipe" style="margin-left:8px">清空本机数据</button>
+          <div class="hint">清空将删除本机保存的全部计划与平台凭证，不可恢复。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>Adventure Retail · adventure-ads · 底座 PI 1.x（pi-mono v1.1.0 @ abe508e）· 离线态如实显示 · 写操作走审批闸门 · 凭证不出本机</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+const PLATFORMS = [
+  { id:'amazon',  name:'Amazon Ads',   cls:'pf-amazon',  ph:'Amazon Ads API · LWA refresh token' },
+  { id:'walmart', name:'Walmart Connect', cls:'pf-walmart', ph:'Walmart Ad Platform (Scintilla) API token' },
+  { id:'target',  name:'Target Roundel',  cls:'pf-target',  ph:'Roundel API token' },
+  { id:'bestbuy', name:'BestBuy Ads',  cls:'pf-bestbuy', ph:'Best Buy Ads API token' },
+  { id:'google',  name:'Google Ads',   cls:'pf-google',  ph:'Google Ads OAuth access token' },
+  { id:'meta',    name:'Meta Ads',     cls:'pf-meta',    ph:'Meta Marketing API access token' },
+  { id:'tiktok',  name:'TikTok Ads',   cls:'pf-tiktok',  ph:'TikTok Ads API access token' },
+];
+const LS_PLANS='adventure-ads.plans', LS_CONN='adventure-ads.conn';
+let curTab='all';
+let plans=[]; try{ plans=JSON.parse(localStorage.getItem(LS_PLANS)||'[]'); }catch(e){ plans=[]; }
+let conn={}; try{ conn=JSON.parse(localStorage.getItem(LS_CONN)||'{}'); }catch(e){ conn={}; }
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const save=()=>{ localStorage.setItem(LS_PLANS,JSON.stringify(plans)); localStorage.setItem(LS_CONN,JSON.stringify(conn)); };
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.style.display='block'; clearTimeout(t._h); t._h=setTimeout(()=>t.style.display='none',2600); }
+const pfHtml=id=>{ const p=PLATFORMS.find(x=>x.id===id); return `<span class="pf ${p.cls}">${p.name}</span>`; };
+const stMap={draft:['草稿','st-draft'],pending:['待审批','st-pending'],approved:['已批准·待下发','st-approved'],rejected:['已驳回','st-rejected'],live:['投放中','st-live']};
+const stHtml=s=>{ const m=stMap[s]||[s,'st-draft']; return `<span class="st ${m[1]}">${m[0]}</span>`; };
+
+/* tabs */
+function renderTabs(){
+  const counts={all:plans.length};
+  PLATFORMS.forEach(p=>counts[p.id]=plans.filter(x=>x.platforms.includes(p.id)).length);
+  const mk=(id,name)=>`<button class="tab ${curTab===id?'on':''}" data-t="${id}">${name}<span class="cnt">${counts[id]||0}</span></button>`;
+  $('#tabs').innerHTML=mk('all','全部')+PLATFORMS.map(p=>mk(p.id,p.name)).join('');
+  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{ curTab=b.dataset.t; renderAll(); });
+}
+
+/* KPI —— 未连接平台 API，如实显示 NA */
+function renderKpi(){
+  ['kSpend','kImpr','kClicks','kCtr','kAcos','kRoas'].forEach(id=>{
+    const el=$('#'+id); el.textContent='—'; el.classList.add('na');
+  });
+}
+
+/* campaigns */
+function renderCamps(){
+  $('#campEmpty').style.display='table-row'===null?'none':'block';
+  $('#campBody').innerHTML='';
+  $('#campEmpty').innerHTML='<div class="big">∅</div>暂无活动数据 —— 连接平台 API 并完成授权后，此处展示统一拉取的 campaign 列表';
+}
+
+/* plans */
+function visiblePlans(){
+  return curTab==='all'?plans:plans.filter(p=>p.platforms.includes(curTab));
+}
+function renderPlans(){
+  const list=visiblePlans();
+  $('#planEmpty').style.display=list.length?'none':'block';
+  $('#planBody').innerHTML=list.map(p=>`<tr>
+    <td><b>${esc(p.name)}</b></td>
+    <td>${p.platforms.map(pfHtml).join(' ')}</td>
+    <td class="num">$${Number(p.budget).toLocaleString()}</td>
+    <td class="num">${esc(p.acos)}%</td>
+    <td>${esc(p.start||'—')} ~ ${esc(p.end||'—')}</td>
+    <td>${stHtml(p.status)}</td>
+    <td>${p.status==='pending'
+      ? `<button class="btn sm ok" data-ok="${p.id}">批准</button> <button class="btn sm err" data-no="${p.id}">驳回</button>`
+      : (p.status==='draft'?`<button class="btn sm ghost" data-sub="${p.id}">提交审批</button>`:'—')}</td>
+  </tr>`).join('');
+  document.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>{
+    const p=plans.find(x=>x.id===b.dataset.ok); p.status='approved'; p.approvedAt=new Date().toISOString();
+    save(); renderAll(); toast(`已批准「${p.name}」——进入执行队列（平台 API 连接后可下发）`);
+  });
+  document.querySelectorAll('[data-no]').forEach(b=>b.onclick=()=>{
+    const p=plans.find(x=>x.id===b.dataset.no); p.status='rejected';
+    save(); renderAll(); toast(`已驳回「${p.name}」`);
+  });
+  document.querySelectorAll('[data-sub]').forEach(b=>b.onclick=()=>{
+    const p=plans.find(x=>x.id===b.dataset.sub); p.status='pending';
+    save(); renderAll(); toast(`「${p.name}」已提交审批`);
+  });
+}
+
+/* connections */
+const LS_META='adventure-ads.connmeta';
+const MULTI={
+  amazon:['client_id','client_secret','refresh_token','region'],
+  tiktok:['access_token','advertiser_id'],
+};
+const FIELD_META={
+  amazon:{ client_id:'LWA Client ID', client_secret:'LWA Client Secret', refresh_token:'LWA Refresh Token', region:'区域' },
+  tiktok:{ access_token:'Business API Access Token', advertiser_id:'Advertiser ID（可选）' },
+};
+let connMeta={}; try{ connMeta=JSON.parse(localStorage.getItem(LS_META)||'{}'); }catch(e){ connMeta={}; }
+const saveMeta=()=>localStorage.setItem(LS_META,JSON.stringify(connMeta));
+function connObj(id){
+  if(!MULTI[id]) return null;
+  try{ return JSON.parse(conn[id]||'{}')||{}; }catch(e){ return {}; }
+}
+function renderConn(){
+  $('#connList').innerHTML=PLATFORMS.map(p=>{
+    const multi=!!MULTI[p.id];
+    const saved=!!conn[p.id];
+    const meta=connMeta[p.id];
+    const stateCls=meta?(meta.ok?'verified':'saved'):(saved?'saved':'');
+    const stateTxt=meta?(meta.ok?'已连接':'验证失败'):(saved?'已保存·未验证':'未配置');
+    const fields=multi?`<div class="fields">${MULTI[p.id].map(k=>{
+      const c=connObj(p.id);
+      if(k==='region'){
+        return `<select data-ck="${p.id}" data-ckf="${k}">${['NA','EU','FE'].map(r=>`<option value="${r}" ${(c.region||'NA')===r?'selected':''}>区域 ${r}</option>`).join('')}</select>`;
+      }
+      const typ=/secret|token/.test(k)?'password':'text';
+      return `<input type="${typ}" placeholder="${FIELD_META[p.id][k]}" data-ck="${p.id}" data-ckf="${k}" value="${esc(c[k]||'')}">`;
+    }).join('')}
+    <div style="grid-column:1/-1"><button class="btn sm" data-verify="${p.id}">验证连接</button></div></div>`
+    :`<input type="password" placeholder="${p.id==='amazon'?'Amazon Ads API · LWA refresh token':'OAuth access token（仅存本机）'}" data-conn="${p.id}" value="${esc(conn[p.id]||'')}">`;
+    const res=meta?`<div class="vres ${meta.ok?'ok':'err'}" id="vres-${p.id}">${esc(meta.info||'')} · ${esc(meta.at||'')}</div>`:`<div class="vres info" id="vres-${p.id}" style="display:${multi?'block':'none'}">${multi?'开源代理通道：Amazon LWA OAuth + Ads API profiles · TikTok Business API v1.3 advertiser/info（凭证仅本机内存转发，不落盘）':''}</div>`;
+    return `<div class="conn">
+      <div class="top"><span class="nm">${p.name}</span>${fields}<span class="cs ${stateCls}">${stateTxt}</span></div>
+      ${res}
+    </div>`;
+  }).join('');
+  document.querySelectorAll('[data-conn]').forEach(inp=>inp.onchange=()=>{
+    const id=inp.dataset.conn; const v=inp.value.trim();
+    if(v) conn[id]=v; else delete conn[id];
+    save(); renderConn(); renderStatus(); toast(v?'凭证已保存到本机（未验证）':'凭证已清除');
+  });
+  document.querySelectorAll('[data-ck]').forEach(inp=>{
+    inp.onchange=()=>{
+      const id=inp.dataset.ck; const f=inp.dataset.ckf;
+      const c=connObj(id); c[f]=inp.value.trim();
+      if(Object.values(c).every(x=>!x)) delete conn[id]; else conn[id]=JSON.stringify(c);
+      save(); renderStatus(); toast('凭证已更新（本机保存）');
+    };
+  });
+  document.querySelectorAll('[data-verify]').forEach(b=>b.onclick=()=>verifyConn(b.dataset.verify));
+}
+async function postApi(url,cfg){
+  let r;
+  try{ r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg)}); }
+  catch(e){ throw new Error('本机服务不可达（代理未启动）'); }
+  try{ return await r.json(); }catch(e){ throw new Error('代理响应非 JSON（HTTP '+r.status+'）'); }
+}
+function setMeta(id,ok,info){
+  connMeta[id]={ok,info,at:new Date().toLocaleString()};
+  saveMeta(); renderConn(); renderStatus();
+}
+async function verifyConn(id){
+  const out=$('#vres-'+id);
+  if(out){ out.className='vres info'; out.textContent='验证中…'; }
+  try{
+    if(id==='amazon'){
+      const c=connObj(id);
+      if(!c.client_id||!c.client_secret||!c.refresh_token) throw new Error('请先填写 Client ID / Client Secret / Refresh Token');
+      const t=await postApi('/api/amazon/token',{client_id:c.client_id,client_secret:c.client_secret,refresh_token:c.refresh_token});
+      if(!t.ok) throw new Error((t.error||'LWA 验证失败')+(t.detail?' · '+t.detail.slice(0,160):''));
+      const p=await postApi('/api/amazon/profiles',{access_token:t.access_token,client_id:c.client_id,region:c.region||'NA'});
+      if(!p.ok) throw new Error((p.error||'拉取 profiles 失败')+(p.detail?' · '+p.detail.slice(0,160):''));
+      const s=p.profiles.map(x=>`${x.profileId}（${x.countryCode||'?'}·${x.type||'?'}）`).join('、')||'（空）';
+      setMeta(id,true,`已连接 ${p.region} · ${p.profiles.length} 个 profile：${s}`);
+      toast('Amazon Ads 连接成功');
+    }else if(id==='tiktok'){
+      const c=connObj(id);
+      if(!c.access_token) throw new Error('请先填写 Access Token');
+      const r=await postApi('/api/tiktok/advertisers',{access_token:c.access_token});
+      if(!r.ok) throw new Error((r.error||'验证失败')+(r.message?' · '+r.message.slice(0,160):'')+(r.code!==undefined?`（code ${r.code}）`:''));
+      const list=r.advertisers||[];
+      const s=list.map(x=>`${x.id} ${x.name||''}`).join('、')||'（账户列表为空）';
+      setMeta(id,true,`已连接 · ${list.length} 个账户：${s}`);
+      toast('TikTok Ads 连接成功');
+    }else{
+      throw new Error('该平台代理通道尚未开通（当前支持 Amazon / TikTok）');
+    }
+  }catch(e){
+    setMeta(id,false,'验证失败：'+e.message);
+  }
+}
+function renderStatus(){
+  const ids=Object.keys(conn);
+  const v=ids.filter(id=>connMeta[id]&&connMeta[id].ok).length;
+  $('#svcTxt').textContent= v?`${v} 个平台已连接 · 数据可拉取`:(ids.length?`${ids.length} 个平台凭证已保存 · 未验证 · 指标离线`:'平台 API 未连接 · 离线态');
+}
+(async()=>{ try{ const h=await (await fetch('/api/health')).json(); window._proxy=!!h.proxy; }catch(e){ window._proxy=false; } })();
+
+/* create form */
+function renderChk(){
+  $('#fPlats').innerHTML=PLATFORMS.map(p=>`<label><input type="checkbox" value="${p.id}">${p.name}</label>`).join('');
+}
+$('#fSubmit').onclick=()=>{
+  const name=$('#fName').value.trim();
+  const plats=[...document.querySelectorAll('#fPlats input:checked')].map(i=>i.value);
+  const budget=Number($('#fBudget').value), acos=Number($('#fAcos').value);
+  const start=$('#fStart').value, end=$('#fEnd').value;
+  if(!name) return toast('请填写计划名称');
+  if(!plats.length) return toast('请至少选择一个投放平台');
+  if(!(budget>0)) return toast('请填写有效的总预算');
+  const p={id:'p'+Date.now(),name,platforms:plats,budget,acos:acos||'—',start,end,status:'pending',createdAt:new Date().toISOString()};
+  plans.unshift(p); save(); renderAll();
+  $('#fName').value=''; $('#fBudget').value=''; $('#fAcos').value='';
+  toast(`「${name}」已提交，进入审批队列`);
+};
+
+/* data mgmt */
+$('#btnExport').onclick=()=>{
+  const blob=new Blob([JSON.stringify(plans,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=`adventure-ads-plans-${new Date().toISOString().slice(0,10)}.json`; a.click();
+};
+$('#btnWipe').onclick=()=>{
+  if(!confirm('确定清空本机全部计划与平台凭证？此操作不可恢复。')) return;
+  plans=[]; conn={}; save(); renderAll(); toast('已清空本机数据');
+};
+
+function renderAll(){ renderTabs(); renderKpi(); renderCamps(); renderPlans(); renderConn(); renderStatus(); }
+renderChk(); renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投放 SOP · adventure-ads</title>
+<style>
+:root{
+  --bg:#0d1117; --bg2:#161b22; --bg3:#1c2330; --line:#2a3342;
+  --tx:#e6edf3; --tx2:#8b98a9; --tx3:#5c6a7d;
+  --brand:#ff7a1a; --brand2:#ffb37a;
+  --ok:#3fb950; --warn:#d29922; --err:#f85149; --info:#58a6ff;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--tx);font:14px/1.7 "Segoe UI","Microsoft YaHei",system-ui,sans-serif;min-height:100vh}
+a{color:var(--info);text-decoration:none}
+header{display:flex;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.logo{font-size:18px;font-weight:800}
+.logo em{color:var(--brand);font-style:normal}
+.sub{font-size:12px;color:var(--tx2)}
+.back{margin-left:auto}
+.tabs{display:flex;gap:6px;padding:12px 28px;border-bottom:1px solid var(--line);background:var(--bg2);flex-wrap:wrap}
+.tab{padding:6px 16px;border:1px solid var(--line);border-radius:20px;background:transparent;color:var(--tx2);cursor:pointer;font-size:13px}
+.tab:hover{color:var(--tx);border-color:var(--tx3)}
+.tab.on{background:var(--brand);border-color:var(--brand);color:#14100b;font-weight:700}
+main{max-width:1240px;margin:0 auto;padding:24px 28px 60px}
+.src{font-size:12px;color:var(--tx3);margin-bottom:20px}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:20px}
+.panel h3{font-size:14px;margin-bottom:6px}
+.panel .desc{font-size:12px;color:var(--tx2);margin-bottom:14px}
+label{display:block;font-size:12px;color:var(--tx2);margin:10px 0 4px}
+input[type=text],input[type=number],select{width:100%;padding:8px 10px;background:var(--bg3);border:1px solid var(--line);border-radius:6px;color:var(--tx);font-size:13px;outline:none}
+input:focus{border-color:var(--brand)}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.btn{display:inline-block;padding:8px 18px;border:none;border-radius:6px;background:var(--brand);color:#14100b;font-size:13px;font-weight:700;cursor:pointer;margin-top:14px}
+.btn:hover{background:var(--brand2)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--tx2);font-weight:400;margin-left:8px}
+.btn.ghost:hover{color:var(--tx);border-color:var(--tx3)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th{text-align:left;padding:8px 10px;color:var(--tx2);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid #202836;vertical-align:top}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+th.num{text-align:right}
+.verdict{margin-top:16px;padding:14px 16px;border-radius:8px;border:1px solid var(--line);background:var(--bg3);display:none}
+.verdict .q{font-size:15px;font-weight:700;margin-bottom:6px}
+.verdict .why{font-size:12px;color:var(--tx2);margin-bottom:6px}
+.verdict .act{font-size:13px}
+.q1{border-color:#1d4428}.q1 .q{color:var(--ok)}
+.q2{border-color:#4a3a10}.q2 .q{color:var(--warn)}
+.q3{border-color:#4a1d1d}.q3 .q{color:var(--err)}
+.q4{border-color:#4a3a10}.q4 .q{color:var(--warn)}
+.q5{border-color:#173d52}.q5 .q{color:var(--info)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.stage{background:var(--bg3);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.stage h4{font-size:13px;color:var(--brand2);margin-bottom:8px}
+.stage .row-t{font-size:12px;margin-bottom:6px}
+.stage .row-t b{color:var(--tx2);font-weight:600;margin-right:6px}
+.stage ul{margin-left:16px;font-size:12px;color:var(--tx)}
+.stage li{margin-bottom:3px}
+.check{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-bottom:8px;background:var(--bg3);cursor:pointer;font-size:13px}
+.check input{accent-color:var(--brand);margin-top:3px}
+.check.done{opacity:.55;text-decoration:line-through}
+.phase{margin-bottom:22px}
+.phase h4{font-size:13px;color:var(--brand2);margin-bottom:8px}
+.bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:6px 0 14px;background:var(--bg3)}
+.bar span{display:block;height:100%}
+.mono{font-variant-numeric:tabular-nums}
+footer{max-width:1240px;margin:0 auto;padding:0 28px 40px;font-size:11px;color:var(--tx3)}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Adventure <em>Retail</em></span>
+  <span class="sub">adventure-ads · 投放 SOP · 方法论产品化</span>
+  <a class="back" href="./index.html">← 返回控制台</a>
+</header>
+
+<div class="tabs">
+  <button class="tab on" data-t="diag">关键词五象限诊断</button>
+  <button class="tab" data-t="budget">预算分配器</button>
+  <button class="tab" data-t="stage">四阶段指标</button>
+  <button class="tab" data-t="tl">大促时间轴</button>
+</div>
+
+<main>
+  <div class="src">方法论底稿：《商品推广布局到效果追踪》（幕布，2026-10-01）· 已归档 docs/sop-material-商品推广布局到效果追踪.md</div>
+
+  <!-- 1 五象限诊断 -->
+  <div id="tab-diag">
+    <div class="panel">
+      <h3>关键词五象限诊断器</h3>
+      <div class="desc">输入某关键词近 7/14/30 天的广告数据与判定阈值，自动归入五象限并给出策略建议（对应 SOP 手动广告复盘）。</div>
+      <div class="row">
+        <div><label>关键词</label><input type="text" id="dKw" placeholder="例：space heater indoor"></div>
+        <div><label>曝光 Impression</label><input type="number" id="dImpr" min="0" placeholder="8000"></div>
+        <div><label>点击 Clicks</label><input type="number" id="dClicks" min="0" placeholder="30"></div>
+        <div><label>转化 Orders</label><input type="number" id="dOrders" min="0" placeholder="2"></div>
+        <div><label>花费 Spend ($)</label><input type="number" id="dSpend" min="0" step="0.01" placeholder="25.50"></div>
+        <div><label>销售额 Sales ($)</label><input type="number" id="dSales" min="0" step="0.01" placeholder="180"></div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <div><label>高曝光阈值（曝光 ≥）</label><input type="number" id="tImpr" value="5000"></div>
+        <div><label>高点击阈值（CTR ≥ %）</label><input type="number" id="tCtr" value="0.4" step="0.05"></div>
+        <div><label>高转化阈值（CVR ≥ %）</label><input type="number" id="tCvr" value="8" step="0.5"></div>
+        <div><label>高 ROAS 阈值（≥）</label><input type="number" id="tRoas" value="3" step="0.1"></div>
+      </div>
+      <button class="btn" id="dRun">诊断</button>
+      <button class="btn ghost" id="dReset">清空</button>
+      <div class="verdict" id="dOut"></div>
+      <table id="dRef">
+        <thead><tr><th>象限</th><th>原因</th><th>策略建议</th></tr></thead>
+        <tbody>
+          <tr><td>高曝光 · 高转化 · 高ROAS</td><td>高效核心词</td><td>重点投放；结合产品当前排位调整竞价</td></tr>
+          <tr><td>高曝光 · 高点击 · 低转化</td><td>词过于宽泛意图不明；产品竞争力不足（价格/评论/评分/文描/图片/配送）</td><td>ROAS 可接受则降竞价控成本；优化链接承接；积极参加平台促销</td></tr>
+          <tr><td>高曝光 · 低点击 · 低转化</td><td>关键词与产品相关度低</td><td>低相关暂停投放止损；高相关仍低点击→增强文描内容与相关性</td></tr>
+          <tr><td>低曝光 · 低点击 · 低转化</td><td>竞价过低</td><td>逐步提价；记录排位变化与 CVR 变动</td></tr>
+          <tr><td>低曝光 · 高点击 · 高转化</td><td>词体量小；或出价过低没赢得展示</td><td>确认搜索热度：体量不错→加价作潜力词加大推广；体量小→维持竞价保留投放</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2 预算分配器 -->
+  <div id="tab-budget" style="display:none">
+    <div class="panel">
+      <h3>手动广告预算分配器</h3>
+      <div class="desc">按 SOP 布局：词根基础组 ≤10% · 核心/属性词主力组 75–80% · 长尾拓量组 10–15%；阶梯出价 精准:词组:广泛 = 1 : 0.8 : 0.64。</div>
+      <div class="row">
+        <div><label>手动广告总预算（USD）</label><input type="number" id="bTotal" min="0" step="1" placeholder="3000"></div>
+        <div><label>基础组占比（%，默认10）</label><input type="number" id="bP1" value="10" min="0" max="30"></div>
+        <div><label>长尾组占比（%，默认12.5）</label><input type="number" id="bP3" value="12.5" min="0" max="30"></div>
+        <div><label>精准匹配基准出价（$，可选）</label><input type="number" id="bBid" min="0" step="0.01" placeholder="0.75"></div>
+      </div>
+      <button class="btn" id="bRun">计算分配</button>
+      <button class="btn ghost" id="bReset">清空</button>
+      <div id="bOut" style="display:none;margin-top:16px">
+        <div class="bar" id="bBar"></div>
+        <table>
+          <thead><tr><th>广告组</th><th>匹配方式</th><th class="num">预算占比</th><th class="num">预算 ($)</th><th>目的</th><th class="num">参考出价 精准/词组/广泛</th></tr></thead>
+          <tbody>
+            <tr><td>词根 · 基础流量组</td><td>精准 + 词组</td><td class="num" id="b1p">—</td><td class="num" id="b1v">—</td><td>打基础流量、拓宽流量入口（中前期 ≤10%）</td><td class="num mono" id="b1b">—</td></tr>
+            <tr><td>核心/属性词 · 主力转化组</td><td>精准 + 词组</td><td class="num" id="b2p">—</td><td class="num" id="b2v">—</td><td>高意图订单主攻，投放主力（75–80%）</td><td class="num mono" id="b2b">—</td></tr>
+            <tr><td>长尾功能属性词 · 拓量组</td><td>词组 + 广泛</td><td class="num" id="b3p">—</td><td class="num" id="b3v">—</td><td>扩大触发范围、拉曝光、辅助拓量（10–15%）</td><td class="num mono" id="b3b">—</td></tr>
+          </tbody>
+        </table>
+        <div class="desc" style="margin-top:10px" id="bNote"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>自动广告双组布局</h3>
+      <table>
+        <thead><tr><th>组</th><th>出价策略</th><th class="num">出价区间</th><th>目的</th></tr></thead>
+        <tbody>
+          <tr><td>高竞价组</td><td>固定竞价</td><td class="num">平台建议价 或略高</td><td>快速累积曝光点击、测优质流量转化、为手动跑词、加速收录</td></tr>
+          <tr><td>低竞价组</td><td>固定竞价</td><td class="num" id="autoLow">高竞价组 40%–60%</td><td>覆盖长尾流量、挖潜长尾词、平衡投产；筛出高转化词转手动</td></tr>
+        </tbody>
+      </table>
+      <label style="margin-top:12px">若填写了基准出价，低竞价组参考价：</label>
+      <div class="desc" id="autoLowV">填入基准出价后自动计算（40%–60% 区间）。</div>
+    </div>
+  </div>
+
+  <!-- 3 四阶段指标 -->
+  <div id="tab-stage" style="display:none">
+    <div class="grid2">
+      <div class="stage"><h4>① 冷启动期</h4>
+        <div class="row-t"><b>目标</b>快速增加曝光和点击</div>
+        <div class="row-t"><b>核心指标</b></div>
+        <ul><li>曝光</li><li>点击</li><li>点击率 CTR</li></ul>
+        <div class="row-t" style="margin-top:6px"><b>检验重点</b></div>
+        <ul><li>初期流量获取是否通畅</li><li>产品是否具备初步市场接受度</li></ul>
+      </div>
+      <div class="stage"><h4>② 起量爬坡期</h4>
+        <div class="row-t"><b>目标</b>放大曝光、积累可持续转化、拉升产品排名</div>
+        <div class="row-t"><b>核心指标</b></div>
+        <ul><li>曝光、点击率提升</li><li>转化率爬升</li><li>部分核心关键词排名上升</li></ul>
+        <div class="row-t" style="margin-top:6px"><b>检验重点</b></div>
+        <ul><li>曝光/CTR/CVR 是否稳步上升</li><li>核心关键词排名是否上升</li></ul>
+      </div>
+      <div class="stage"><h4>③ 稳定跑量期</h4>
+        <div class="row-t"><b>目标</b>跑稳定流量、控成本、持续放量</div>
+        <div class="row-t"><b>核心指标</b></div>
+        <ul><li>ROAS 达到健康区间</li><li>CPC 趋于稳定</li><li>CVR 维持健康水平</li><li>广告带动总销量稳定上升</li></ul>
+        <div class="row-t" style="margin-top:6px"><b>检验重点</b></div>
+        <ul><li>ROAS 是否具备持续性</li><li>广告拉动销量是否稳定</li><li>整体推广成本占比是否健康</li></ul>
+      </div>
+      <div class="stage"><h4>④ 冲量爆发期</h4>
+        <div class="row-t"><b>目标</b>高强度收割 + 活动爆发，结合活动/节点快速冲刺销量</div>
+        <div class="row-t"><b>核心指标</b></div>
+        <ul><li>曝光、点击短期内大幅提升</li><li>CPC 合理波动不失控</li><li>ROAS 可短期承压但转化不明显下滑</li><li>广告带动总销量显著爆发</li></ul>
+        <div class="row-t" style="margin-top:6px"><b>检验重点</b></div>
+        <ul><li>短期高强度投放的爆发力</li><li>转化稳定性</li></ul>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:20px">
+      <h3>投放前自查 · 关键词筛选</h3>
+      <ul style="margin-left:18px;font-size:13px">
+        <li>相关关键词报告（后台 Analytics → Search Insight）拉词，按词性/流量/相关性分类：词根 / 核心词 / 人群词 / 特性词 / 颜色词 / 功能词</li>
+        <li>先确认商品类目正确（Shelf path 类目属性 / Search catalog performance）</li>
+        <li>文案达标：标题 ≤150 字符、详描 ≥150 词含品牌、五点 ≤80 字符突出卖点；listing 质量分 90+</li>
+        <li>Search query reports 自查关键词与 item 匹配度；Search catalog performance 看类目排名与小类目周度曲线</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4 大促时间轴 -->
+  <div id="tab-tl" style="display:none">
+    <div class="panel phase">
+      <h4>① 准备期</h4>
+      <div id="tl1"></div>
+    </div>
+    <div class="panel phase">
+      <h4>② 爬坡期</h4>
+      <div id="tl2"></div>
+    </div>
+    <div class="panel phase">
+      <h4>③ 大促期（提前 2–4 周启动）</h4>
+      <div id="tl3"></div>
+    </div>
+    <div class="panel phase">
+      <h4>④ 复盘期</h4>
+      <div id="tl4"></div>
+    </div>
+  </div>
+</main>
+
+<footer>Adventure Retail · adventure-ads SOP · 底稿：《商品推广布局到效果追踪》· 离线态如实显示 · 数据仅存本机</footer>
+
+<script>
+'use strict';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* tabs */
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+  ['diag','budget','stage','tl'].forEach(t=>$('#tab-'+t).style.display=(b.dataset.t===t)?'':'none');
+});
+
+/* 1 五象限诊断 */
+const QUAD={
+  q1:{t:'象限一 · 高曝光 / 高转化 / 高ROAS —— 高效核心词',why:'该词为高效核心词。',act:'重点投放；结合产品当前在该搜索词下的排位情况调整竞价。',cls:'q1'},
+  q2:{t:'象限二 · 高曝光 / 高点击 / 低转化',why:'关键词过于宽泛、转化意图不明确；或产品竞争力不够（价格、评论数、评分、文描、图片、配送速度）。',act:'ROAS 可接受范围内适当降竞价控成本；优化链接承接能力；积极参加平台促销活动。',cls:'q2'},
+  q3:{t:'象限三 · 高曝光 / 低点击 / 低转化',why:'关键词与产品相关度低。',act:'低相关关键词暂停投放避免浪费预算；若高相关仍低点击，增强产品文描内容提升相关性。',cls:'q3'},
+  q4:{t:'象限四 · 低曝光 / 低点击 / 低转化',why:'竞价过低。',act:'逐步提高竞价，记录产品在关键词下的排位变化与转化率变动。',cls:'q4'},
+  q5:{t:'象限五 · 低曝光 / 高点击 / 高转化',why:'关键词体量小，或出价过低未能赢得展示。',act:'确认搜索热度：体量不错的词适当加价作为潜力词加大推广；体量较小的词维持现有竞价水平保留投放。',cls:'q5'},
+};
+function classify(hi,hiC,hiV,hiR){
+  if(hi&&hiV&&hiR) return 'q1';
+  if(hi&&hiC&&!hiV) return 'q2';
+  if(hi&&!hiC&&!hiV) return 'q3';
+  if(!hi&&!hiC&&!hiV) return 'q4';
+  if(!hi&&hiC&&hiV) return 'q5';
+  return null;
+}
+$('#dRun').onclick=()=>{
+  const kw=$('#dKw').value.trim();
+  const impr=+$('#dImpr').value||0, clicks=+$('#dClicks').value||0, orders=+$('#dOrders').value||0;
+  const spend=+$('#dSpend').value||0, sales=+$('#dSales').value||0;
+  const tI=+$('#tImpr').value||0, tC=+$('#tCtr').value||0, tV=+$('#tCvr').value||0, tR=+$('#tRoas').value||0;
+  if(!kw||!impr) { alert('请至少填写关键词与曝光量'); return; }
+  const ctr=impr?clicks/impr*100:0, cvr=clicks?orders/clicks*100:0, roas=spend?sales/spend:0;
+  const key=classify(impr>=tI, ctr>=tC, cvr>=tV, roas>=tR);
+  const out=$('#dOut'); out.style.display='block';
+  if(!key){
+    out.className='verdict q4';
+    out.innerHTML=`<div class="q">组合象限：未命中五个标准象限</div><div class="why">曝光 ${impr}（阈值 ${tI}）· CTR ${ctr.toFixed(2)}%（阈值 ${tC}%）· CVR ${cvr.toFixed(1)}%（阈值 ${tV}%）· ROAS ${roas.toFixed(2)}（阈值 ${tR}）</div><div class="act">建议按「低曝光·低点击·低转化 → 逐步提价观察排位与 CVR」处理，或调整阈值后重诊。</div>`;
+    return;
+  }
+  const q=QUAD[key];
+  out.className='verdict '+q.cls;
+  out.innerHTML=`<div class="q">${q.t}</div><div class="why">数据：曝光 ${impr.toLocaleString()} · CTR ${ctr.toFixed(2)}% · CVR ${cvr.toFixed(1)}% · ROAS ${roas.toFixed(2)}${spend?` · 花费 $${spend.toFixed(2)} · 销售额 $${sales.toFixed(2)}`:''}</div><div class="why"><b>原因：</b>${q.why}</div><div class="act"><b>策略建议：</b>${q.act}</div>`;
+};
+$('#dReset').onclick=()=>{ ['dKw','dImpr','dClicks','dOrders','dSpend','dSales'].forEach(id=>$('#'+id).value=''); $('#dOut').style.display='none'; };
+
+/* 2 预算分配 */
+$('#bRun').onclick=()=>{
+  const total=+$('#bTotal').value||0;
+  const p1=Math.min(Math.max(+$('#bP1').value||10,0),30);
+  const p3=Math.min(Math.max(+$('#bP3').value||12.5,0),30);
+  const p2=100-p1-p3;
+  if(!total){ alert('请填写手动广告总预算'); return; }
+  if(p2<60){ alert('主力组占比 ' + p2.toFixed(1) + '% 低于 60%，与 SOP 的 75–80% 主力原则冲突，请调整基础/长尾组占比'); return; }
+  const bid=+$('#bBid').value||0;
+  $('#b1p').textContent=p1.toFixed(1)+'%'; $('#b1v').textContent='$'+(total*p1/100).toFixed(2);
+  $('#b2p').textContent=p2.toFixed(1)+'%'; $('#b2v').textContent='$'+(total*p2/100).toFixed(2);
+  $('#b3p').textContent=p3.toFixed(1)+'%'; $('#b3v').textContent='$'+(total*p3/100).toFixed(2);
+  const fmt=v=>bid?('$'+(bid*v).toFixed(2)):'—';
+  $('#b1b').textContent=fmt(1)+' / '+fmt(0.8)+' / —';
+  $('#b2b').textContent=fmt(1)+' / '+fmt(0.8)+' / —';
+  $('#b3b').textContent='— / '+fmt(0.8)+' / '+fmt(0.64);
+  $('#bBar').innerHTML=`<span style="width:${p1}%;background:#5c6a7d"></span><span style="width:${p2}%;background:var(--brand)"></span><span style="width:${p3}%;background:var(--info)"></span>`;
+  $('#bNote').textContent = bid
+    ? `阶梯出价 1 : 0.8 : 0.64（基准 $${bid.toFixed(2)}）；词根组避免与自动广告跑词重叠。`
+    : '填入精准匹配基准出价可同步计算各档参考出价（1 : 0.8 : 0.64）。';
+  $('#bOut').style.display='block';
+  if(bid){ $('#autoLowV').textContent = `低竞价组参考区间：$${(bid*0.4).toFixed(2)} – $${(bid*0.6).toFixed(2)}（高竞价组的 40%–60%，固定竞价）。`; }
+};
+$('#bReset').onclick=()=>{ $('#bTotal').value=''; $('#bBid').value=''; $('#bOut').style.display='none'; $('#autoLowV').textContent='填入基准出价后自动计算（40%–60% 区间）。'; };
+
+/* 4 时间轴 checklist */
+const TL={
+  tl1:['完成词库搭建与关键词填充（词根/核心词/人群词/特性词/颜色词/功能词）','完成产品初期关键词收录','搭建初步广告框架：自动（高竞价+低竞价双组）+ 手动（精准/词组/广泛）结合'],
+  tl2:['依据投放数据明确高转化词与优质流量入口','对表现好的广告组重点加码推广','参加 FD 等平台促销活动','监控产品收录关键词的相关度、类目排名与关键词排名'],
+  tl3:['提前 2–4 周：酌情增设广告类型、加大广告预算','保持产品竞价的价格竞争力','每日盯广告组预算花费情况','同步开启品牌词防御/进攻组','促销词捡漏组上线'],
+  tl4:['延续高效广告活动，逐步降低总预算与竞价','复盘 CVR / ROAS / 销售额 / 产品利润','复盘关键词表现，沉淀下次大促词库'],
+};
+const LS_TL='adventure-ads.sop.tl';
+let tlState={}; try{ tlState=JSON.parse(localStorage.getItem(LS_TL)||'{}'); }catch(e){ tlState={}; }
+function renderTl(){
+  Object.keys(TL).forEach((k,gi)=>{
+    $('#'+k).innerHTML=TL[k].map((item,i)=>{
+      const id=k+'-'+i; const done=!!tlState[id];
+      return `<label class="check ${done?'done':''}"><input type="checkbox" data-tl="${id}" ${done?'checked':''}>${esc(item)}</label>`;
+    }).join('');
+  });
+  document.querySelectorAll('[data-tl]').forEach(c=>c.onchange=()=>{
+    tlState[c.dataset.tl]=c.checked; localStorage.setItem(LS_TL,JSON.stringify(tlState)); renderTl();
+  });
+}
+renderTl();
+</script>
+</body>
+</html>

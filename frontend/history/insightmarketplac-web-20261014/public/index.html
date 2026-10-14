@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventure Retail — 家装零售平台的一站式运营 AI 助手 · insightmarketplac 出品</title>
+<meta name="description" content="Adventure Retail 是面向家装零售垂直平台的一站式运营 AI 助手：选品调研、Listing 优化、广告投放、库存与促销管理，15 项专项技能装进一个桌面客户端。数据经平台 MCP 通道加密下发，安装即用，免费试用 1 天。">
+<style>
+  :root {
+    --bg: #0a0b0e;
+    --bg-soft: #101318;
+    --ink: #f2f4f8;
+    --ink-dim: #9aa3b2;
+    --ink-faint: #5c6472;
+    --accent: #4f8dff;
+    --line: rgba(255,255,255,.08);
+    --font: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,11,14,.85), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .nav-brand {
+    font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-brand .by { font-size: 12px; font-weight: 500; color: var(--ink-faint); margin-left: 10px; letter-spacing: 0; }
+  .nav-cta {
+    font-size: 14px; color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 9px 22px;
+    transition: border-color .25s, background .25s;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-link {
+    font-size: 14px; color: var(--ink-dim); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+  .nav-cta:hover { border-color: var(--accent); background: rgba(79,141,255,.08); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; color: var(--ink-dim); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 14px 28px;
+    transition: border-color .25s, color .25s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--ink); }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex; align-items: flex-end;
+    isolation: isolate;
+  }
+  .hero-media {
+    position: absolute; inset: 0; z-index: -1;
+    overflow: hidden;
+  }
+  .hero-media img {
+    width: 100%; height: 100%; object-fit: cover;
+    object-position: center 30%;
+    transform: scale(1.06);
+    animation: heroZoom 2.4s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  @keyframes heroZoom { to { transform: scale(1); } }
+  .hero-media::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, var(--bg) 4%, rgba(10,11,14,.55) 38%, rgba(10,11,14,.25) 65%, rgba(10,11,14,.5) 100%);
+  }
+  .hero-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 96px;
+  }
+  .hero-wordmark {
+    font-size: clamp(40px, 7.5vw, 96px);
+    font-weight: 800;
+    letter-spacing: -.045em;
+    line-height: .98;
+    opacity: 0;
+    animation: riseIn 1s cubic-bezier(.16,1,.3,1) .15s forwards;
+  }
+  .hero-wordmark .dot { color: var(--accent); }
+  .hero-headline {
+    margin-top: 28px;
+    font-size: clamp(20px, 2.6vw, 34px);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.35;
+    max-width: 640px;
+    opacity: 0;
+    animation: riseIn 1s cubic-bezier(.16,1,.3,1) .35s forwards;
+  }
+  .hero-sub {
+    margin-top: 18px;
+    font-size: 16px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    max-width: 540px;
+    opacity: 0;
+    animation: riseIn 1s cubic-bezier(.16,1,.3,1) .5s forwards;
+  }
+  .hero-actions {
+    margin-top: 40px;
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    opacity: 0;
+    animation: riseIn 1s cubic-bezier(.16,1,.3,1) .65s forwards;
+  }
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #fff;
+    font-size: 15px; font-weight: 600;
+    padding: 15px 34px; border-radius: 999px;
+    text-decoration: none;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+    box-shadow: 0 0 0 0 rgba(79,141,255,0);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -8px rgba(79,141,255,.55);
+  }
+  .btn-primary svg { transition: transform .25s; }
+  .btn-primary:hover svg { transform: translateY(2px); }
+  .hero-note {
+    font-size: 13px; color: var(--ink-faint);
+  }
+
+  /* ── Sections ── */
+  section { position: relative; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .section-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .section-title {
+    margin-top: 16px;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700; letter-spacing: -.03em; line-height: 1.15;
+  }
+  .section-sub {
+    margin-top: 16px; font-size: 15px; color: var(--ink-dim);
+    line-height: 1.75; max-width: 560px;
+  }
+
+  /* reveal on scroll */
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ── Service areas (Perfality-style) ── */
+  .svc { padding: 140px 0 120px; }
+  .svc-list { margin-top: 72px; border-top: 1px solid var(--line); }
+  .svc-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1.2fr;
+    gap: 32px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+    transition: background .3s, padding-left .3s;
+  }
+  .svc-row:hover { background: rgba(255,255,255,.02); padding-left: 16px; }
+  .svc-num {
+    font-size: 13px; color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    padding-top: 8px;
+  }
+  .svc-head h3 { font-size: 24px; font-weight: 650; letter-spacing: -.02em; }
+  .svc-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px; font-weight: 600; color: var(--accent);
+    letter-spacing: .02em;
+  }
+  .svc-points { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .svc-points li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 15px; color: var(--ink-dim); line-height: 1.7;
+  }
+  .svc-points li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 8px; height: 8px; border-radius: 2px;
+    background: var(--accent); opacity: .75;
+  }
+
+  /* ── MCP channel ── */
+  .mcp { padding: 120px 0; background: var(--bg-soft); }
+  .mcp-grid {
+    margin-top: 72px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .mcp-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px; padding: 30px;
+  }
+  .mcp-idx {
+    font-size: 12px; font-weight: 700; letter-spacing: .16em;
+    color: var(--accent); text-transform: uppercase;
+  }
+  .mcp-card h3 { margin-top: 14px; font-size: 19px; font-weight: 700; letter-spacing: -.015em; }
+  .mcp-card p { margin-top: 10px; font-size: 14px; color: var(--ink-dim); line-height: 1.8; }
+
+  /* ── Flow ── */
+  .flow { padding: 120px 0 140px; }
+  .flow-grid {
+    margin-top: 72px;
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: 80px;
+    align-items: center;
+  }
+  .flow-media {
+    border-radius: 16px; overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+  .flow-media img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1.2s cubic-bezier(.16,1,.3,1);
+  }
+  .flow-media:hover img { transform: scale(1.04); }
+  .flow-steps { display: flex; flex-direction: column; }
+  .flow-step {
+    display: flex; gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .flow-step:first-child { padding-top: 0; }
+  .flow-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .flow-idx {
+    flex: none;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-size: 13px; color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .flow-step h3 { font-size: 18px; font-weight: 650; letter-spacing: -.01em; }
+  .flow-step p { margin-top: 8px; font-size: 14px; color: var(--ink-dim); line-height: 1.7; }
+
+  /* ── Final CTA ── */
+  .final {
+    padding: 160px 0;
+    text-align: center;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+  }
+  .final .section-title { max-width: 680px; margin-left: auto; margin-right: auto; }
+  .final-sub {
+    margin: 22px auto 0;
+    font-size: 15px; color: var(--ink-dim); line-height: 1.75;
+    max-width: 480px;
+  }
+  .final .btn-primary { margin-top: 44px; }
+  .final-meta {
+    margin-top: 20px;
+    font-size: 13px; color: var(--ink-faint);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--ink-faint);
+  }
+  footer .f-brand { font-weight: 700; color: var(--ink-dim); letter-spacing: -.01em; }
+  footer .f-contact a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--line); transition: color .2s, border-color .2s; }
+  footer .f-contact a:hover { color: #6ea8ff; border-color: currentColor; }
+
+  @media (max-width: 860px) {
+    nav { padding: 16px 24px; }
+    .nav-brand .by { display: none; }
+    .hero-inner { padding: 0 24px 72px; }
+    .wrap { padding: 0 24px; }
+    .svc-row { grid-template-columns: 1fr; gap: 14px; padding: 36px 0; }
+    .svc-row:hover { padding-left: 0; }
+    .svc-num { padding-top: 0; }
+    .mcp-grid { grid-template-columns: 1fr; }
+    .flow-grid { grid-template-columns: 1fr; gap: 48px; }
+    .svc { padding: 96px 0 80px; }
+    .mcp { padding: 80px 0; }
+    .flow { padding: 80px 0 96px; }
+    .final { padding: 110px 0; }
+    footer { flex-direction: column; gap: 10px; padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Adventure Retail<span class="by">insightmarketplac 出品</span></a>
+  <div class="nav-links">
+    <a class="nav-link active" href="index.html">首页</a>
+    <a class="nav-link" href="products.html">产品矩阵</a>
+    <a class="nav-link" href="platform.html">数据平台</a>
+    <a class="nav-cta" href="#download">下载客户端</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-media">
+    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=cinematic%20aerial%20view%20of%20a%20global%20container%20port%20at%20dusk%2C%20cargo%20ships%20and%20cranes%20silhouetted%20against%20deep%20blue%20twilight%20sky%2C%20city%20lights%20glowing%20on%20horizon%2C%20moody%20dark%20tones%2C%20professional%20editorial%20photography%2C%20high%20contrast%2C%20no%20text%20no%20logos&image_size=landscape_16_9" alt="全球贸易港口暮色">
+  </div>
+  <div class="hero-inner">
+    <h1 class="hero-wordmark">Adventure<br>Retail<span class="dot">.</span></h1>
+    <p class="hero-headline">家装零售平台的<br>一站式运营 AI 助手。</p>
+    <p class="hero-sub">选品、调研、Listing、广告、促销——15 项专项技能装进一个桌面客户端，把一个平台的运营工作交给它。数据由平台经 MCP 通道加密下发，下载安装，打开即用。</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://github.com/Hdhaidong/insightmarketplac-promo/releases">
+        下载 Windows 客户端
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14m0 0l-5.5-5.5M12 17l5.5-5.5M4 21h16"/></svg>
+      </a>
+      <a class="btn-ghost" href="products.html">产品矩阵 · 73 个业务产品</a>
+      <span class="hero-note">Windows 10 / 11 · 免费试用 1 天</span>
+    </div>
+  </div>
+</header>
+
+<!-- Service areas -->
+<section class="svc">
+  <div class="wrap">
+    <p class="section-label reveal">What It Does</p>
+    <h2 class="section-title reveal">一个助手，管好一个平台的运营全局。</h2>
+    <p class="section-sub reveal">聚焦家装零售垂直平台，覆盖从选品决策到日常运营的完整链条。</p>
+    <div class="svc-list">
+      <div class="svc-row reveal">
+        <span class="svc-num">01</span>
+        <div class="svc-head">
+          <h3>选品与市场调研</h3>
+          <span class="svc-tag">先看清楚，再决定做不做</span>
+        </div>
+        <ul class="svc-points">
+          <li>潜力品挖掘：扫描趋势与需求信号，过滤竞争过热的红海品类</li>
+          <li>单品 Go / No-Go 裁决：流量、竞争、毛利、风险全链路评估</li>
+          <li>品类市场调研：市场规模、竞争格局、价格带分布一次出报告</li>
+          <li>用户评论之声：差评高频问题聚合，痛点直接转化为选品标准</li>
+        </ul>
+      </div>
+      <div class="svc-row reveal">
+        <span class="svc-num">02</span>
+        <div class="svc-head">
+          <h3>Listing 与内容优化</h3>
+          <span class="svc-tag">让每一件商品都讲得清楚</span>
+        </div>
+        <ul class="svc-points">
+          <li>标题与关键词优化：对齐平台搜索规则与买家真实搜索词</li>
+          <li>五点描述重构：卖点排序、参数取舍、场景化表达</li>
+          <li>图文结构诊断：按转化逻辑逐屏检查详情内容</li>
+          <li>合规自检：上架前扫描敏感词、错类目与政策雷区</li>
+        </ul>
+      </div>
+      <div class="svc-row reveal">
+        <span class="svc-num">03</span>
+        <div class="svc-head">
+          <h3>广告与促销运营</h3>
+          <span class="svc-tag">花在刀刃上，效果可衡量</span>
+        </div>
+        <ul class="svc-points">
+          <li>广告投放拆解：结构、关键词、出价逐项诊断，给出推进路线</li>
+          <li>促销策划：按季节、节点与库存状况生成促销方案</li>
+          <li>利润测算：到手价、物流、佣金、退货全成本利润模型</li>
+          <li>写操作一律过人工审批门，批准后才会执行</li>
+        </ul>
+      </div>
+      <div class="svc-row reveal">
+        <span class="svc-num">04</span>
+        <div class="svc-head">
+          <h3>数据速览与盯盘</h3>
+          <span class="svc-tag">日常经营状态，随时一句话问到</span>
+        </div>
+        <ul class="svc-points">
+          <li>价格速查：给品类词或链接，一次抓出现价、划线价、折扣幅度</li>
+          <li>库存速览：库存健康度与断货风险提示</li>
+          <li>容量测算：类目容量与增长空间估算，输出置信区间</li>
+          <li>趋势速览：类目热度走向与季节性判断</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Data channel -->
+<section class="mcp">
+  <div class="wrap">
+    <p class="section-label reveal">Data Channel</p>
+    <h2 class="section-title reveal">数据与模型，平台统一下发。</h2>
+    <div class="mcp-grid">
+      <div class="mcp-card reveal">
+        <span class="mcp-idx">MCP Channel</span>
+        <h3>客户端接入 MCP，零配置</h3>
+        <p>客户端不持有任何数据源密钥。平台统一签发 MCP 接入凭证并加密下发，客户端接入即用——检索、抓取、零售数据查询，一条通道全部打通。</p>
+      </div>
+      <div class="mcp-card reveal">
+        <span class="mcp-idx">Optimized</span>
+        <h3>为多用户与弱网优化传输</h3>
+        <p>查询结果压缩传输、增量同步、重复请求合并——多用户并发使用时链路不拥塞，网络条件一般的环境也能顺畅工作。</p>
+      </div>
+      <div class="mcp-card reveal">
+        <span class="mcp-idx">Extensible</span>
+        <h3>预留数据仓库接入</h3>
+        <p>通道预留标准化数据仓接口：后续可把你的历史经营数据接入进来，与实时调研结果联合分析，报告越用越贴合你的生意。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section class="flow">
+  <div class="wrap">
+    <p class="section-label reveal">Workflow</p>
+    <h2 class="section-title reveal">从提问到结果，三步完成。</h2>
+    <div class="flow-grid">
+      <div class="flow-media reveal">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimal%20dark%20workspace%20desk%20with%20a%20laptop%20showing%20softly%20glowing%20data%20charts%2C%20warm%20desk%20lamp%20light%2C%20shallow%20depth%20of%20field%2C%20late%20night%20work%20atmosphere%2C%20photorealistic%2C%20moody%20cinematic%20tones%2C%20no%20readable%20text%20no%20logos&image_size=landscape_4_3" alt="深夜工作台">
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step reveal">
+          <span class="flow-idx">1</span>
+          <div>
+            <h3>用一句话交代任务</h3>
+            <p>「看看这个品类现在的价格带和买家口碑」——像交给一位熟悉平台的运营同事。</p>
+          </div>
+        </div>
+        <div class="flow-step reveal">
+          <span class="flow-idx">2</span>
+          <div>
+            <h3>助手经数据通道执行</h3>
+            <p>检索、抓取、查数、交叉验证，全程走平台 MCP 加密通道，关键步骤清晰可见。</p>
+          </div>
+        </div>
+        <div class="flow-step reveal">
+          <span class="flow-idx">3</span>
+          <div>
+            <h3>拿到可执行的结果</h3>
+            <p>结论、数据与建议一并交付，单次回复输出完整结果，可直接用于运营决策与团队讨论。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final" id="download">
+  <div class="wrap">
+    <p class="section-label reveal">Get Started</p>
+    <h2 class="section-title reveal">现在开始，让平台运营自己跑起来。</h2>
+    <p class="final-sub reveal">下载安装包，双击安装——首次启动即可开通 24 小时免费试用，也可用运营方签发的激活码直接激活。模型与数据凭证由平台安全下发。</p>
+    <a class="btn-primary reveal" href="https://github.com/Hdhaidong/insightmarketplac-promo/releases">
+      下载 Windows 客户端
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14m0 0l-5.5-5.5M12 17l5.5-5.5M4 21h16"/></svg>
+    </a>
+    <p class="final-meta reveal">Windows 10 / 11（64 位）· 免费试用 1 天 · 激活码订阅</p>
+  </div>
+</section>
+
+<footer>
+  <span class="f-brand">Adventure Retail · insightmarketplac 出品</span>
+  <span class="f-contact">
+    联系方式：<a href="mailto:haidong.zhou@outlook.com">haidong.zhou@outlook.com</a>
+  </span>
+  <span>© 2026 insightmarketplac. All rights reserved.</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+
+</body>
+</html>
