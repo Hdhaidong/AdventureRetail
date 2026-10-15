@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adventure Retail · 从工厂车间到全球货架</title>
+<title>Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -27,7 +27,7 @@ nav.scrolled{background:rgba(10,11,16,.85);backdrop-filter:blur(16px);border-bot
 .nav-in{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;letter-spacing:.14em;font-size:15px}
 .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--grad);display:grid;place-items:center;font-size:17px;box-shadow:0 0 24px rgba(249,115,22,.45)}
-.nav-links{display:flex;gap:30px;font-size:13.5px;color:var(--sub)}
+.nav-links{display:flex;gap:26px;font-size:13.5px;color:var(--sub)}
 .nav-links a{transition:.25s;position:relative}
 .nav-links a:hover{color:var(--txt)}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--grad);transition:.3s}
@@ -35,7 +35,7 @@ nav.scrolled{background:rgba(10,11,16,.85);backdrop-filter:blur(16px);border-bot
 .lang-toggle{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;font-size:12.5px;font-family:var(--disp)}
 .lang-toggle button{background:none;border:none;color:var(--sub);padding:7px 16px;cursor:pointer;font-family:inherit;transition:.25s;letter-spacing:.05em}
 .lang-toggle button.on{background:var(--grad);color:#fff;font-weight:600}
-@media(max-width:860px){.nav-links{display:none}}
+@media(max-width:960px){.nav-links{display:none}}
 
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding-bottom:9vh;overflow:hidden}
@@ -45,16 +45,15 @@ nav.scrolled{background:rgba(10,11,16,.85);backdrop-filter:blur(16px);border-bot
 .hero-in{position:relative;z-index:2;width:100%}
 .hero .kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-size:12.5px;letter-spacing:.3em;color:var(--orange2);text-transform:uppercase;margin-bottom:26px}
 .hero .kicker::before{content:'';width:38px;height:1px;background:var(--grad)}
-.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,6.4vw,84px);line-height:1.06;letter-spacing:-.01em;max-width:15ch;margin-bottom:26px}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(38px,6vw,80px);line-height:1.08;letter-spacing:-.01em;max-width:20ch;margin-bottom:26px}
 .hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
-.hero p{font-size:clamp(15px,1.5vw,18px);color:#C9CDD8;max-width:56ch;font-weight:300;margin-bottom:40px}
+.hero p{font-size:clamp(15px,1.5vw,18px);color:#C9CDD8;max-width:58ch;font-weight:300;margin-bottom:40px}
 .cta-row{display:flex;gap:16px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:99px;font-size:14.5px;font-weight:500;letter-spacing:.04em;transition:.3s;cursor:pointer;border:none;font-family:var(--body)}
 .btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 32px rgba(249,115,22,.35)}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(249,115,22,.5)}
 .btn-g{border:1px solid rgba(255,255,255,.22);color:var(--txt);background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
 .btn-g:hover{border-color:var(--orange);color:var(--orange2)}
-/* hero entrance */
 .h-anim{opacity:0;transform:translateY(34px);animation:hIn 1s cubic-bezier(.2,.7,.2,1) forwards}
 .h-anim.d1{animation-delay:.15s}.h-anim.d2{animation-delay:.32s}.h-anim.d3{animation-delay:.5s}.h-anim.d4{animation-delay:.68s}
 @keyframes hIn{to{opacity:1;transform:none}}
@@ -70,32 +69,45 @@ nav.scrolled{background:rgba(10,11,16,.85);backdrop-filter:blur(16px);border-bot
 
 /* ============ SECTIONS ============ */
 section{padding:110px 0}
-.sec-head{margin-bottom:64px;max-width:720px}
+.sec-head{margin-bottom:64px;max-width:760px}
 .sec-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-size:12px;letter-spacing:.3em;color:var(--orange2);text-transform:uppercase;margin-bottom:18px}
 .sec-tag::before{content:'';width:30px;height:1px;background:var(--grad)}
 .sec-title{font-family:var(--disp);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.15;letter-spacing:-.01em}
 .sec-sub{margin-top:16px;color:var(--sub);font-size:15.5px;font-weight:300}
-
-/* reveal on scroll */
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* ============ FIVE LENSES ============ */
-.lenses{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
-.lens{padding:36px 26px 42px;border-left:1px solid var(--line);position:relative;transition:.35s}
-.lens:first-child{border-left:none}
-.lens:hover{background:var(--bg2)}
-.lens:hover::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad)}
-.lens .idx{font-family:var(--disp);font-size:12px;color:var(--dim);letter-spacing:.2em;margin-bottom:18px}
-.lens h3{font-family:var(--disp);font-size:21px;font-weight:600;margin-bottom:6px}
-.lens .role{font-size:12px;color:var(--orange2);letter-spacing:.12em;margin-bottom:16px}
-.lens .pain{font-size:13px;color:var(--sub);margin-bottom:14px;font-weight:300}
-.lens .solve{font-size:13.5px;line-height:1.7}
-.lens .solve b{color:var(--orange2);font-weight:500}
-.lens-arrow{position:absolute;right:-9px;top:44px;z-index:2;color:var(--orange);font-size:13px;opacity:.9}
-.lens:last-child .lens-arrow{display:none}
-@media(max-width:1000px){.lenses{grid-template-columns:1fr 1fr}.lens{border-top:1px solid var(--line)}.lens-arrow{display:none}}
-@media(max-width:560px){.lenses{grid-template-columns:1fr}.lens{border-left:none}}
+/* ============ SERVICES ============ */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:42px 38px;position:relative;transition:.35s;overflow:hidden}
+.svc:hover{border-color:rgba(249,115,22,.4);transform:translateY(-4px)}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:.35s}
+.svc:hover::before{opacity:1}
+.svc .s-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}
+.svc .s-num{font-family:var(--disp);font-size:13px;color:var(--dim);letter-spacing:.2em}
+.svc .s-tag{font-family:var(--disp);font-size:11.5px;letter-spacing:.14em;color:var(--orange2);border:1px solid rgba(249,115,22,.35);border-radius:99px;padding:5px 14px;white-space:nowrap}
+.svc h3{font-family:var(--disp);font-size:24px;font-weight:700;margin-bottom:4px}
+.svc .s-en{font-family:var(--disp);font-size:12.5px;color:var(--dim);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+.svc>p{font-size:14px;color:var(--sub);font-weight:300;margin-bottom:22px}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.svc li{font-size:13.5px;color:#C9CDD8;padding-left:22px;position:relative;font-weight:300}
+.svc li::before{content:'▸';position:absolute;left:0;color:var(--orange)}
+@media(max-width:800px){.svc-grid{grid-template-columns:1fr}}
+
+/* ============ COMPARE ============ */
+.cmp-wrap{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel)}
+table.cmp{width:100%;border-collapse:collapse}
+.cmp th,.cmp td{padding:18px 24px;text-align:left;font-size:14px;border-top:1px solid var(--line)}
+.cmp thead th{font-family:var(--disp);font-size:13px;letter-spacing:.14em;text-transform:uppercase;border-top:none;background:var(--bg2);padding:20px 24px}
+.cmp thead th.ar{color:var(--orange2)}
+.cmp td.dim-col{color:var(--sub);font-weight:300}
+.cmp td.ar-col{color:#F2F3F7}
+.cmp td.ar-col b{color:var(--orange2);font-weight:500}
+.cmp .c-no{color:var(--dim)}
+.cmp .c-yes{color:var(--orange2);font-weight:600}
+.cmp tbody tr{transition:.25s}
+.cmp tbody tr:hover{background:rgba(249,115,22,.04)}
+@media(max-width:700px){.cmp th,.cmp td{padding:14px 14px;font-size:12.5px}}
 
 /* ============ IMAGE SPLIT ============ */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
@@ -123,7 +135,7 @@ section{padding:110px 0}
 .mkt h3{font-family:var(--disp);font-size:26px;font-weight:700;margin-bottom:8px}
 .mkt .desc{font-size:13.5px;color:var(--sub);font-weight:300;margin-bottom:26px}
 .channels{display:flex;flex-wrap:wrap;gap:10px}
-.ch{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:#C9CDD8;transition:.25s;background:rgba(255,255,255,.02)}
+.ch{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:#C9CDD8;transition:.25s;background:transparent}
 .ch:hover{border-color:var(--orange);color:var(--orange2);transform:translateY(-1px)}
 .mkt-wide{grid-column:1/-1}
 .ctry-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px}
@@ -131,17 +143,58 @@ section{padding:110px 0}
 .ctry-region::after{content:'';flex:1;height:1px;background:var(--line)}
 .ctry-name{font-family:var(--disp);font-size:14px;font-weight:600;letter-spacing:.1em;color:#E9B98C;margin-bottom:12px}
 .ctry-grid .ch{padding:7px 14px;font-size:12.5px}
+.mkt-note{margin-top:22px;font-size:12.5px;color:var(--dim);font-weight:300}
 @media(max-width:800px){.mkt-grid{grid-template-columns:1fr}.ctry-grid{grid-template-columns:1fr}}
 
-/* ============ TOOLS ============ */
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+/* ============ INSIGHT ============ */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
 .tool{background:var(--panel);padding:40px 34px;transition:.35s;position:relative}
 .tool:hover{background:#161927}
 .tool .t-num{font-family:var(--disp);font-size:13px;color:var(--dim);letter-spacing:.2em;margin-bottom:22px}
 .tool h4{font-family:var(--disp);font-size:19px;font-weight:600;margin-bottom:10px}
 .tool p{font-size:13.5px;color:var(--sub);font-weight:300}
-.tool .t-stat{margin-top:24px;font-family:var(--disp);font-weight:700;font-size:24px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tool .t-stat{margin-top:24px;font-family:var(--disp);font-weight:700;font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:860px){.tools-grid{grid-template-columns:1fr}}
+
+/* ============ NEWS & EXPO ============ */
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.news-col{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:38px 34px}
+.news-col h3{font-family:var(--disp);font-size:20px;font-weight:700;margin-bottom:6px}
+.news-col .nc-sub{font-size:12.5px;color:var(--dim);margin-bottom:26px;letter-spacing:.06em}
+.news-item{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line);transition:.25s}
+.news-item:hover{padding-left:6px}
+.news-item .d{font-family:var(--disp);font-size:12px;color:var(--orange2);letter-spacing:.08em;padding-top:2px}
+.news-item h5{font-size:14px;font-weight:600;margin-bottom:4px;line-height:1.5}
+.news-item p{font-size:12.5px;color:var(--sub);font-weight:300}
+.news-more{margin-top:20px;font-size:12.5px;color:var(--dim)}
+@media(max-width:860px){.news-grid{grid-template-columns:1fr}}
+
+/* ============ BRAND WALL ============ */
+.wall{margin-top:60px;border-top:1px solid var(--line);padding-top:38px}
+.wall-lbl{font-family:var(--disp);font-size:11.5px;letter-spacing:.28em;color:var(--dim);text-transform:uppercase;text-align:center;margin-bottom:26px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-in{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite}
+.marquee:hover .marquee-in{animation-play-state:paused}
+.marquee-in .ch{font-family:var(--disp);white-space:nowrap;cursor:default}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ REPORT (lead magnet) ============ */
+.report{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rep-box{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.rep-form{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:38px 34px}
+.rep-form h3{font-family:var(--disp);font-size:21px;margin-bottom:6px}
+.rep-form .rf-sub{font-size:13px;color:var(--sub);margin-bottom:22px;font-weight:300}
+.rep-form input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:13px 16px;font-family:var(--body);font-size:13.5px;margin-bottom:12px}
+.rep-form input:focus{outline:none;border-color:var(--orange)}
+.mkt-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.mchip{padding:8px 18px;border:1px solid var(--line);border-radius:99px;font-size:12.5px;color:var(--sub);cursor:pointer;transition:.25s;background:none;font-family:var(--body)}
+.mchip.on{border-color:var(--orange);color:var(--orange2);background:rgba(249,115,22,.08)}
+.rep-list{display:flex;flex-direction:column;gap:16px}
+.rep-list .rl{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
+.rep-list .rl .n{width:40px;height:40px;border-radius:11px;background:rgba(249,115,22,.12);display:grid;place-items:center;font-family:var(--disp);color:var(--orange2);font-size:14px}
+.rep-list .rl h5{font-size:14.5px;font-weight:600;margin-bottom:2px}
+.rep-list .rl p{font-size:13px;color:var(--sub);font-weight:300}
+@media(max-width:860px){.rep-box{grid-template-columns:1fr;gap:36px}}
 
 /* ============ STEPS ============ */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;counter-reset:step}
@@ -154,7 +207,7 @@ section{padding:110px 0}
 /* ============ FINAL CTA ============ */
 .final{position:relative;overflow:hidden;text-align:center;padding:130px 0}
 .final::before{content:'';position:absolute;left:50%;top:50%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(249,115,22,.14),transparent 62%);pointer-events:none}
-.final h2{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.12;max-width:18ch;margin:0 auto 22px}
+.final h2{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.12;max-width:20ch;margin:0 auto 22px}
 .final p{color:var(--sub);font-size:15.5px;font-weight:300;margin-bottom:42px}
 .mail-link{font-family:var(--disp);font-size:clamp(18px,2.4vw,26px);font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em}
 .mail-link:hover{filter:brightness(1.15)}
@@ -203,6 +256,9 @@ section{padding:110px 0}
 .dialog input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:13px 16px;font-family:var(--body);font-size:13.5px;margin-bottom:12px}
 .dialog input:focus{outline:none;border-color:var(--orange)}
 .dialog .btn{width:100%;justify-content:center;margin-top:6px}
+.dnote{margin-top:14px;font-size:12px;color:var(--dim);text-align:center}
+.dnote .linkbtn{font-size:12px}
+.code-input{letter-spacing:.5em;text-align:center;font-family:var(--disp);font-size:18px}
 @media(max-width:860px){.p-cards{grid-template-columns:1fr}}
 
 /* ============ FOOTER ============ */
@@ -218,13 +274,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
   <div class="nav-in">
     <a class="brand" href="#top"><span class="mark">⚓</span>ADVENTURE RETAIL</a>
     <div class="nav-links">
-      <a href="#lenses" data-zh="五视角" data-en="Lenses">五视角</a>
-      <a href="#mfg" data-zh="制造能力" data-en="Manufacturing">制造能力</a>
+      <a href="#services" data-zh="四大能力" data-en="Services">四大能力</a>
+      <a href="#ai" data-zh="AI 引擎" data-en="AI Engine">AI 引擎</a>
       <a href="#markets" data-zh="渠道市场" data-en="Markets">渠道市场</a>
-      <a href="#growth" data-zh="内容增长" data-en="Growth">内容增长</a>
-      <a href="#tools" data-zh="服务保障" data-en="Why us">服务保障</a>
-      <a href="#contact" data-zh="开始合作" data-en="Contact">开始合作</a>
+      <a href="#insight" data-zh="洞察平台" data-en="Insights">洞察平台</a>
+      <a href="#news" data-zh="资讯·展会" data-en="News &amp; Expos">资讯·展会</a>
       <a href="#portal" data-zh="客户专区" data-en="Portal">客户专区</a>
+      <a href="#contact" data-zh="开始合作" data-en="Contact">开始合作</a>
     </div>
     <div class="lang-toggle">
       <button id="btnZh" class="on" onclick="setLang('zh')">中文</button>
@@ -240,11 +296,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
   </div>
   <div class="hero-in wrap">
     <div class="kicker h-anim d1">Adventure Retail · Global</div>
-    <h1 class="h-anim d2" data-zh='从工厂车间，到<em>全球货架</em>' data-en='From factory floor to the <em>right shelf</em>'>从工厂车间，到<em>全球货架</em></h1>
-    <p class="h-anim d3" data-zh="OEM / ODM / OBM 制造能力 × 全球商超渠道 × AI 运营托管——我们为卖家把产品做对，把渠道打通，把品牌立住。" data-en="OEM / ODM / OBM manufacturing × global retail channels × AI-managed operations — we get the product right, open the channel, and build the brand.">OEM / ODM / OBM 制造能力 × 全球商超渠道 × AI 运营托管——我们为卖家把产品做对，把渠道打通，把品牌立住。</p>
+    <h1 class="h-anim d2" data-zh='库存压着？品牌想卖？新品想进<em>全球商超</em>？' data-en='Inventory stuck? Brand to sell? A new product for <em>global shelves</em>?'>库存压着？品牌想卖？新品想进<em>全球商超</em>？</h1>
+    <p class="h-anim d3" data-zh="我们现金收购库存与品牌，加速 300+ 全球商超入驻，陪跑新品从打样到量产——你专注产品，其余的交给我们。" data-en="We buy inventory and brands for cash, accelerate onboarding to 300+ global retail channels, and walk new products from sampling to mass production — you focus on the product; we handle the rest.">我们现金收购库存与品牌，加速 300+ 全球商超入驻，陪跑新品从打样到量产——你专注产品，其余的交给我们。</p>
     <div class="cta-row h-anim d4">
-      <a class="btn btn-p" href="#contact" data-zh="开始合作 →" data-en="Start a project →">开始合作 →</a>
-      <a class="btn btn-g" href="#lenses" data-zh="先看业务逻辑" data-en="See how it works">先看业务逻辑</a>
+      <a class="btn btn-p" href="#report" data-zh="免费获取渠道洞察报告 →" data-en="Get a free channel report →">免费获取渠道洞察报告 →</a>
+      <a class="btn btn-g" href="#services" data-zh="看四大能力" data-en="See four services">看四大能力</a>
     </div>
   </div>
 </header>
@@ -259,59 +315,181 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
   </div>
 </div>
 
-<!-- FIVE LENSES -->
-<section id="lenses">
+<!-- SERVICES -->
+<section id="services">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-tag">Value Chain</div>
-      <h2 class="sec-title" data-zh="五个视角，一条价值链" data-en="Five lenses, one value chain">五个视角，一条价值链</h2>
-      <p class="sec-sub" data-zh="每一笔跨境生意都经过五双眼睛。我们的服务在每个视角上解决一个真实痛点——而不是只卖其中一段。" data-en="Every cross-border deal passes through five pairs of eyes. Our services solve one real pain at each lens — not just one slice of it.">每一笔跨境生意都经过五双眼睛。我们的服务在每个视角上解决一个真实痛点——而不是只卖其中一段。</p>
+      <div class="sec-tag">What you get</div>
+      <h2 class="sec-title" data-zh="四条能力线，各解决一个真问题" data-en="Four service lines, four real problems solved">四条能力线，各解决一个真问题</h2>
+      <p class="sec-sub" data-zh="对库存、对品牌、对业绩、对新品——你卡在哪一环，我们就从哪一环进场。" data-en="Inventory, brand, performance, new products — wherever you're stuck, that's where we step in.">对库存、对品牌、对业绩、对新品——你卡在哪一环，我们就从哪一环进场。</p>
     </div>
-    <div class="lenses reveal">
-      <div class="lens">
-        <div class="idx">01</div><h3 data-zh="卖家" data-en="Seller">卖家</h3>
-        <div class="role" data-zh="工厂 / 贸易商" data-en="Factory / Trader">工厂 / 贸易商</div>
-        <p class="pain" data-zh="有产能没渠道，想进商超不知从何敲门。" data-en="Capacity without channels; no idea how to knock on retail doors.">有产能没渠道，想进商超不知从何敲门。</p>
-        <p class="solve" data-zh="<b>解法</b>：代入驻 + 合规代建，明码标价、效果质保。" data-en="<b>Fix</b>: managed onboarding &amp; compliance setup, transparent pricing, outcome-backed."><b>解法</b>：代入驻 + 合规代建，明码标价、效果质保。</p>
-        <span class="lens-arrow">▶</span>
+    <div class="svc-grid reveal">
+      <div class="svc">
+        <div class="s-top"><span class="s-num">S-01</span><span class="s-tag" data-zh="对库存" data-en="For inventory">对库存</span></div>
+        <h3 data-zh="库存变现" data-en="Inventory Buyout">库存变现</h3>
+        <div class="s-en">Cash for stuck stock</div>
+        <p data-zh="积压、尾货、滞销库存，我们现金收购。评估、报价、签约、打款，7 天内出价，让压住的库存快速变回现金流。" data-en="Overstock, tail goods, slow movers — we buy them for cash. Assess, quote, sign, pay: an offer within 7 days, turning stuck stock back into cash flow.">积压、尾货、滞销库存，我们现金收购。评估、报价、签约、打款，7 天内出价，让压住的库存快速变回现金流。</p>
+        <ul>
+          <li data-zh="现金收购，7 天内出价" data-en="Cash purchase, offer in 7 days">现金收购，7 天内出价</li>
+          <li data-zh="整仓、尾货、滞销品均可评估" data-en="Full warehouses, tail lots, slow movers all assessed">整仓、尾货、滞销品均可评估</li>
+          <li data-zh="评估全程保密，不影响现有渠道" data-en="Confidential assessment — your channels stay intact">评估全程保密，不影响现有渠道</li>
+        </ul>
       </div>
-      <div class="lens">
-        <div class="idx">02</div><h3 data-zh="产品" data-en="Product">产品</h3>
-        <div class="role" data-zh="从样品到量产" data-en="Sample to scale">从样品到量产</div>
-        <p class="pain" data-zh="产品做得出来，做不到渠道要的标准与良率。" data-en="Products get made, but not to retail-grade specs and yield.">产品做得出来，做不到渠道要的标准与良率。</p>
-        <p class="solve" data-zh="<b>解法</b>：打样验证、量产良率管理与新品投产陪跑，一次做对。" data-en="<b>Fix</b>: sampling validation, yield management and launch support — right the first time."><b>解法</b>：打样验证、量产良率管理与新品投产陪跑，一次做对。</p>
-        <span class="lens-arrow">▶</span>
+      <div class="svc">
+        <div class="s-top"><span class="s-num">S-02</span><span class="s-tag" data-zh="对品牌" data-en="For brands">对品牌</span></div>
+        <h3 data-zh="品牌兑现" data-en="Brand Acquisition">品牌兑现</h3>
+        <div class="s-en">Exit or leap forward</div>
+        <p data-zh="品牌想卖？我们收购有渠道潜力的品牌——给创始人一个体面的退出，或一条带资源的跃迁路径。" data-en="Ready to sell your brand? We acquire brands with channel potential — a dignified exit for founders, or a resource-backed leap forward.">品牌想卖？我们收购有渠道潜力的品牌——给创始人一个体面的退出，或一条带资源的跃迁路径。</p>
+        <ul>
+          <li data-zh="整体收购或控股合作，结构灵活" data-en="Full buyout or majority partnership, flexible structure">整体收购或控股合作，结构灵活</li>
+          <li data-zh="300+ 渠道资源注入，放大品牌估值" data-en="300+ channel resources injected to grow brand value">300+ 渠道资源注入，放大品牌估值</li>
+          <li data-zh="退出、留任双路径，按你的意愿设计" data-en="Exit or stay-on — designed around your goals">退出、留任双路径，按你的意愿设计</li>
+        </ul>
       </div>
-      <div class="lens">
-        <div class="idx">03</div><h3 data-zh="品牌" data-en="Brand">品牌</h3>
-        <div class="role" data-zh="OBM / 内容" data-en="OBM / Content">OBM / 内容</div>
-        <p class="pain" data-zh="有商标没心智，货架上拼不过本土大牌。" data-en="A trademark without mindshare loses to local incumbents on shelf.">有商标没心智，货架上拼不过本土大牌。</p>
-        <p class="solve" data-zh="<b>解法</b>：OBM 品牌管理 + 种草内容 + 新品推广，把货做成牌子。" data-en="<b>Fix</b>: OBM brand management, seeding content and launch promotion — turning SKUs into brands."><b>解法</b>：OBM 品牌管理 + 种草内容 + 新品推广，把货做成牌子。</p>
-        <span class="lens-arrow">▶</span>
+      <div class="svc">
+        <div class="s-top"><span class="s-num">S-03</span><span class="s-tag" data-zh="对业绩" data-en="For performance">对业绩</span></div>
+        <h3 data-zh="渠道加速" data-en="Channel Acceleration">渠道加速</h3>
+        <div class="s-en">300+ global retail doors</div>
+        <p data-zh="以美国 Pattern（柏藤）为标杆的加速方法论：300+ 全球商超代入驻、合规代建、全周期托管——上架只是开始，动销才算交付。" data-en="An acceleration method benchmarked on Pattern (US): onboarding to 300+ global retail channels, compliance setup, full-cycle management — listing is the start, sell-through is the deliverable.">以美国 Pattern（柏藤）为标杆的加速方法论：300+ 全球商超代入驻、合规代建、全周期托管——上架只是开始，动销才算交付。</p>
+        <ul>
+          <li data-zh="代入驻 + 买手对接，逐国落地" data-en="Managed onboarding + buyer alignment, country by country">代入驻 + 买手对接，逐国落地</li>
+          <li data-zh="AI 托管 7×24，异常才推到你桌面" data-en="AI-managed ops 24/7 — only exceptions reach your desk">AI 托管 7×24，异常才推到你桌面</li>
+          <li data-zh="分销撮合放大动销，不只开店更卖货" data-en="Distribution matching to move volume, not just open stores">分销撮合放大动销，不只开店更卖货</li>
+        </ul>
       </div>
-      <div class="lens">
-        <div class="idx">04</div><h3 data-zh="买家" data-en="Buyer">买家</h3>
-        <div class="role" data-zh="商超买手 / 采购" data-en="Retail buyers">商超买手 / 采购</div>
-        <p class="pain" data-zh="买手只要确定性的盘：稳定供货、合规文件、动销数据。" data-en="Buyers want certainty: stable supply, compliance files, sell-through data.">买手只要确定性的盘：稳定供货、合规文件、动销数据。</p>
-        <p class="solve" data-zh="<b>解法</b>：以买手语言交付——数据智能体持续供情报，托管运营供动销。" data-en="<b>Fix</b>: we speak buyer language — a data agent feeds intel, managed ops feed sell-through."><b>解法</b>：以买手语言交付——数据智能体持续供情报，托管运营供动销。</p>
-        <span class="lens-arrow">▶</span>
-      </div>
-      <div class="lens">
-        <div class="idx">05</div><h3 data-zh="用户" data-en="Shopper">用户</h3>
-        <div class="role" data-zh="终端消费者" data-en="End consumers">终端消费者</div>
-        <p class="pain" data-zh="最终投票的是拿货架商品的那个人。" data-en="The final vote belongs to whoever picks the item off the shelf.">最终投票的是拿货架商品的那个人。</p>
-        <p class="solve" data-zh="<b>解法</b>：市场情报与评测内容前置回答「为什么买它」，复购回流品牌。" data-en="<b>Fix</b>: intel and review content answer “why this one” upstream; repeat purchase flows back to the brand."><b>解法</b>：市场情报与评测内容前置回答「为什么买它」，复购回流品牌。</p>
+      <div class="svc">
+        <div class="s-top"><span class="s-num">S-04</span><span class="s-tag" data-zh="对新品" data-en="For new products">对新品</span></div>
+        <h3 data-zh="新品落地 · 兢赛计划" data-en="New Product Landing · Project Jingsai">新品落地 · 兢赛计划</h3>
+        <div class="s-en">From sample to shelf, done right</div>
+        <p data-zh="新品采购、快速打样、设备采购到 NPI 量产导入——把新品一次做对，出厂即对标商超验收标准。" data-en="New product sourcing, rapid sampling, equipment procurement and NPI mass-production onboarding — get it right the first time, retail-grade from the factory gate.">新品采购、快速打样、设备采购到 NPI 量产导入——把新品一次做对，出厂即对标商超验收标准。</p>
+        <ul>
+          <li data-zh="打样验证与量产良率锁定" data-en="Sampling validation with yield locked to spec">打样验证与量产良率锁定</li>
+          <li data-zh="设备与产线导入全程陪跑" data-en="End-to-end equipment and line onboarding">设备与产线导入全程陪跑</li>
+          <li data-zh="按商超标准倒推质量体系" data-en="Quality systems reverse-engineered from retail standards">按商超标准倒推质量体系</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MANUFACTURING -->
-<section id="mfg" style="padding-top:0">
+<!-- AI ENGINE -->
+<section id="ai" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">AI engine</div>
+      <h2 class="sec-title" data-zh="AI 不是附加功能，是这套服务的引擎" data-en="AI isn't an add-on — it's the engine">AI 不是附加功能，是这套服务的引擎</h2>
+      <p class="sec-sub" data-zh="从你签约的第一天起，AI 智能体就在替你盯渠道、看品类、管店铺——每一项能力都有实战产品支撑，不是 PPT 概念。" data-en="From day one, AI agents watch channels, categories and your stores for you — every capability backed by battle-tested products, not slideware.">从你签约的第一天起，AI 智能体就在替你盯渠道、看品类、管店铺——每一项能力都有实战产品支撑，不是 PPT 概念。</p>
+    </div>
+    <div class="tools-grid reveal">
+      <div class="tool">
+        <div class="t-num">A-01</div>
+        <h4 data-zh="运营智能体托管" data-en="AI-managed operations">运营智能体托管</h4>
+        <p data-zh="客服应答、评价跟进、库存预警、Listing 优化——一套经过实战验证的运营技能库 7×24 替你盯店，只有异常才推到你桌面。" data-en="Customer replies, review follow-ups, stock alerts, listing optimization — a battle-tested ops skill set watches your store 24/7; only exceptions reach your desk.">客服应答、评价跟进、库存预警、Listing 优化——一套经过实战验证的运营技能库 7×24 替你盯店，只有异常才推到你桌面。</p>
+        <div class="t-stat">7×24</div>
+      </div>
+      <div class="tool">
+        <div class="t-num">A-02</div>
+        <h4 data-zh="数据智能体" data-en="Data intelligence agent">数据智能体</h4>
+        <p data-zh="选品情报、渠道监测、竞争信号由数据智能体持续产出——711 条情报沉淀只是起点，每周还在增加。" data-en="Product intel, channel monitoring and competitive signals produced continuously by data agents — 711 archived reports are just the start, growing weekly.">选品情报、渠道监测、竞争信号由数据智能体持续产出——711 条情报沉淀只是起点，每周还在增加。</p>
+        <div class="t-stat">711+</div>
+      </div>
+      <div class="tool">
+        <div class="t-num">A-03</div>
+        <h4 data-zh="技能能力市场" data-en="Skill marketplace">技能能力市场</h4>
+        <p data-zh="133 项可装配的运营技能，像搭积木一样组合成你的专属智能体——从调研、上架到推广，按你的业务按需定制。" data-en="133 composable ops skills assembled like building blocks into your own agent — research, listing, promotion, customized to your business.">133 项可装配的运营技能，像搭积木一样组合成你的专属智能体——从调研、上架到推广，按你的业务按需定制。</p>
+        <div class="t-stat">133</div>
+      </div>
+      <div class="tool">
+        <div class="t-num">A-04</div>
+        <h4 data-zh="开放兼容，不被锁定" data-en="Open &amp; compatible">开放兼容，不被锁定</h4>
+        <p data-zh="能力可接入你已有的 AI 工作流，支持自带模型密钥（BYO Key），数据与模型选择权都在你手里。" data-en="Capabilities plug into your existing AI workflows, with bring-your-own model keys — your data and model choices stay yours.">能力可接入你已有的 AI 工作流，支持自带模型密钥（BYO Key），数据与模型选择权都在你手里。</p>
+        <div class="t-stat" data-zh="BYO 密钥" data-en="BYO keys">BYO 密钥</div>
+      </div>
+    </div>
+    <p class="mkt-note reveal" data-zh="想现在就体验？右下角的在线接待就是 AI 在值班——直接问它，中英文都行。" data-en="Want a live demo right now? The chat bubble in the corner is our AI on duty — ask it anything, in Chinese or English.">想现在就体验？右下角的在线接待就是 AI 在值班——直接问它，中英文都行。</p>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Why different</div>
+      <h2 class="sec-title" data-zh="我们与传统代运营机构的区别" data-en="Us vs. traditional service agencies">我们与传统代运营机构的区别</h2>
+      <p class="sec-sub" data-zh="传统机构只卖服务时长，我们把库存、品牌、渠道、制造放进同一张牌桌。" data-en="Agencies sell service hours. We put inventory, brands, channels and manufacturing at the same table.">传统机构只卖服务时长，我们把库存、品牌、渠道、制造放进同一张牌桌。</p>
+    </div>
+    <div class="cmp-wrap reveal">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th data-zh="对比维度" data-en="Dimension">对比维度</th>
+            <th data-zh="传统代运营 / SP 机构" data-en="Traditional agencies">传统代运营 / SP 机构</th>
+            <th class="ar">Adventure Retail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-zh="合作模式" data-en="Engagement">合作模式</td>
+            <td class="dim-col" data-zh="只做代运营，按月抽佣" data-en="Managed ops only, monthly retainer">只做代运营，按月抽佣</td>
+            <td class="ar-col" data-zh="<b>收购 + 代运营 + 分销撮合</b>，多模式可选" data-en="<b>Buyout + managed ops + distribution</b>, your choice"><b>收购 + 代运营 + 分销撮合</b>，多模式可选</td>
+          </tr>
+          <tr>
+            <td data-zh="渠道覆盖" data-en="Channel reach">渠道覆盖</td>
+            <td class="dim-col" data-zh="以亚马逊等线上平台为主" data-en="Mostly Amazon &amp; online platforms">以亚马逊等线上平台为主</td>
+            <td class="ar-col" data-zh="<b>300+ 全球商超与平台</b>，逐国落地" data-en="<b>300+ global retail channels</b>, country by country"><b>300+ 全球商超与平台</b>，逐国落地</td>
+          </tr>
+          <tr>
+            <td data-zh="库存风险" data-en="Inventory risk">库存风险</td>
+            <td class="dim-col" data-zh="积压库存你自己扛" data-en="Stuck inventory stays your problem">积压库存你自己扛</td>
+            <td class="ar-col" data-zh="<b>现金收购兜底</b>，风险共担" data-en="<b>Cash buyout backstop</b> — risk shared"><b>现金收购兜底</b>，风险共担</td>
+          </tr>
+          <tr>
+            <td data-zh="品牌路径" data-en="Brand path">品牌路径</td>
+            <td class="dim-col" data-zh="不涉及" data-en="Not offered">不涉及</td>
+            <td class="ar-col" data-zh="<b>品牌收购</b>，退出与跃迁双路径" data-en="<b>Brand acquisition</b> — exit or leap forward"><b>品牌收购</b>，退出与跃迁双路径</td>
+          </tr>
+          <tr>
+            <td data-zh="数据情报" data-en="Intelligence">数据情报</td>
+            <td class="dim-col" data-zh="后台黑箱，月报几张表" data-en="Black-box back office, monthly spreadsheets">后台黑箱，月报几张表</td>
+            <td class="ar-col" data-zh="<b>711 条情报方法论</b>，每周交付" data-en="<b>Method from 711 intel reports</b>, delivered weekly"><b>711 条情报方法论</b>，每周交付</td>
+          </tr>
+          <tr>
+            <td data-zh="新品落地" data-en="New products">新品落地</td>
+            <td class="dim-col" data-zh="不涉及制造环节" data-en="No manufacturing involvement">不涉及制造环节</td>
+            <td class="ar-col" data-zh="<b>打样到量产 NPI</b> 全程陪跑" data-en="<b>Sampling-to-production NPI</b>, end to end"><b>打样到量产 NPI</b> 全程陪跑</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ACCELERATION DETAIL -->
+<section style="padding-top:0">
+  <div class="wrap split rev">
+    <div class="split-media reveal">
+      <img src="assets/ugc-creator.jpg" alt="creator filming unboxing video">
+      <div class="cap" data-zh="内容 × 托管 × 撮合" data-en="Content × Ops × Matching">内容 × 托管 × 撮合</div>
+    </div>
+    <div class="split-body reveal">
+      <div class="sec-tag">Sell-through engine</div>
+      <h3 data-zh="上架只是开始，动销才算交付" data-en="Listing is the start — sell-through is the deliverable">上架只是开始，动销才算交付</h3>
+      <p data-zh="进店不等于卖动。内容、托管、分销三件套同时转，让产品在货架上真正跑起来。" data-en="Getting in isn't selling through. Content, managed ops and distribution run together so products actually move off shelves.">进店不等于卖动。内容、托管、分销三件套同时转，让产品在货架上真正跑起来。</p>
+      <div class="feat-list">
+        <div class="feat"><div class="ico">◎</div><div><h4 data-zh="达人与 UGC 内容体系" data-en="Creator &amp; UGC engine">达人与 UGC 内容体系</h4><p data-zh="筛选建联、寄样、发布追踪到 ROI 复盘全流程托管，内容可授权用于广告投放。" data-en="Screening, seeding, tracking and ROI review fully managed; content licensed for paid ads.">筛选建联、寄样、发布追踪到 ROI 复盘全流程托管，内容可授权用于广告投放。</p></div></div>
+        <div class="feat"><div class="ico">◈</div><div><h4 data-zh="店铺代运营 7×24" data-en="Managed store ops 24/7">店铺代运营 7×24</h4><p data-zh="内容、客服、选品、上新、复盘由运营智能体打理，只有异常与决策点推给你。" data-en="Content, support, sourcing, listings and reviews run by our ops agent — only exceptions and decisions reach you.">内容、客服、选品、上新、复盘由运营智能体打理，只有异常与决策点推给你。</p></div></div>
+        <div class="feat"><div class="ico">◇</div><div><h4 data-zh="分销撮合与新品推广" data-en="Distribution matching &amp; launch">分销撮合与新品推广</h4><p data-zh="对接大卖分销网络与精品渠道，上架之后继续放大动销曲线。" data-en="Matched to power-seller networks and boutique channels to keep the sell-through curve climbing.">对接大卖分销网络与精品渠道，上架之后继续放大动销曲线。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANUFACTURING DETAIL -->
+<section style="padding-top:0">
   <div class="wrap split">
     <div class="split-media reveal">
       <img src="assets/mfg-factory.jpg" alt="precision manufacturing">
-      <div class="cap" data-zh="制造服务" data-en="Manufacturing">制造服务</div>
+      <div class="cap" data-zh="兢赛计划 · 制造服务" data-en="Project Jingsai · Manufacturing">兢赛计划 · 制造服务</div>
     </div>
     <div class="split-body reveal">
       <div class="sec-tag">Manufacturing</div>
@@ -320,7 +498,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
       <div class="feat-list">
         <div class="feat"><div class="ico">◈</div><div><h4>OEM / ODM / OBM</h4><p data-zh="代工、设计代工到自有品牌全路径，按你的阶段选打法。" data-en="From contract manufacturing to own-brand — pick the play that fits your stage.">代工、设计代工到自有品牌全路径，按你的阶段选打法。</p></div></div>
         <div class="feat"><div class="ico">◇</div><div><h4 data-zh="快速打样与量产验证" data-en="Rapid sampling &amp; validation">快速打样与量产验证</h4><p data-zh="样品快速迭代，量产良率以可量化指标锁定，直接写进交付标准。" data-en="Fast sampling iterations, with production yield locked to measurable acceptance criteria.">样品快速迭代，量产良率以可量化指标锁定，直接写进交付标准。</p></div></div>
-        <div class="feat"><div class="ico">◆</div><div><h4 data-zh="新品投产导入" data-en="New product introduction">新品投产导入</h4><p data-zh="新设备、新产线的投产导入全程陪跑，质量体系一次建对。" data-en="End-to-end support for new equipment and production lines; quality systems built right the first time.">新设备、新产线的投产导入全程陪跑，质量体系一次建对。</p></div></div>
+        <div class="feat"><div class="ico">◆</div><div><h4 data-zh="新品投产导入（NPI）" data-en="New product introduction (NPI)">新品投产导入（NPI）</h4><p data-zh="新设备、新产线的投产导入全程陪跑，质量体系一次建对。" data-en="End-to-end support for new equipment and production lines; quality systems built right the first time.">新设备、新产线的投产导入全程陪跑，质量体系一次建对。</p></div></div>
       </div>
     </div>
   </div>
@@ -407,73 +585,142 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
             <div class="channels"><span class="ch">Lidl</span><span class="ch">Tesco</span><span class="ch">Spar</span><span class="ch">dm</span><span class="ch">Rossmann</span><span class="ch">Müller</span><span class="ch">MediaMarkt</span><span class="ch">Pepco</span></div>
           </div>
         </div>
+        <p class="mkt-note" data-zh="注：Albert Heijn（荷兰）与 Albert（捷克）同属 Ahold Delhaize 集团，但为不同市场的独立品牌；Action 为泛欧折扣连锁，在法、荷、波等国均有门店——均非重复收录。" data-en="Note: Albert Heijn (NL) and Albert (CZ) are separate Ahold Delhaize banners in different markets; Action is a pan-European discounter operating across FR/NL/PL — none are duplicates.">注：Albert Heijn（荷兰）与 Albert（捷克）同属 Ahold Delhaize 集团，但为不同市场的独立品牌；Action 为泛欧折扣连锁，在法、荷、波等国均有门店——均非重复收录。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GROWTH -->
-<section id="growth">
-  <div class="wrap split rev">
-    <div class="split-media reveal">
-      <img src="assets/ugc-creator.jpg" alt="creator filming unboxing video">
-      <div class="cap" data-zh="达人 × UGC" data-en="Creators × UGC">达人 × UGC</div>
-    </div>
-    <div class="split-body reveal">
-      <div class="sec-tag">Content &amp; Growth</div>
-      <h3 data-zh="让真实用户替你讲故事" data-en="Let real users tell your story">让真实用户替你讲故事</h3>
-      <p data-zh="达人营销与 UGC 内容体系：从筛选建联、寄样到发布追踪与 ROI 复盘，全流程托管。" data-en="Influencer marketing and UGC pipelines — from screening and outreach to seeding, tracking and ROI review, fully managed.">达人营销与 UGC 内容体系：从筛选建联、寄样到发布追踪与 ROI 复盘，全流程托管。</p>
-      <div class="feat-list">
-        <div class="feat"><div class="ico">◎</div><div><h4 data-zh="达人筛选与建联" data-en="Creator screening &amp; outreach">达人筛选与建联</h4><p data-zh="按品类分层筛选，识别水粉与虚高报价，只看真实带货力。" data-en="Tiered screening by category, filtering fake followers and inflated quotes — only real selling power.">按品类分层筛选，识别水粉与虚高报价，只看真实带货力。</p></div></div>
-        <div class="feat"><div class="ico">◈</div><div><h4 data-zh="寄样与 Brief 管理" data-en="Seeding &amp; briefs">寄样与 Brief 管理</h4><p data-zh="寄样物流、合作 Brief、内容口径一站式管理，进度可视。" data-en="Sample logistics, collaboration briefs and content guidelines managed end to end, with visible progress.">寄样物流、合作 Brief、内容口径一站式管理，进度可视。</p></div></div>
-        <div class="feat"><div class="ico">◇</div><div><h4 data-zh="UGC 内容工厂" data-en="UGC content engine">UGC 内容工厂</h4><p data-zh="测评、开箱、场景化短视频批量产出，可授权用于广告投放。" data-en="Reviews, unboxings and scenario short videos produced at scale, licensed for paid ads.">测评、开箱、场景化短视频批量产出，可授权用于广告投放。</p></div></div>
-        <div class="feat"><div class="ico">◆</div><div><h4 data-zh="发布追踪与 ROI 复盘" data-en="Tracking &amp; ROI review">发布追踪与 ROI 复盘</h4><p data-zh="每条内容的播放、互动、转化逐项归因，复盘指导下一批投放。" data-en="Views, engagement and conversions attributed per post; each review informs the next campaign.">每条内容的播放、互动、转化逐项归因，复盘指导下一批投放。</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLS -->
-<section id="tools">
+<!-- INSIGHT PLATFORM -->
+<section id="insight">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-tag">Why Us</div>
-      <h2 class="sec-title" data-zh="你拿到的是结果，不是工具" data-en="You get results, not software">你拿到的是结果，不是工具</h2>
-      <p class="sec-sub" data-zh="情报、托管、定制三种交付方式——AI 在我们的后台跑，结果到你的手上。" data-en="Intel, managed ops, and customization — AI runs in our back office; results land in yours.">情报、托管、定制三种交付方式——AI 在我们的后台跑，结果到你的手上。</p>
+      <div class="sec-tag">Insight platform</div>
+      <h2 class="sec-title" data-zh="洞察平台：先看清，再进场" data-en="Insight platform: see clearly, then enter">洞察平台：先看清，再进场</h2>
+      <p class="sec-sub" data-zh="AI 持续扫描全球渠道与品类信号，审核制伙伴网络确保每一次对接都可落地——情报每周交付到你的邮箱。" data-en="AI scans global channels and category signals nonstop, and a vetted partner network keeps every introduction actionable — intel delivered to your inbox weekly.">AI 持续扫描全球渠道与品类信号，审核制伙伴网络确保每一次对接都可落地——情报每周交付到你的邮箱。</p>
     </div>
     <div class="tools-grid reveal">
       <div class="tool">
-        <div class="t-num">S-01</div>
-        <h4 data-zh="市场情报，每周到手" data-en="Weekly market intel">市场情报，每周到手</h4>
-        <p data-zh="不用自己盯几百个渠道。我们持续扫描全球平台动态，把选品结论与风险预警整理成情报交付——已沉淀 711 条，每周更新。" data-en="No need to watch hundreds of channels yourself. We scan platforms worldwide and deliver conclusions and risk alerts — 711 reports archived, updated weekly.">不用自己盯几百个渠道。我们持续扫描全球平台动态，把选品结论与风险预警整理成情报交付——已沉淀 711 条，每周更新。</p>
+        <div class="t-num">I-01</div>
+        <h4 data-zh="全球渠道动态监测" data-en="Global channel monitoring">全球渠道动态监测</h4>
+        <p data-zh="300+ 渠道的入驻政策、佣金与类目调整持续扫描，政策变化第一时间变成你的行动清单。" data-en="Onboarding policies, fees and category changes across 300+ channels, turned into your action list as they happen.">300+ 渠道的入驻政策、佣金与类目调整持续扫描，政策变化第一时间变成你的行动清单。</p>
+        <div class="t-stat">300+</div>
+      </div>
+      <div class="tool">
+        <div class="t-num">I-02</div>
+        <h4 data-zh="品类机会与风险预警" data-en="Category opportunities &amp; alerts">品类机会与风险预警</h4>
+        <p data-zh="需求信号、竞争密度、合规门槛三视角交叉验证——哪些品类值得进、哪些该撤，用数据说话。" data-en="Demand signals × competition density × compliance thresholds, cross-validated — what to enter, what to exit, backed by data.">需求信号、竞争密度、合规门槛三视角交叉验证——哪些品类值得进、哪些该撤，用数据说话。</p>
+        <div class="t-stat" data-zh="711 条沉淀" data-en="711 reports archived">711 条沉淀</div>
+      </div>
+      <div class="tool">
+        <div class="t-num">I-03</div>
+        <h4 data-zh="审核制伙伴网络" data-en="Vetted partner network">审核制伙伴网络</h4>
+        <p data-zh="品牌方、工厂、渠道伙伴资质预审后再对接，跳过无效沟通，谈判从信任起点开始。" data-en="Brands, factories and channel partners pre-vetted before introduction — no wasted meetings; talks start from trust.">品牌方、工厂、渠道伙伴资质预审后再对接，跳过无效沟通，谈判从信任起点开始。</p>
+        <div class="t-stat" data-zh="预审对接" data-en="Pre-vetted">预审对接</div>
+      </div>
+      <div class="tool">
+        <div class="t-num">I-04</div>
+        <h4 data-zh="一站式履约视角" data-en="End-to-end fulfillment view">一站式履约视角</h4>
+        <p data-zh="合规、支付、物流节点一屏跟踪，跨境订单的每一步状态可查、风险可预警。" data-en="Compliance, payments and logistics tracked on one view — every cross-border order visible, every risk flagged early.">合规、支付、物流节点一屏跟踪，跨境订单的每一步状态可查、风险可预警。</p>
         <div class="t-stat" data-zh="每周更新" data-en="Updated weekly">每周更新</div>
       </div>
-      <div class="tool">
-        <div class="t-num">S-02</div>
-        <h4 data-zh="店铺代运营，全程托管" data-en="Store management, fully managed">店铺代运营，全程托管</h4>
-        <p data-zh="内容、客服、选品、上新、复盘——运营智能体 7×24 打理日常，只有异常与决策点才推到你的桌面。" data-en="Content, support, sourcing, listing, reviews — our ops agent runs the routine 24/7; only exceptions and decisions reach your desk.">内容、客服、选品、上新、复盘——运营智能体 7×24 打理日常，只有异常与决策点才推到你的桌面。</p>
-        <div class="t-stat">7×24</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & EXPO -->
+<section id="news" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Pulse</div>
+      <h2 class="sec-title" data-zh="行业资讯与全球展会动态" data-en="Industry news &amp; global expos">行业资讯与全球展会动态</h2>
+      <p class="sec-sub" data-zh="平台每周扫描更新——这里看到的是样例，注册客户在客户专区获取完整版。" data-en="Scanned and updated weekly — samples shown here; registered clients get the full editions in the portal.">平台每周扫描更新——这里看到的是样例，注册客户在客户专区获取完整版。</p>
+    </div>
+    <div class="news-grid reveal">
+      <div class="news-col">
+        <h3 data-zh="行业资讯" data-en="Industry news">行业资讯</h3>
+        <div class="nc-sub" data-zh="每周更新 · 样例" data-en="Weekly · samples">每周更新 · 样例</div>
+        <div class="news-item">
+          <span class="d">2026-10</span>
+          <div><h5 data-zh="美国商超 2027 春季采购窗口开启" data-en="US big-box spring 2027 buying window opens">美国商超 2027 春季采购窗口开启</h5><p data-zh="Target+、Lowe's 类目准入调整解读，家居与工具类目名额收紧。" data-en="Category entry changes at Target+ and Lowe's; home &amp; tool slots tightening.">Target+、Lowe's 类目准入调整解读，家居与工具类目名额收紧。</p></div>
+        </div>
+        <div class="news-item">
+          <span class="d">2026-10</span>
+          <div><h5 data-zh="欧洲折扣连锁加速扩张" data-en="European discounters accelerate expansion">欧洲折扣连锁加速扩张</h5><p data-zh="Action、Pepco 东欧门店增长，非食品类供应商上架窗口放大。" data-en="Action and Pepco grow in Eastern Europe — wider shelf windows for non-food suppliers.">Action、Pepco 东欧门店增长，非食品类供应商上架窗口放大。</p></div>
+        </div>
+        <div class="news-item">
+          <span class="d">2026-09</span>
+          <div><h5 data-zh="澳洲商超自有品牌占比提升" data-en="AU grocers raise private-label share">澳洲商超自有品牌占比提升</h5><p data-zh="Woolworths、Coles 供应商准入与合规门槛变化，代工厂机会浮现。" data-en="Entry and compliance shifts at Woolworths and Coles open doors for contract manufacturers.">Woolworths、Coles 供应商准入与合规门槛变化，代工厂机会浮现。</p></div>
+        </div>
+        <div class="news-more" data-zh="完整版每周一封，注册客户在客户专区查看。" data-en="Full digest weekly — available to registered clients in the portal.">完整版每周一封，注册客户在客户专区查看。</div>
       </div>
-      <div class="tool">
-        <div class="t-num">S-03</div>
-        <h4 data-zh="运营智能体能力定制" data-en="Custom ops-agent capabilities">运营智能体能力定制</h4>
-        <p data-zh="以基础版运营智能体为起点，按你的品类与团队流程定制能力组合，配套上手培训与运营环境搭建。" data-en="Start from the entry-level ops agent, then tailor its capabilities to your category and workflows — with onboarding training and environment setup included.">以基础版运营智能体为起点，按你的品类与团队流程定制能力组合，配套上手培训与运营环境搭建。</p>
-        <div class="t-stat" data-zh="按需扩展" data-en="Scales with you">按需扩展</div>
+      <div class="news-col">
+        <h3 data-zh="全球展会动态" data-en="Global expos">全球展会动态</h3>
+        <div class="nc-sub" data-zh="持续追踪 · 样例" data-en="Tracked continuously · samples">持续追踪 · 样例</div>
+        <div class="news-item">
+          <span class="d">2026-11</span>
+          <div><h5 data-zh="广交会 · 中国广州" data-en="Canton Fair · Guangzhou, CN">广交会 · 中国广州</h5><p data-zh="综合进出口贸易对接，新品出海与买手见面的高密度窗口。" data-en="Comprehensive import-export matchmaking — a dense window for launches and buyer meetings.">综合进出口贸易对接，新品出海与买手见面的高密度窗口。</p></div>
+        </div>
+        <div class="news-item">
+          <span class="d">2027-01</span>
+          <div><h5 data-zh="CES · 美国拉斯维加斯" data-en="CES · Las Vegas, US">CES · 美国拉斯维加斯</h5><p data-zh="消费电子新品首发阵地，商超采购团队现场看品。" data-en="The launchpad for consumer electronics — retail buying teams scout on-site.">消费电子新品首发阵地，商超采购团队现场看品。</p></div>
+        </div>
+        <div class="news-item">
+          <span class="d">2027-02</span>
+          <div><h5 data-zh="Ambiente · 德国法兰克福" data-en="Ambiente · Frankfurt, DE">Ambiente · 德国法兰克福</h5><p data-zh="家居与消费品欧洲主展，西欧买手集中出没。" data-en="Europe's key home &amp; consumer fair — where Western European buyers gather.">家居与消费品欧洲主展，西欧买手集中出没。</p></div>
+        </div>
+        <div class="news-more" data-zh="展前建联、展中陪同、展后跟进，可按需预约。" data-en="Pre-show outreach, on-site support and post-show follow-up available on request.">展前建联、展中陪同、展后跟进，可按需预约。</div>
       </div>
+    </div>
+    <div class="wall reveal">
+      <div class="wall-lbl" data-zh="生态网络 · 我们对接的渠道与伙伴" data-en="Ecosystem · channels &amp; partners we work with">生态网络 · 我们对接的渠道与伙伴</div>
+      <div class="marquee"><div class="marquee-in" id="wallTrack">
+        <span class="ch">Target+</span><span class="ch">Lowe's</span><span class="ch">The Home Depot</span><span class="ch">Best Buy</span><span class="ch">Costco</span><span class="ch">Walmart</span><span class="ch">Wayfair</span><span class="ch">Woolworths</span><span class="ch">Coles</span><span class="ch">Bunnings</span><span class="ch">AEON</span><span class="ch">Coupang</span><span class="ch">Rakuten</span><span class="ch">Lidl</span><span class="ch">Kaufland</span><span class="ch">Carrefour</span><span class="ch">Tesco</span><span class="ch">Mercadona</span><span class="ch">Albert Heijn</span><span class="ch">Biedronka</span><span class="ch">dm</span><span class="ch">Rossmann</span><span class="ch">Action</span><span class="ch">Decathlon</span><span class="ch">Boots</span><span class="ch">Edeka</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT (lead magnet) -->
+<section class="report" id="report">
+  <div class="wrap rep-box">
+    <div class="reveal">
+      <div class="sec-tag">Free report</div>
+      <h2 class="sec-title" data-zh="免费获取一份渠道洞察报告" data-en="Get a free channel insight report">免费获取一份渠道洞察报告</h2>
+      <p class="sec-sub" style="margin-bottom:34px" data-zh="告诉我们你的品类与目标市场，48 小时内把对应渠道的准入门槛、竞争密度与机会结论发到你邮箱。" data-en="Tell us your category and target market — within 48 hours we email you entry thresholds, competition density and opportunity conclusions for the right channels.">告诉我们你的品类与目标市场，48 小时内把对应渠道的准入门槛、竞争密度与机会结论发到你邮箱。</p>
+      <div class="rep-list">
+        <div class="rl"><span class="n">01</span><div><h5 data-zh="渠道准入门槛" data-en="Entry thresholds">渠道准入门槛</h5><p data-zh="资质、合规、起订量、账期，逐渠道列清。" data-en="Credentials, compliance, MOQ and payment terms, listed per channel.">资质、合规、起订量、账期，逐渠道列清。</p></div></div>
+        <div class="rl"><span class="n">02</span><div><h5 data-zh="竞争密度与价格带" data-en="Competition &amp; price bands">竞争密度与价格带</h5><p data-zh="你的品类在目标货架上的拥挤程度与价格空间。" data-en="How crowded your category is on target shelves, and the price room left.">你的品类在目标货架上的拥挤程度与价格空间。</p></div></div>
+        <div class="rl"><span class="n">03</span><div><h5 data-zh="行动建议" data-en="Actionable next steps">行动建议</h5><p data-zh="先进哪个渠道、备哪些资质、避哪些坑。" data-en="Which channel first, which credentials to prepare, which pits to avoid.">先进哪个渠道、备哪些资质、避哪些坑。</p></div></div>
+      </div>
+    </div>
+    <div class="rep-form reveal">
+      <h3 data-zh="预约你的免费报告" data-en="Request your free report">预约你的免费报告</h3>
+      <div class="rf-sub" data-zh="留下联系方式与目标市场，48 小时内送达。" data-en="Leave your contact and target market — delivered within 48 hours.">留下联系方式与目标市场，48 小时内送达。</div>
+      <input id="repName" data-zh-placeholder="称呼" data-en-placeholder="Your name" placeholder="称呼">
+      <input id="repMail" type="email" data-zh-placeholder="邮箱" data-en-placeholder="Email" placeholder="邮箱">
+      <input id="repCat" data-zh-placeholder="品类（如：家居收纳 / 宠物用品）" data-en-placeholder="Category (e.g. home storage / pet supplies)" placeholder="品类（如：家居收纳 / 宠物用品）">
+      <div class="mkt-chips" id="repMkts">
+        <button class="mchip on" data-zh="北美" data-en="North America">北美</button>
+        <button class="mchip" data-zh="大洋洲" data-en="Oceania">大洋洲</button>
+        <button class="mchip" data-zh="东亚" data-en="East Asia">东亚</button>
+        <button class="mchip" data-zh="欧洲" data-en="Europe">欧洲</button>
+      </div>
+      <button class="btn btn-p" style="width:100%;justify-content:center" onclick="sendReport()" data-zh="免费获取报告（邮件送达）→" data-en="Get my free report (by email) →">免费获取报告（邮件送达）→</button>
     </div>
   </div>
 </section>
 
 <!-- STEPS -->
-<section style="padding-top:0">
+<section>
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="sec-tag">How we work</div>
       <h2 class="sec-title" data-zh="合作，只有三步" data-en="Three steps to start">合作，只有三步</h2>
     </div>
     <div class="steps reveal">
-      <div class="step"><h4 data-zh="诊断" data-en="Diagnose">诊断</h4><p data-zh="免费初评：你的产品、资质与目标渠道之间差哪几步，一次说清楚。" data-en="Free assessment: the exact gaps between your product, credentials and target channels.">免费初评：你的产品、资质与目标渠道之间差哪几步，一次说清楚。</p></div>
-      <div class="step"><h4 data-zh="方案" data-en="Plan">方案</h4><p data-zh="明码标价的入驻与合规方案，交付物、周期、验收标准写进合同。" data-en="Transparent onboarding &amp; compliance proposal — deliverables, timeline and acceptance criteria in contract.">明码标价的入驻与合规方案，交付物、周期、验收标准写进合同。</p></div>
+      <div class="step"><h4 data-zh="诊断" data-en="Diagnose">诊断</h4><p data-zh="免费初评：你的产品、库存、品牌与目标渠道之间差哪几步，一次说清楚。" data-en="Free assessment: the exact gaps between your product, inventory, brand and target channels.">免费初评：你的产品、库存、品牌与目标渠道之间差哪几步，一次说清楚。</p></div>
+      <div class="step"><h4 data-zh="方案" data-en="Plan">方案</h4><p data-zh="收购、代入驻、托管或撮合——明码标价，交付物、周期、验收标准写进合同。" data-en="Buyout, onboarding, managed ops or matching — transparent pricing, deliverables and acceptance criteria in contract.">收购、代入驻、托管或撮合——明码标价，交付物、周期、验收标准写进合同。</p></div>
       <div class="step"><h4 data-zh="陪跑" data-en="Run together">陪跑</h4><p data-zh="AI 托管 + 分销撮合 + 新品推广，上架只是开始，动销才算交付。" data-en="AI-managed ops, distribution matching and launch promotion — listing is the start, sell-through is the deliverable.">AI 托管 + 分销撮合 + 新品推广，上架只是开始，动销才算交付。</p></div>
     </div>
   </div>
@@ -485,12 +732,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
     <div class="sec-head reveal">
       <div class="sec-tag">Client Portal</div>
       <h2 class="sec-title" data-zh="客户专区" data-en="Client portal">客户专区</h2>
-      <p class="sec-sub" data-zh="注册即得：一对一业务咨询通道 + 平台洞察速递。品牌方、工厂与合作伙伴均可免费注册。" data-en="Register for 1-on-1 business consultation and platform insight briefings — free for brands, factories and partners.">注册即得：一对一业务咨询通道 + 平台洞察速递。品牌方、工厂与合作伙伴均可免费注册。</p>
+      <p class="sec-sub" data-zh="注册并验证联系方式后解锁：一对一业务咨询通道 + 平台洞察速递。品牌方、工厂与合作伙伴均可免费注册。" data-en="Register and verify your contact to unlock 1-on-1 consultation and platform insight briefings — free for brands, factories and partners.">注册并验证联系方式后解锁：一对一业务咨询通道 + 平台洞察速递。品牌方、工厂与合作伙伴均可免费注册。</p>
     </div>
     <div id="portalLocked" class="locked reveal">
       <div class="lock-ico">⚷</div>
-      <h3 data-zh="注册后解锁" data-en="Unlock with free registration">注册后解锁</h3>
-      <p data-zh="业务咨询与平台洞察仅向注册客户开放。填写称呼、邮箱与公司即可，无需审核，立即生效。" data-en="Consultation and insights are open to registered clients. Name, email and company — no approval needed, instant access.">业务咨询与平台洞察仅向注册客户开放。填写称呼、邮箱与公司即可，无需审核，立即生效。</p>
+      <h3 data-zh="注册验证后解锁" data-en="Unlock with registration &amp; verification">注册验证后解锁</h3>
+      <p data-zh="为确保能联系到您，注册需先验证邮箱。填写称呼、邮箱与公司，输入验证码即可进入，无需审核。" data-en="So we can reach you, registration requires email verification. Name, email, company, then the code — no approval wait.">为确保能联系到您，注册需先验证邮箱。填写称呼、邮箱与公司，输入验证码即可进入，无需审核。</p>
       <button class="btn btn-p" onclick="openReg()" data-zh="免费注册 / 登录 →" data-en="Register / sign in →">免费注册 / 登录 →</button>
     </div>
     <div id="portalOpen" style="display:none">
@@ -506,10 +753,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
         <div class="consult">
           <div class="who" id="consultWho"></div>
           <div class="topic-row" id="topicRow">
-            <button class="topic on" data-t="渠道入驻" data-zh="渠道入驻" data-en="Channel onboarding">渠道入驻</button>
-            <button class="topic" data-t="店铺代运营" data-zh="店铺代运营" data-en="Managed store ops">店铺代运营</button>
-            <button class="topic" data-t="市场情报订阅" data-zh="市场情报订阅" data-en="Market intel subscription">市场情报订阅</button>
-            <button class="topic" data-t="能力定制" data-zh="能力定制" data-en="Capability customization">能力定制</button>
+            <button class="topic on" data-t="库存变现" data-zh="库存变现" data-en="Inventory buyout">库存变现</button>
+            <button class="topic" data-t="品牌兑现" data-zh="品牌兑现" data-en="Brand acquisition">品牌兑现</button>
+            <button class="topic" data-t="渠道加速" data-zh="渠道加速" data-en="Channel acceleration">渠道加速</button>
+            <button class="topic" data-t="新品落地" data-zh="新品落地" data-en="New product landing">新品落地</button>
             <button class="topic" data-t="其他" data-zh="其他" data-en="Other">其他</button>
           </div>
           <textarea id="consultMsg" data-zh-placeholder="简单描述你的产品、目标渠道与想咨询的问题…" data-en-placeholder="Briefly describe your product, target channels and questions…" placeholder="简单描述你的产品、目标渠道与想咨询的问题…"></textarea>
@@ -543,7 +790,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
 <!-- FINAL CTA -->
 <section class="final" id="contact">
   <div class="wrap">
-    <h2 class="reveal" data-zh="下一批摆上全球货架的，可以是你的产品" data-en="The next products on global shelves could be yours">下一批摆上全球货架的，可以是你的产品</h2>
+    <h2 class="reveal" data-zh="库存、品牌、新品——哪一件，先聊？" data-en="Inventory, brand, or new product — which one first?">库存、品牌、新品——哪一件，先聊？</h2>
     <p class="reveal" data-zh="发一封邮件，48 小时内回复初评结论。" data-en="One email — initial assessment within 48 hours.">发一封邮件，48 小时内回复初评结论。</p>
     <div class="reveal">
       <a class="mail-link" href="mailto:Info@adventureretail.com">Info@adventureretail.com</a>
@@ -555,7 +802,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
 <footer>
   <div class="wrap foot">
     <span class="f-brand">⚓ ADVENTURE RETAIL</span>
-    <span data-zh="制造 × 渠道 × AI 运营 · 全球" data-en="Manufacturing × Channels × AI Ops · Global">制造 × 渠道 × AI 运营 · 全球</span>
+    <span data-zh="收购 × 渠道 × 制造 × AI 运营 · 全球" data-en="Buyout × Channels × Manufacturing × AI Ops · Global">收购 × 渠道 × 制造 × AI 运营 · 全球</span>
     <span><a href="https://adventureretail.com">adventureretail.com</a> · © 2026 Adventure Retail</span>
   </div>
 </footer>
@@ -564,21 +811,35 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
 <div class="modal" id="regModal">
   <div class="dialog">
     <button class="dclose" onclick="closeReg()">✕</button>
-    <h3 data-zh="客户注册" data-en="Client registration">客户注册</h3>
-    <div class="dsub" data-zh="品牌方、工厂与合作伙伴均可免费注册，立即解锁客户专区。" data-en="Free for brands, factories and partners — instant portal access.">品牌方、工厂与合作伙伴均可免费注册，立即解锁客户专区。</div>
-    <div class="type-row" id="typeRow">
-      <button class="ttype on" data-zh="品牌方" data-en="Brand">品牌方</button>
-      <button class="ttype" data-zh="工厂" data-en="Factory">工厂</button>
-      <button class="ttype" data-zh="合作伙伴" data-en="Partner">合作伙伴</button>
+    <!-- step 1: info -->
+    <div id="regStep1">
+      <h3 data-zh="客户注册" data-en="Client registration">客户注册</h3>
+      <div class="dsub" data-zh="品牌方、工厂与合作伙伴均可免费注册。第一步：填写基本信息。" data-en="Free for brands, factories and partners. Step 1: your basic info.">品牌方、工厂与合作伙伴均可免费注册。第一步：填写基本信息。</div>
+      <div class="type-row" id="typeRow">
+        <button class="ttype on" data-zh="品牌方" data-en="Brand">品牌方</button>
+        <button class="ttype" data-zh="工厂" data-en="Factory">工厂</button>
+        <button class="ttype" data-zh="合作伙伴" data-en="Partner">合作伙伴</button>
+      </div>
+      <input id="regName" data-zh-placeholder="称呼" data-en-placeholder="Your name" placeholder="称呼">
+      <input id="regMail" type="email" data-zh-placeholder="邮箱（用于接收验证码）" data-en-placeholder="Email (for verification code)" placeholder="邮箱（用于接收验证码）">
+      <input id="regCo" data-zh-placeholder="公司名称" data-en-placeholder="Company" placeholder="公司名称">
+      <button class="btn btn-p" onclick="sendCode()" data-zh="发送验证码 →" data-en="Send verification code →">发送验证码 →</button>
     </div>
-    <input id="regName" data-zh-placeholder="称呼" data-en-placeholder="Your name" placeholder="称呼">
-    <input id="regMail" type="email" data-zh-placeholder="邮箱" data-en-placeholder="Email" placeholder="邮箱">
-    <input id="regCo" data-zh-placeholder="公司名称" data-en-placeholder="Company" placeholder="公司名称">
-    <button class="btn btn-p" onclick="submitReg()" data-zh="注册并进入专区 →" data-en="Register &amp; enter →">注册并进入专区 →</button>
+    <!-- step 2: verify -->
+    <div id="regStep2" style="display:none">
+      <h3 data-zh="验证联系方式" data-en="Verify your contact">验证联系方式</h3>
+      <div class="dsub" id="verifySub" data-zh="验证码已发送，请查收邮箱并输入 6 位验证码。" data-en="Code sent — check your inbox and enter the 6-digit code.">验证码已发送，请查收邮箱并输入 6 位验证码。</div>
+      <input id="regCode" class="code-input" maxlength="6" inputmode="numeric" data-zh-placeholder="——————" data-en-placeholder="——————" placeholder="——————">
+      <button class="btn btn-p" onclick="verifyCode()" data-zh="验证并进入专区 →" data-en="Verify &amp; enter →">验证并进入专区 →</button>
+      <div class="dnote">
+        <span data-zh="没收到？" data-en="No code?">没收到？</span><button class="linkbtn" onclick="resendCode()" data-zh="重新发送" data-en="Resend">重新发送</button>
+        · <button class="linkbtn" onclick="backToStep1()" data-zh="返回修改信息" data-en="Back to edit info">返回修改信息</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div id="toast" style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--grad);color:#fff;padding:12px 28px;border-radius:99px;font-size:13.5px;transition:.4s;opacity:0;z-index:200;box-shadow:0 8px 30px rgba(249,115,22,.4)"></div>
+<div id="toast" style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--grad);color:#fff;padding:12px 28px;border-radius:99px;font-size:13.5px;transition:.4s;opacity:0;z-index:400;box-shadow:0 8px 30px rgba(249,115,22,.4);max-width:88vw;text-align:center"></div>
 
 <script>
 // ---- language toggle ----
@@ -595,19 +856,20 @@ function setLang(l){
   });
   document.querySelectorAll('[data-zh-placeholder]').forEach(el=>{const v=l==='zh'?el.dataset.zhPlaceholder:(el.dataset.enPlaceholder||el.dataset.zhPlaceholder);if(v!==undefined)el.placeholder=v;});
   renderPortal();
-  document.title = l==='zh'?'Adventure Retail · 从工厂车间到全球货架':'Adventure Retail · From Factory Floor to Global Shelves';
+  document.title = l==='zh'?'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速':'Adventure Retail · Inventory, Brands & Channel Acceleration';
   toast(l==='zh'?'已切换为中文':'Switched to English');
 }
-function toast(msg){
+function toast(msg,long){
   const t=document.getElementById('toast');t.textContent=msg;
   t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';
-  clearTimeout(t._tm);t._tm=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(80px)';},1600);
+  clearTimeout(t._tm);t._tm=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(80px)';},long?5200:1800);
 }
 // ---- client portal ----
 const LS='ar_client';
 function getClient(){try{return JSON.parse(localStorage.getItem(LS))}catch(e){return null}}
-function openReg(){document.getElementById('regModal').classList.add('open')}
+function openReg(){document.getElementById('regModal').classList.add('open');backToStep1()}
 function closeReg(){document.getElementById('regModal').classList.remove('open')}
+function backToStep1(){document.getElementById('regStep1').style.display='';document.getElementById('regStep2').style.display='none'}
 document.getElementById('typeRow').addEventListener('click',e=>{
   const b=e.target.closest('.ttype');if(!b)return;
   document.querySelectorAll('#typeRow .ttype').forEach(x=>x.classList.remove('on'));b.classList.add('on');
@@ -616,16 +878,42 @@ document.getElementById('topicRow').addEventListener('click',e=>{
   const b=e.target.closest('.topic');if(!b)return;
   document.querySelectorAll('#topicRow .topic').forEach(x=>x.classList.remove('on'));b.classList.add('on');
 });
-function submitReg(){
+document.getElementById('repMkts').addEventListener('click',e=>{
+  const b=e.target.closest('.mchip');if(!b)return;
+  document.querySelectorAll('#repMkts .mchip').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+});
+// ---- registration with verification (front-end demo flow; TODO: wire to backend mail service) ----
+let pendingClient=null, pendingCode='';
+function genCode(){return String(Math.floor(100000+Math.random()*900000))}
+function sendCode(){
   const name=document.getElementById('regName').value.trim();
   const mail=document.getElementById('regMail').value.trim();
   const co=document.getElementById('regCo').value.trim();
   const type=document.querySelector('#typeRow .ttype.on');
   if(!name||!mail||!co){toast(lang==='zh'?'请填写称呼、邮箱与公司':'Name, email and company required');return}
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){toast(lang==='zh'?'邮箱格式不正确':'Invalid email address');return}
-  localStorage.setItem(LS,JSON.stringify({name,mail,co,typeZh:type.dataset.zh,typeEn:type.dataset.en,ts:Date.now()}));
+  pendingClient={name,mail,co,typeZh:type.dataset.zh,typeEn:type.dataset.en};
+  pendingCode=genCode();
+  document.getElementById('regStep1').style.display='none';
+  document.getElementById('regStep2').style.display='';
+  document.getElementById('regCode').value='';
+  // demo: no backend mailer yet — surface the code directly
+  toast((lang==='zh'?'演示验证码（正式环境将邮件送达）：':'Demo code (email delivery in production): ')+pendingCode,true);
+}
+function resendCode(){
+  if(!pendingClient){backToStep1();return}
+  pendingCode=genCode();
+  toast((lang==='zh'?'新验证码：':'New code: ')+pendingCode,true);
+}
+function verifyCode(){
+  const v=document.getElementById('regCode').value.trim();
+  if(!pendingClient){backToStep1();return}
+  if(v!==pendingCode){toast(lang==='zh'?'验证码不正确，请重试':'Incorrect code, try again');return}
+  pendingClient.ts=Date.now();pendingClient.verified=true;
+  localStorage.setItem(LS,JSON.stringify(pendingClient));
+  pendingClient=null;pendingCode='';
   closeReg();renderPortal();
-  toast(lang==='zh'?'注册成功，已进入客户专区':'Registered — welcome to the portal');
+  toast(lang==='zh'?'验证成功，已进入客户专区':'Verified — welcome to the portal');
   document.getElementById('portal').scrollIntoView({behavior:'smooth'});
 }
 function renderPortal(){
@@ -653,8 +941,23 @@ function sendConsult(){
   const body=encodeURIComponent((lang==='zh'?'称呼: ':'Name: ')+c.name+'\n'+(lang==='zh'?'公司: ':'Company: ')+c.co+'\n'+(lang==='zh'?'类型: ':'Type: ')+(lang==='zh'?c.typeZh:c.typeEn)+'\n'+(lang==='zh'?'邮箱: ':'Email: ')+c.mail+'\n'+(lang==='zh'?'主题: ':'Topic: ')+topicLabel+'\n\n'+msg);
   location.href='mailto:Info@adventureretail.com?subject='+subject+'&body='+body;
 }
+function sendReport(){
+  const name=document.getElementById('repName').value.trim();
+  const mail=document.getElementById('repMail').value.trim();
+  const cat=document.getElementById('repCat').value.trim();
+  const mkt=document.querySelector('#repMkts .mchip.on');
+  const mktLabel=lang==='zh'?mkt.dataset.zh:mkt.dataset.en;
+  if(!name||!mail){toast(lang==='zh'?'请填写称呼与邮箱':'Name and email required');return}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){toast(lang==='zh'?'邮箱格式不正确':'Invalid email address');return}
+  const subject=encodeURIComponent((lang==='zh'?'[免费渠道洞察报告] ':'[Free channel report] ')+(cat||(lang==='zh'?'未填品类':'category n/a'))+' · '+mktLabel);
+  const body=encodeURIComponent((lang==='zh'?'称呼: ':'Name: ')+name+'\n'+(lang==='zh'?'邮箱: ':'Email: ')+mail+'\n'+(lang==='zh'?'品类: ':'Category: ')+(cat||'-')+'\n'+(lang==='zh'?'目标市场: ':'Target market: ')+mktLabel);
+  location.href='mailto:Info@adventureretail.com?subject='+subject+'&body='+body;
+  toast(lang==='zh'?'已生成邮件，发送后 48 小时内送达报告':'Email drafted — report within 48h after sending');
+}
 function logout(){localStorage.removeItem(LS);renderPortal();toast(lang==='zh'?'已退出登录':'Signed out')}
 renderPortal();
+// ---- brand wall marquee: duplicate track for seamless loop ----
+(function(){const t=document.getElementById('wallTrack');t.innerHTML+=t.innerHTML})();
 // ---- nav scroll ----
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
