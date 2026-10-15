@@ -2,7 +2,7 @@
 
 管理全部在营项目的工作任务与进度，按统一 SDLC 流程（见 [PROCESS.md](PROCESS.md)）运转。**main 分支 = 总览看板 + 流程规范**；**每个项目一条专属分支，分支名与其 GitHub 源码仓一一对应**（家族级聚合分支为例外，一条分支管多仓，如 [`coach-family`](../../tree/coach-family)），分支内维护流程档案与管理文件。组合级阻塞与缺口统一登记于 [ISSUES.md](ISSUES.md)（问题清单）。
 
-更新日期：2026-10-13 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / DSH 客户端派生 / PI mono / Qoder Cloud Agents / 平台侧 SaaS 多个技术底座）· **组合战略：稳卖学堂（wenmai）为调研对象，其业务模式与能力全部以 Adventure Retail 品牌线实现**（wenmai 家族 = 调研成果；Adventure Retail = 实现载体；ezinq-study 同模式）· **发布优先级（2026-10-08 定稿）：target-qoder-workbench（美国 Target 工作台）组合内最先发布**
+更新日期：2026-10-15 · 隶属 Hdhaidong 产品组合（多路线矩阵：每产品 dsh 插件 / DSH 客户端派生 / PI mono / Qoder Cloud Agents / 平台侧 SaaS 多个技术底座）· **组合战略：稳卖学堂（wenmai）为调研对象，其业务模式与能力全部以 Adventure Retail 品牌线实现**（wenmai 家族 = 调研成果；Adventure Retail = 实现载体；ezinq-study 同模式）· **发布优先级（2026-10-08 定稿）：target-qoder-workbench（美国 Target 工作台）组合内最先发布**
 
 ## 一、项目矩阵（总览看板）
 
@@ -25,6 +25,7 @@
 | 15 | Adventure Affiliate · 种草×联盟营销×红人经纪 Agent | [`adventure-affiliate`](../../tree/adventure-affiliate) | 待建（M0 T-1） | PI mono | 0.1.0-dev | 🟡 P1 规格（2026-10-10 立项：三向匹配 + 红人经纪 + 5 渠道；YooFinds 确认为第 5 渠道；对标美印双市场完成；归口 adventure-retail-agent） | M0 T-1 源码仓创建 + pi-mono v1.1.0 脚手架（ISS-1..4 待拍板）→ M1 达人池与联盟登记 |
 | 16 | Adventure Retail 猎头版 · 跨境人才猎头 flavor（adventure-headhunt） | [`adventure-headhunt`](../../tree/adventure-headhunt) | 待建（M1 DSH 派生，母版 target-ops-client） | DSH 客户端派生 | 0.1.0 | 🟡 P0 需求（2026-10-10 立项：客户端猎头 flavor 版 · 四项拍板；域名 talent.adventureretail.com 登记标准仓坐标表；DSH 第 5 flavor · 首个业务域 flavor——人才撮合） | M1 DSH 基座派生 + 品牌适配（ISS-1 安装包名/App ID 待拍板）→ M2 猎头能力对齐（人才库/岗位库/匹配/成单/提成）→ M3 出包 + talent 门户 |
 | 17 | Adventure Retail 展会版 · 跨境展会情报+撮合 flavor（adventure-expo） | [`adventure-expo`](../../tree/adventure-expo) | 待建（M1 DSH 派生，母版 target-ops-client） | DSH 客户端派生 | 0.1.0 | 🟡 P0 需求（2026-10-11 立项：情报+撮合综合版 · 四项拍板；覆盖=美国/澳洲/加拿大/欧洲/土耳其五大海外市场+国内展；域名 expo.adventureretail.com 登记标准仓坐标表；DSH 第 6 flavor · 第 2 个业务域 flavor——展会情报+撮合） | M1 DSH 基座派生 + 品牌适配（ISS-1 安装包名/App ID 待拍板）→ M2 展会能力对齐（日历/参展商/新品情报 + 建联/跟进/提成）→ M3 出包 + expo 门户 |
+| 18 | Knocket 客服联络层调研 · 隶属 AR 研究层 | [`knocket-study`](../../tree/knocket-study) | 无独立仓（外部产品调研） | 研究层调研 | 0.1.0 | 🟡 P0 调研（2026-10-15 立项，官网基线已捕获：三入口 + 统一收件箱 + AI Agent 转人工 + Telegram 互通，100% Free 定位） | M2 Knocket 能力矩阵细化 → M3 联络层赛道深挖（Tawk.to / Crisp / Chatwoot / Intercom 等）→ M4 报告 + adventure-platform / CRM 线客服售后能力建议 |
 
 图例：🟢 正常推进 · 🟡 有关键待验证项 · 🔴 阻塞 · ⚪ 归档
 
@@ -59,4 +60,4 @@ P0 需求 → P1 规格 → P2 设计 → P3 开发 → P4 测试 → P5 发布 
 
 ## 五、多路线总纲（2026-10-08 修订）
 
-组合五条技术路线：**① dsh 插件**（宿主 dsh Desktop；范本 wenmai-agent）· **② DSH 客户端派生**（deepseek-harness-new 基座派生独立客户端 + flavor 随安装包下发；范本 target-ops-client → lowes-ops-client / homedepot-ops-workbench）· **③ PI mono**（pi-kernel 内嵌 Electron 客户端；范本 tg-coach / adventure-retail-client）· **④ Qoder Cloud Agents**（云端多租户工作台；范本 target-qoder-workbench → adventure-retail-agent Qoder 底座）· **⑤ 平台侧 SaaS**（adventure-platform）。同产品多路线间：域规则、需求、测试口径同步；一侧变更需在对端分支 TASKS.md 立同步任务。**研究层调研项目**（wenmai 家族 / ezinq-study）→ 调研成果以 Adventure Retail 品牌线实现（组合战略）。
+组合五条技术路线：**① dsh 插件**（宿主 dsh Desktop；范本 wenmai-agent）· **② DSH 客户端派生**（deepseek-harness-new 基座派生独立客户端 + flavor 随安装包下发；范本 target-ops-client → lowes-ops-client / homedepot-ops-workbench）· **③ PI mono**（pi-kernel 内嵌 Electron 客户端；范本 tg-coach / adventure-retail-client）· **④ Qoder Cloud Agents**（云端多租户工作台；范本 target-qoder-workbench → adventure-retail-agent Qoder 底座）· **⑤ 平台侧 SaaS**（adventure-platform）。同产品多路线间：域规则、需求、测试口径同步；一侧变更需在对端分支 TASKS.md 立同步任务。**研究层调研项目**（wenmai 家族 / ezinq-study / knocket-study）→ 调研成果以 Adventure Retail 品牌线实现（组合战略）。
