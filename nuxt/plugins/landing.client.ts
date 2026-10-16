@@ -5,6 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const LANG_KEY = 'ar_lang'
   let lang = 'zh'
   let pendingClient: any = null
+  let pendingPlatform: string | null = null
 
   const $ = (id: string): any => document.getElementById(id)
 
@@ -129,6 +130,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       pendingClient = null
       closeReg(); renderPortal()
       toast(lang === 'zh' ? '验证成功，已进入客户专区' : 'Verified — welcome to the portal')
+      if (pendingPlatform) {
+        const p = pendingPlatform; pendingPlatform = null
+        prefillPlatformConsult(p)
+      }
       $('portal')?.scrollIntoView({ behavior: 'smooth' })
     } catch {
       toast(lang === 'zh' ? '验证失败，请稍后重试' : 'Verify failed, please try again')
@@ -141,6 +146,26 @@ export default defineNuxtPlugin((nuxtApp) => {
     $('pane-insight')?.classList.toggle('on', p === 'insight')
     $('tabConsult')?.classList.toggle('on', p === 'consult')
     $('tabInsight')?.classList.toggle('on', p === 'insight')
+  }
+
+  // ---- 平台卡 CTA：带产品上下文进咨询 ----
+  const prefillPlatformConsult = (p: string) => {
+    showPane('consult')
+    const ta = $('consultMsg')
+    if (ta && !ta.value.trim()) {
+      ta.value = lang === 'zh' ? `我想了解 Sell on ${p} 这款产品：` : `I'd like to know more about Sell on ${p}: `
+    }
+    $('portal')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const pickPlatform = (p: string) => {
+    if (!getClient()) {
+      pendingPlatform = p
+      openReg()
+      toast(lang === 'zh' ? `注册验证后即可咨询 Sell on ${p}` : `Register & verify to ask about Sell on ${p}`, true)
+      return
+    }
+    prefillPlatformConsult(p)
   }
 
   const sendConsult = async () => {
@@ -188,7 +213,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   // 暴露给 raw HTML 的 inline onclick
   Object.assign(window as any, {
     setLang, openReg, closeReg, backToStep1, sendCode, resendCode, verifyCode,
-    showPane, sendConsult, sendReport, logout
+    showPane, sendConsult, sendReport, logout, pickPlatform
   })
 
   nuxtApp.hook('app:mounted', () => {
