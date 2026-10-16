@@ -1,0 +1,42 @@
+name: Deploy adventureretail.com (Nuxt → Cloudflare Pages)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'nuxt/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pages-adventureretail-web
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: nuxt
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: nuxt/package-lock.json
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build (nitro cloudflare-pages)
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages (production)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: nuxt
+          command: pages deploy .output/public --project-name=adventureretail-web --branch=main

@@ -1,0 +1,13 @@
+name = "adventureretail-web"
+pages_build_output_dir = ".output/public"
+compatibility_date = "2026-10-16"
+compatibility_flags = ["nodejs_compat"]
+
+# 业务平台 API（生产环境建议用 wrangler secret 管理 token）
+# [vars]
+# PLATFORM_API_BASE = "https://api.adventureretail.com"
+
+# 验证码存储 KV（生产建议绑定；未绑定时退化为内存存储，仅适合演示）
+# [[kv_namespaces]]
+# binding = "AR_KV"
+# id = "<namespace-id>"
