@@ -3,4 +3,5 @@ node_modules
 .nuxt
 dist
 .wrangler
+.npm-cache
 *.log

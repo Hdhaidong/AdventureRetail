@@ -21,17 +21,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: nuxt/package-lock.json
+          cache: pnpm
+          cache-dependency-path: nuxt/pnpm-lock.yaml
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: pnpm install --frozen-lockfile
 
       - name: Build (nitro cloudflare-pages)
-        run: npm run build
+        run: pnpm run build
 
       - name: Deploy to Cloudflare Pages (production)
         uses: cloudflare/wrangler-action@v3
@@ -39,4 +43,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: nuxt
-          command: pages deploy .output/public --project-name=adventureretail-web --branch=main
+          command: pages deploy dist --project-name=adventureretail-web --branch=main
