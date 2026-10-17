@@ -1,0 +1,21 @@
+# PROJECT.yaml · adventure-whatnot
+project: adventure-whatnot
+title: Whatnot 平台标准产品（Adventure Retail for Whatnot）
+route: pi-agent   # PI 路线平台 Agent（pi-kernel v2 底座 + Adventure Retail 品牌壳；能力/业务模型/算法/数据/标准 Skill 由平台持续推送至 MMS 标准化（Skill 按平台系列品牌化开发），付费后从平台下发组装；MMS 详见 adventure-platform 档案 mms 段）
+version: 0.1.0
+status: active
+updated: "2026-10-18"
+sdlc:
+  stage: P0-req
+  gates:
+    P0-req: "2026-10-18（建档：平台维度标准产品立项 · 矩阵 #30 · 按平台购买商业口径定稿 · 全岗位能力全景登记）"
+  note: "平台标准产品批次（Whatnot · pi-kernel 已有 whatnot 连接器先行实现，MVP 有实测基础）；平台持续向 MMS 推出能力/业务模型/算法/数据/标准 Skill（Skill 按平台系列品牌化开发），经标准化后产品化为面向 Whatnot 平台 × 类目的标准实现（MMS 标准化模式对标埃森哲，详见 adventure-platform 档案 mms 段）；U-1 竞品调研 50 家基线未启动；产品化完成后须测试对标竞品，通过方可宣发"
+source:
+  github_repo: 待建（PI 路线平台产品仓，M0 创建）
+  local: 待建（规划 D:\Hdhaidong-dev\adventure-whatnot）
+affiliation: adventure-retail-agent（三底座产品线 · PI 路线平台标准产品批次；2026-10-18 按平台购买口径立项，归口标准仓 Hdhaidong/adventure-retail-agent）
+commercial:
+  model: 客户按平台购买——Whatnot 标准产品为付费下发单元；能力/业务模型/算法/数据/标准 Skill 在平台侧生产并经 MMS 标准化打包，客户付费后经能力市场下发能力包至客户端（开箱即用 + 能力持续更新）
+  platform: Whatnot（美国直播拍卖电商平台，实时出价社交购物）
+role: Whatnot 平台标准产品——面向 Whatnot 卖家/主播的一体化运营 Agent：覆盖市场调研、选品分析、竞品监控、Listing 优化、批量刊登、主图详情、广告投放、订单履约、库存补货、合规审查、利润分析等全岗位能力；直播拍卖运营（实时出价/直播排期/秒杀）与社交粉丝运营为平台特色；类目知识包（收藏品/潮玩/时尚/电子/藏书等）从平台持续下发
+next: "U-1 竞品调研 50 家基线入洞察仓（wenmai-research/competitors/）→ SOW 规格化 → 平台能力包 MVP（PI 底座 Extension 形态 + Whatnot 连接器（复用 pi-kernel 先行实现））"
