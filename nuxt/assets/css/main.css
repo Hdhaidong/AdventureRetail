@@ -340,6 +340,15 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
 @media(max-width:1100px){.pillars{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.pillars{grid-template-columns:1fr}}
 
+/* ============ BARRIERS (challenge-first) ============ */
+.barriers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:60px}
+.barrier{background:var(--panel);padding:34px 30px}
+.barrier .b-num{font-family:var(--disp);font-size:12px;color:var(--dim);letter-spacing:.2em;margin-bottom:16px}
+.barrier h4{font-family:var(--disp);font-size:19px;font-weight:700;margin-bottom:8px}
+.barrier p{font-size:13px;color:var(--sub);font-weight:300;line-height:1.65;margin-bottom:16px}
+.barrier .b-ans{font-family:var(--disp);font-size:12px;letter-spacing:.1em;color:var(--orange2)}
+@media(max-width:800px){.barriers{grid-template-columns:1fr}}
+
 /* ============ FAQ ============ */
 .faq-list{display:flex;flex-direction:column;gap:14px;max-width:860px}
 .faq-item{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
