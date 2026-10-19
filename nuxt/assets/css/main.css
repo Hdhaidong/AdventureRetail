@@ -349,6 +349,17 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
 .barrier .b-ans{font-family:var(--disp);font-size:12px;letter-spacing:.1em;color:var(--orange2)}
 @media(max-width:800px){.barriers{grid-template-columns:1fr}}
 
+/* ============ PATHS (delivery paths) ============ */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.path{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px 28px;transition:.35s}
+.path:hover{border-color:rgba(249,115,22,.4);transform:translateY(-3px)}
+.path .p-tag{display:inline-block;font-family:var(--disp);font-size:11.5px;letter-spacing:.14em;color:var(--orange2);border:1px solid rgba(249,115,22,.35);border-radius:99px;padding:5px 14px;margin-bottom:16px}
+.path h5{font-family:var(--disp);font-size:16.5px;font-weight:700;margin-bottom:18px}
+.path ol{list-style:none;counter-reset:pstep;display:flex;flex-direction:column;gap:12px}
+.path ol li{counter-increment:pstep;font-size:13px;color:var(--sub);font-weight:300;padding-left:34px;position:relative;line-height:1.6}
+.path ol li::before{content:counter(pstep,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--disp);font-size:11.5px;color:var(--orange2);letter-spacing:.06em}
+@media(max-width:800px){.paths{grid-template-columns:1fr}}
+
 /* ============ FAQ ============ */
 .faq-list{display:flex;flex-direction:column;gap:14px;max-width:860px}
 .faq-item{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
