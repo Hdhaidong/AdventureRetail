@@ -320,3 +320,32 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--bg2)}
 .mx-row h4{flex:0 0 150px;font-family:var(--disp);font-size:15px;font-weight:600;padding-top:4px}
 .mx-plat{display:flex;flex-wrap:wrap;gap:6px;flex:1}
 @media(max-width:700px){.mx-row{flex-direction:column;gap:10px}.mx-row h4{flex-basis:auto}}
+
+/* ============ KEYWORD TICKER ============ */
+.kwticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:18px 0}
+.kwticker .marquee-in{animation-duration:38s;gap:10px}
+.kwticker .ch{font-family:var(--disp);font-size:12.5px;letter-spacing:.08em;color:var(--sub)}
+
+/* ============ PILLARS (operating model) ============ */
+.pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.pillar{background:var(--panel);padding:36px 26px;transition:.35s;display:block;position:relative}
+.pillar:hover{background:#161927}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:.35s}
+.pillar:hover::before{opacity:1}
+.pillar .pl-num{font-family:var(--disp);font-size:13px;color:var(--dim);letter-spacing:.2em;margin-bottom:20px}
+.pillar h4{font-family:var(--disp);font-size:19px;font-weight:700;margin-bottom:4px}
+.pillar .pl-en{font-family:var(--disp);font-size:11px;letter-spacing:.14em;color:var(--orange2);text-transform:uppercase;margin-bottom:14px}
+.pillar p{font-size:12.5px;color:var(--sub);font-weight:300;line-height:1.65}
+.pillar .pl-go{margin-top:16px;font-family:var(--disp);font-size:11.5px;letter-spacing:.1em;color:var(--orange2)}
+@media(max-width:1100px){.pillars{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.pillars{grid-template-columns:1fr}}
+
+/* ============ FAQ ============ */
+.faq-list{display:flex;flex-direction:column;gap:14px;max-width:860px}
+.faq-item{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
+.faq-item[open]{border-color:rgba(249,115,22,.4)}
+.faq-item summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;cursor:pointer;list-style:none;font-family:var(--disp);font-size:16px;font-weight:600}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--orange2);font-size:16px;transition:.3s}
+.faq-item[open] summary::after{content:'−';border-color:var(--orange);background:rgba(249,115,22,.1)}
+.faq-a{padding:0 26px 24px;font-size:14px;color:var(--sub);font-weight:300;line-height:1.75}
