@@ -1,14 +1,14 @@
 // Adventure Retail 官网 · Nuxt 3 + Cloudflare Pages
 const SITE = 'https://adventureretail.com'
-const DESC_ZH = 'Adventure Retail — AI 驱动的零售洞察加速平台。品牌洞察 × 渠道加速 × 全托管 × 数字工具 × 数字运营，覆盖近 50 个电商平台与 300+ 线下零售连锁。'
-const DESC_EN = 'Adventure Retail — AI-driven retail insight & acceleration platform. Brand insight, channel acceleration, managed services, digital tools and digital operations across ~50 platforms and 300+ retail chains.'
+const DESC_ZH = 'Adventure Retail — 帮品牌与工厂把产品摆上全球货架：库存变现、品牌兑现、渠道加速三条业务线，加海外采购线从中国直采家用电器、工厂设备与农业机械。覆盖近 50 个电商平台与 300+ 线下零售连锁。'
+const DESC_EN = 'Adventure Retail — we help brands and factories win global shelves: inventory buyout, brand / ODM–OEM–OBM launches and channel acceleration, plus direct sourcing from China (home appliances, factory equipment, agricultural machinery) across ~50 platforms and 300+ retail chains.'
 
 // 与首页 #faq 区块保持一致（GEO：FAQPage 结构化数据）
 const FAQ: [string, string][] = [
   ['Adventure Retail 是做什么的？',
-   'Adventure Retail 是 AI 驱动的零售洞察加速平台。我们帮品牌与工厂把产品摆上全球货架：库存变现（收库存）、品牌兑现（ODM 新品）、渠道加速（平台产品）三条业务线，覆盖入驻上架、广告投放、内容种草、运营答疑与平台情报——能力落到你目标平台上的具体产品，开箱即用。'],
+   'Adventure Retail 是 AI 驱动的零售洞察加速平台。我们帮品牌与工厂把产品摆上全球货架：库存变现（收库存）、品牌兑现（ODM / OEM / OBM）、渠道加速（平台产品）三条业务线，覆盖入驻上架、广告投放、内容种草与运营答疑；另设海外采购线——帮海外买家从中国直采家用电器、工厂设备与农业机械。能力落到你目标平台上的具体产品，开箱即用。'],
   ['你们覆盖哪些平台与渠道？',
-   '线上覆盖 Amazon、Walmart、TikTok Shop、Temu 等近 50 个电商平台；线下覆盖美国、加拿大、澳洲、新西兰、日本、韩国与欧洲（东西双线）300+ 主流零售连锁，包括 Target+、Lowe\'s、The Home Depot、Best Buy、Costco、Woolworths、Coles、AEON、Coupang、Lidl、Carrefour、Tesco 等。每个渠道都有持续更新的情报库支撑。'],
+   '线上覆盖 Amazon、Walmart、Target+、Lowe\'s、The Home Depot、Best Buy、Wayfair、Mirakl、Mercado Libre、Bol 等近 50 个电商平台；线下覆盖美国、加拿大、澳洲、新西兰、日本、韩国与欧洲（东西双线）300+ 主流零售连锁，包括 Costco、Woolworths、Coles、AEON、Coupang、Lidl、Carrefour、Tesco 等。每个渠道都有持续更新的情报库支撑。'],
   ['想进美国大商超（Target、Lowe\'s、The Home Depot），怎么开始？',
    '从一次免费初评开始：我们评估你的产品、资质与目标渠道的差距，给出准入门槛、合规清单与时间表。确认合作后，由对应平台的入驻产品承接——资料制作、合规代建、买手对接、上架跟进全流程陪跑，直到产品摆上货架。'],
   ['收库存怎么合作？',
@@ -16,7 +16,9 @@ const FAQ: [string, string][] = [
   ['你们怎么收费？',
    '按产品明码标价，不按人头计费。入驻类产品：资料制作与 AI 评估收费，提交入驻本身免费；托管类产品：按结果或周期收费，交付物与验收标准写进合同；收库存：收购价或分销佣金，方案确认后签约。人工咨询需预约，单独计费。'],
   ['你们和传统代运营有什么区别？',
-   '三个区别：第一，交付物是产品不是工时——每个平台一款产品，能力持续下发更新；第二，AI 智能体 7×24 盯店，只有异常与决策点推给人，效率和响应速度不在一个量级；第三，我们同时持有渠道情报与分销网络，上架之后继续管动销——代运营管店，我们管结果。']
+   '三个区别：第一，交付物是产品不是工时——每个平台一款产品，能力持续下发更新；第二，AI 智能体 7×24 盯店，只有异常与决策点推给人，效率和响应速度不在一个量级；第三，我们同时持有渠道情报与分销网络，上架之后继续管动销——代运营管店，我们管结果。'],
+  ['海外采购怎么合作？怎么保障？',
+   '告诉我们采购品类（家用电器、工厂设备或农业机械）与目标市场，从选厂验厂、谈判质检到物流清关全程由我们托管：只推通过验厂的工厂，出货前安排第三方质检，交易与运输配有高额保险保障，交付后提供永久售后服务。从一个询价开始，48 小时内给出工厂短名单与报价区间。']
 ]
 
 const jsonLd = {
@@ -58,21 +60,21 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'zh-CN' },
-      title: 'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速',
+      title: 'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速 × 海外采购',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: DESC_ZH },
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Adventure Retail' },
-        { property: 'og:title', content: 'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速' },
+        { property: 'og:title', content: 'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速 × 海外采购' },
         { property: 'og:description', content: DESC_ZH },
         { property: 'og:url', content: SITE + '/' },
         { property: 'og:image', content: SITE + '/assets/hero-port.jpg' },
         { property: 'og:locale', content: 'zh_CN' },
         { property: 'og:locale:alternate', content: 'en_US' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Adventure Retail · Inventory, Brands & Channel Acceleration' },
+        { name: 'twitter:title', content: 'Adventure Retail · Inventory, Brands, Channels & China Sourcing' },
         { name: 'twitter:description', content: DESC_EN },
         { name: 'twitter:image', content: SITE + '/assets/hero-port.jpg' }
       ],

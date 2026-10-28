@@ -28,6 +28,31 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const validMail = (m: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)
 
+  // ---- ROI 计算器（滑杆单位 $100K → ×1e5）----
+  const fmtM = (v: number) => {
+    if (v < 1e6) return '$' + Math.round(v / 1e3) + 'K'
+    const m = v / 1e6
+    const s = m.toFixed(1)
+    return '$' + (s.endsWith('.0') && m >= 10 ? s.slice(0, -2) : s) + 'M'
+  }
+  const calcRoi = () => {
+    const rev = parseFloat($('roiRev')?.value || '120') * 1e5
+    const mar = parseFloat($('roiMar')?.value || '14') / 100
+    const rOut = $('roiRevOut'), mOut = $('roiMarOut')
+    if (rOut) rOut.textContent = fmtM(rev)
+    if (mOut) mOut.textContent = Math.round(mar * 100) + '%'
+    const mAdj = Math.max(.5, Math.min(2, mar / .14))
+    const span = (id: string, lo: number, hi: number) => {
+      const el = $(id); if (el) el.textContent = fmtM(lo) + ' – ' + fmtM(hi)
+    }
+    span('roiA', rev * .085 * mAdj, rev * .137 * mAdj)
+    span('roiB', rev * .045, rev * .065)
+    span('roiC', rev * .18, rev * .28)
+    const pts = Math.round(.085 * mAdj * 1000) / 10
+    const a2 = $('roiA2')
+    if (a2) a2.textContent = lang === 'zh' ? '利润率扩张 +' + pts + 'pt 起' : 'margin expansion +' + pts + 'pt floor'
+  }
+
   const renderPortal = () => {
     const c = getClient()
     const locked = $('portalLocked'), open = $('portalOpen')
@@ -60,6 +85,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     document.title = l === 'zh'
       ? 'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速'
       : 'Adventure Retail · Inventory, Brands & Channel Acceleration'
+    calcRoi()
     if (!silent) toast(l === 'zh' ? '已切换为中文' : 'Switched to English')
   }
 
@@ -235,6 +261,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       const b = e.target.closest('.mchip'); if (!b) return
       document.querySelectorAll('#repMkts .mchip').forEach(x => x.classList.remove('on')); b.classList.add('on')
     })
+
+    // ROI 计算器滑杆（初始值已由 setLang → calcRoi 计算）
+    $('roiRev')?.addEventListener('input', calcRoi)
+    $('roiMar')?.addEventListener('input', calcRoi)
 
     // 品牌墙无缝滚动
     const t = $('wallTrack')

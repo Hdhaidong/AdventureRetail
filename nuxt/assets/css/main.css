@@ -790,3 +790,99 @@ footer { border-top: 1px solid var(--line); padding: 34px 0; background: var(--b
   .nav-cta .btn-g { display: none }
   .foot { justify-content: center; text-align: center }
 }
+
+/* ============================================================
+   FIT GATE · 合作门槛
+   ============================================================ */
+.fit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 46px 0 30px }
+.fit-card {
+  display: flex; gap: 18px; align-items: flex-start;
+  border: 1px solid var(--line); border-radius: var(--r); background: var(--panel);
+  padding: 26px 24px; transition: border-color .25s;
+}
+.fit-card:hover { border-color: rgba(249, 115, 22, .35) }
+.fit-card .fk {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+  color: var(--orange); padding-top: 4px;
+}
+.fit-card h5 { font-family: var(--disp); font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 7px }
+.fit-card p { font-size: 13px; color: var(--sub); line-height: 1.65 }
+.fit-cta { text-align: center }
+.fit-note { font-size: 13px; color: var(--dim); margin-top: 14px }
+
+/* ============================================================
+   ROI CALCULATOR · 方向测算
+   ============================================================ */
+.roi-box {
+  display: grid; grid-template-columns: .9fr 1.1fr; gap: 46px;
+  border: 1px solid var(--line); border-radius: var(--r);
+  background-color: var(--panel);
+  background-image: radial-gradient(58% 76% at 100% 0%, rgba(249, 115, 22, .08), transparent 62%);
+  padding: 46px 44px; margin-top: 46px;
+}
+.roi-field { margin-bottom: 24px }
+.roi-lab { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 13px; font-size: 13.5px; color: var(--sub) }
+.roi-lab b { font-family: var(--disp); font-size: 21px; font-weight: 700; letter-spacing: -.01em; color: var(--orange2) }
+.roi-field input[type=range] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 4px;
+  border-radius: 99px; background: rgba(255, 255, 255, .13);
+  outline: none; cursor: pointer; margin: 0;
+}
+.roi-field input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--grad); border: none; cursor: grab;
+  box-shadow: 0 0 0 5px rgba(249, 115, 22, .16), 0 4px 16px rgba(0, 0, 0, .55);
+}
+.roi-field input[type=range]::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--grad); border: none; cursor: grab;
+  box-shadow: 0 0 0 5px rgba(249, 115, 22, .16), 0 4px 16px rgba(0, 0, 0, .55);
+}
+.roi-scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 9px }
+.roi-hint { font-size: 12.5px; color: var(--dim); margin-top: 20px }
+.roi-out { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; align-content: center }
+.roi-res .k { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px }
+.roi-res .v { font-family: var(--disp); font-size: 24px; font-weight: 700; letter-spacing: -.01em; color: var(--orange2); margin-bottom: 7px }
+.roi-res .d { font-size: 12.5px; color: var(--sub); line-height: 1.6 }
+.roi-disc { font-size: 12.5px; color: var(--dim); text-align: center; margin-top: 26px }
+
+/* ============================================================
+   CASE OPS 指标条 · VOICES 证言 · P-ALIGN 对齐行
+   ============================================================ */
+.c-ops { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px }
+.co {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .02em;
+  color: var(--orange2); border: 1px solid rgba(249, 115, 22, .28);
+  border-radius: 99px; padding: 5px 12px;
+}
+.voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 46px }
+.voice {
+  margin: 0; border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--panel); padding: 28px 26px 24px;
+  display: flex; flex-direction: column;
+}
+.voice blockquote { margin: 0 0 20px; font-size: 14px; color: var(--sub); line-height: 1.8 }
+.voice blockquote::before { content: '“'; display: block; font-family: var(--disp); font-size: 30px; line-height: 1; color: var(--orange); margin-bottom: 12px }
+.voice figcaption { border-top: 1px solid var(--line); padding-top: 16px; margin-top: auto }
+.voice figcaption b { display: block; font-size: 13.5px; color: var(--txt); margin-bottom: 3px }
+.voice figcaption span { font-size: 12px; color: var(--dim) }
+.p-align {
+  border: 1px solid rgba(249, 115, 22, .35); border-radius: 10px;
+  background: rgba(249, 115, 22, .06);
+  font-size: 12.5px; color: var(--sub); line-height: 1.65;
+  padding: 12px 14px; margin: 16px 0 18px;
+}
+.p-align b { color: var(--txt) }
+
+/* ============================================================
+   NEW SECTIONS · RESPONSIVE
+   ============================================================ */
+@media (max-width: 1080px) {
+  .fit-grid { grid-template-columns: 1fr }
+  .roi-box { grid-template-columns: 1fr; padding: 34px 30px; gap: 36px }
+  .voice-grid { grid-template-columns: 1fr }
+}
+@media (max-width: 660px) {
+  .roi-box { padding: 26px 20px }
+  .roi-out { grid-template-columns: 1fr }
+}
