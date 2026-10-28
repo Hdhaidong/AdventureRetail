@@ -1,16 +1,17 @@
 // GEO: sitemap.xml — 单页官网，主页 + 核心锚点
 export default defineEventHandler((event) => {
   const base = 'https://adventureretail.com'
-  const lastmod = '2026-10-18'
+  const lastmod = '2026-10-29'
   const urls = [
     { loc: `${base}/`, priority: '1.0' },
-    { loc: `${base}/#products`, priority: '0.9' },
-    { loc: `${base}/#capabilities`, priority: '0.8' },
-    { loc: `${base}/#catalog`, priority: '0.8' },
+    { loc: `${base}/#brands`, priority: '0.9' },
+    { loc: `${base}/#solutions`, priority: '0.8' },
+    { loc: `${base}/#how`, priority: '0.8' },
+    { loc: `${base}/#roi`, priority: '0.7' },
+    { loc: `${base}/#results`, priority: '0.7' },
     { loc: `${base}/#markets`, priority: '0.7' },
-    { loc: `${base}/#insight`, priority: '0.7' },
+    { loc: `${base}/#qualify`, priority: '0.8' },
     { loc: `${base}/#faq`, priority: '0.7' },
-    { loc: `${base}/#report`, priority: '0.8' },
     { loc: `${base}/#portal`, priority: '0.6' },
     { loc: `${base}/#contact`, priority: '0.8' }
   ]

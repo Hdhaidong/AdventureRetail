@@ -215,6 +215,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     const name = $('repName')?.value.trim()
     const mail = $('repMail')?.value.trim()
     const cat = $('repCat')?.value.trim()
+    const revSel = $('repRev')
+    const revOpt = revSel?.value ? revSel.options[revSel.selectedIndex] : null
+    const revLabel = revOpt ? (lang === 'zh' ? revOpt.dataset.zh : (revOpt.dataset.en || revOpt.dataset.zh)) : ''
     const mkt = document.querySelector('#repMkts .mchip.on') as any
     const mktLabel = lang === 'zh' ? mkt?.dataset.zh : mkt?.dataset.en
     if (!name || !mail) { toast(lang === 'zh' ? '请填写称呼与邮箱' : 'Name and email required'); return }
@@ -222,7 +225,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     try {
       await $fetch('/api/report', {
         method: 'POST',
-        body: { name, email: mail, category: cat || '', market: mktLabel || '' }
+        body: { name, email: mail, category: [cat, revLabel].filter(Boolean).join(' · '), market: mktLabel || '' }
       })
       toast(lang === 'zh' ? '已提交，报告将在 48 小时内送达邮箱' : 'Submitted — report arrives within 48 hours', true)
     } catch {
@@ -261,6 +264,16 @@ export default defineNuxtPlugin((nuxtApp) => {
       const b = e.target.closest('.mchip'); if (!b) return
       document.querySelectorAll('#repMkts .mchip').forEach(x => x.classList.remove('on')); b.classList.add('on')
     })
+
+    // Solutions 支柱 tabs
+    document.querySelectorAll('.caps .tab').forEach((b: any) => b.addEventListener('click', () => {
+      const idx = b.dataset.panel
+      b.parentElement.querySelectorAll('.tab').forEach((x: any) => {
+        x.classList.toggle('on', x === b)
+        x.setAttribute('aria-selected', x === b ? 'true' : 'false')
+      })
+      b.closest('.caps')?.querySelectorAll('.panel').forEach((p: any, i: number) => p.classList.toggle('active', String(i) === idx))
+    }))
 
     // ROI 计算器滑杆（初始值已由 setLang → calcRoi 计算）
     $('roiRev')?.addEventListener('input', calcRoi)

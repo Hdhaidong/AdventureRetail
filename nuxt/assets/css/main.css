@@ -886,3 +886,60 @@ footer { border-top: 1px solid var(--line); padding: 34px 0; background: var(--b
   .roi-box { padding: 26px 20px }
   .roi-out { grid-template-columns: 1fr }
 }
+
+/* ============================================================
+   GROWVANA 结构克隆 · hero-badge / roadmap / caps tabs / brands 双墙 / voices 指标条 / qualify
+   ============================================================ */
+.hero-badge { display:inline-flex; align-items:center; gap:8px; margin:16px 0 0;
+  padding:7px 14px; border:1px solid rgba(249,115,22,.35); border-radius:99px;
+  background:rgba(249,115,22,.08); color:#FDBA74;
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; width:max-content }
+.roadmap { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg2) }
+.rm-wrap { display:flex; align-items:stretch; gap:14px; padding-top:22px; padding-bottom:22px }
+.rm { flex:1; display:flex; flex-direction:column; gap:6px }
+.rm-n { font-family:var(--mono); font-size:11px; color:var(--orange2); letter-spacing:.22em }
+.rm-t { font-family:var(--disp); font-size:15.5px; font-weight:600 }
+.rm-d { font-size:12.5px; color:var(--dim) }
+.rm-arrow { align-self:center; color:var(--orange2); font-size:18px; opacity:.8 }
+.mx-wallhead { display:flex; align-items:center; gap:14px; margin:34px 0 18px; font-family:var(--mono) }
+.mx-wallhead span { font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim) }
+.mx-wallhead b { font-size:11px; letter-spacing:.28em; color:var(--orange2) }
+.mx-wallhead::after { content:''; flex:1; height:1px; background:var(--line) }
+.caps { margin-top:8px }
+.caps-tabs { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:26px }
+.caps .tab { padding:12px 22px; border:1px solid var(--line); background:var(--bg2); color:var(--dim);
+  border-radius:var(--r); font-size:13.5px; font-weight:600; cursor:pointer; transition:.25s; font-family:inherit }
+.caps .tab:hover { border-color:var(--line2); color:var(--sub) }
+.caps .tab.on { border-color:transparent; background:var(--grad); color:#fff }
+.panels { border:1px solid var(--line); border-radius:var(--r); background:var(--panel); padding:38px 42px }
+.panel { display:none }
+.panel.active { display:block; animation:capIn .35s ease both }
+@keyframes capIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:none } }
+.cap-no { font-family:var(--mono); font-size:11px; letter-spacing:.24em; color:var(--orange2); text-transform:uppercase }
+.cap-title { font-family:var(--disp); font-size:clamp(22px,3vw,30px); margin:12px 0 10px }
+.cap-sub { color:var(--sub); font-size:14.5px; line-height:1.75; max-width:760px }
+.cap-lab { margin:26px 0 6px; font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim) }
+.cap-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 26px; margin:14px 0 26px }
+.cap-list li { position:relative; padding-left:20px; font-size:13.5px; color:var(--sub); line-height:1.65 }
+.cap-list li::before { content:''; position:absolute; left:0; top:.62em; width:7px; height:7px; border-radius:2px; background:var(--grad) }
+.cap-cta { padding-top:6px }
+.vm-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:30px 0 0 }
+.vm { border:1px solid var(--line); border-radius:var(--r); background:var(--bg2); padding:18px 20px; text-align:center }
+.vm b { display:block; font-family:var(--disp); font-size:clamp(18px,2.2vw,24px);
+  background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent }
+.vm span { font-size:12px; color:var(--dim) }
+.q-check { display:grid; gap:10px; margin:26px 0 8px }
+.qc { display:flex; gap:10px; align-items:flex-start; font-size:14px; color:var(--sub) }
+.qc span:first-child { color:var(--orange2); font-weight:700 }
+.rep-form select { width:100%; padding:13px 14px; border-radius:var(--r); border:1px solid var(--line);
+  background:var(--bg2); color:var(--sub); font-size:14px; font-family:inherit; margin-top:12px }
+.rf-note { margin-top:10px; font-size:12px; color:var(--dim) }
+@media (max-width:1080px) {
+  .cap-list { grid-template-columns:1fr }
+  .vm-strip { grid-template-columns:repeat(2,1fr) }
+  .rm-wrap { flex-direction:column; gap:10px }
+  .rm-arrow { display:none }
+}
+@media (max-width:660px) {
+  .panels { padding:26px 18px }
+}
