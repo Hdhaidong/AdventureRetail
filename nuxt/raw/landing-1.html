@@ -1,372 +1,159 @@
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-in">
-    <a class="brand" href="#top">ADVENTURE RETAIL</a>
+    <a class="brand" href="#top"><span class="brand-b">AR</span>ADVENTURE RETAIL</a>
     <div class="nav-links">
-      <a href="#products" data-zh="产品" data-en="Products">产品</a>
-      <a href="#portal" data-zh="客户专区" data-en="Portal">客户专区</a>
-      <a href="#contact" data-zh="开始合作" data-en="Contact">开始合作</a>
+      <a href="#lines" data-zh="渠道加速" data-en="Acceleration">渠道加速</a>
+      <a href="#sourcing" data-zh="解决方案" data-en="Solutions">解决方案</a>
+      <a href="#products" data-zh="品牌与渠道" data-en="Brands">品牌与渠道</a>
+      <a href="#markets" data-zh="成果" data-en="Results">成果</a>
+      <a href="#about" data-zh="关于" data-en="About">关于</a>
     </div>
-    <div class="lang-toggle">
-      <button id="btnZh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="btnEn" onclick="setLang('en')">EN</button>
+    <div class="nav-cta">
+      <div class="lang-toggle">
+        <button id="btnZh" class="lt-btn on" onclick="setLang('zh')">中文</button>
+        <button id="btnEn" class="lt-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="btn btn-p" onclick="openReg()" data-zh="开始合作" data-en="Get started">开始合作</button>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO · full-bleed night port -->
 <header class="hero" id="top">
-  <div class="hero-bg">
-    <img src="assets/hero-port.jpg" alt="global trade port at dusk">
-  </div>
-  <div class="hero-in wrap">
-    <div class="kicker h-anim d1">Adventure Retail · Global</div>
-    <h1 class="h-anim d2" data-zh='让好产品，摆上<em>全球货架</em>' data-en='Great products, on <em>global shelves</em>'>让好产品，摆上<em>全球货架</em></h1>
-    <p class="h-anim d3" data-zh="Adventure Retail 是 AI 驱动的零售洞察加速平台：洞察看清市场，加速落到执行——产品能力覆盖 OEM / ODM / OBM 全路径；收库存、兑现品牌、渠道加速三条业务，落到实处就是你目标平台上的具体产品：入驻上架、广告投放、内容种草、运营答疑、平台情报，开箱即用。" data-en="Adventure Retail is an AI-driven retail insight &amp; acceleration platform: insight to see the market, acceleration to execute — product capabilities spanning OEM / ODM / OBM. Our inventory buyout, brand and channel-acceleration lines land as concrete products on your target platform: onboarding &amp; listing, ads, seeding content, ops Q&amp;A and platform intelligence, out of the box.">Adventure Retail 是 AI 驱动的零售洞察加速平台：洞察看清市场，加速落到执行——产品能力覆盖 OEM / ODM / OBM 全路径；收库存、兑现品牌、渠道加速三条业务，落到实处就是你目标平台上的具体产品：入驻上架、广告投放、内容种草、运营答疑、平台情报，开箱即用。</p>
-    <div class="cta-row h-anim d4">
-      <a class="btn btn-p" href="#report" data-zh="免费获取渠道洞察报告 →" data-en="Get a free channel report →">免费获取渠道洞察报告 →</a>
-      <a class="btn btn-g" href="#products" data-zh="选你的平台" data-en="Pick your platform">选你的平台</a>
+  <div class="hero-bg"><img src="assets/hero-port.jpg" alt="container port at dusk"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-brand h-anim d1">ADVENTURE RETAIL</div>
+      <div class="kicker h-anim d1" data-zh="全球零售渠道 · 落地服务商" data-en="Global retail · landed end to end">全球零售渠道 · 落地服务商</div>
+      <h1 class="hero-title h-anim d2" data-zh='把产品，摆上<em>全球货架</em>' data-en='Your products, on <em>global shelves</em>'>把产品，摆上<em>全球货架</em></h1>
+      <p class="hero-sub h-anim d3" data-zh='十大平台产品即买即用；<b>Sell on</b> 一次资料输入，Agent 自动提交所有平台；海外采购线，从中国工厂直达全球货架。' data-en='Ten platform products, ready today. <b>Sell on</b>: enter your assets once, an agent files every marketplace. Plus a sourcing line, from China&#39;s factories to global shelves.'>十大平台产品即买即用；<b>Sell on</b> 一次资料输入，Agent 自动提交所有平台；海外采购线，从中国工厂直达全球货架。</p>
+      <div class="cta-row h-anim d4">
+        <button class="btn btn-p" onclick="openReg()" data-zh="免费注册开始" data-en="Start free">免费注册开始</button>
+        <a class="btn btn-g" href="#lines" data-zh="了解渠道加速 ↓" data-en="Channel acceleration ↓">了解渠道加速 ↓</a>
+      </div>
+    </div>
+    <div class="hero-ui">
+      <div class="hui-bar"><span class="hui-dot"></span><span class="hui-dot"></span><span class="hui-dot"></span><span class="hui-url">sell-on.adventureretail.com</span></div>
+      <div class="hui-body">
+        <div class="hui-side">
+          <div class="hui-side-t">Sell on</div>
+          <div class="hui-row run"><span class="st"></span><span style="flex:1">Amazon</span><span data-zh="提交中" data-en="filing">提交中</span></div>
+          <div class="hui-row ok"><span class="st"></span><span style="flex:1">Walmart</span><span data-zh="已过审" data-en="approved">已过审</span></div>
+          <div class="hui-row ok"><span class="st"></span><span style="flex:1">Target+</span><span data-zh="已过审" data-en="approved">已过审</span></div>
+          <div class="hui-row"><span class="st"></span><span style="flex:1">Lowe's</span><span data-zh="排队中" data-en="queued">排队中</span></div>
+          <div class="hui-row"><span class="st"></span><span style="flex:1">Best Buy</span><span data-zh="排队中" data-en="queued">排队中</span></div>
+          <div class="hui-row"><span class="st"></span><span style="flex:1">Wayfair</span><span data-zh="排队中" data-en="queued">排队中</span></div>
+        </div>
+        <div class="hui-main">
+          <div class="hui-kpis">
+            <div class="hui-kpi"><div class="k" data-zh="提交进度" data-en="Filed">提交进度</div><div class="v">8<small>/10</small></div></div>
+            <div class="hui-kpi"><div class="k" data-zh="AI 初评" data-en="AI score">AI 初评</div><div class="v">92<small>/100</small></div></div>
+            <div class="hui-kpi"><div class="k" data-zh="待人工确认" data-en="Human OK">待人工确认</div><div class="v">1</div></div>
+          </div>
+          <div class="hui-note"><b>Agent</b><span data-zh="Target+ 入驻资料已按最新类目规则重新生成，人工确认后自动提交。" data-en="Target+ assets regenerated per latest category rules — auto-files after your approval.">Target+ 入驻资料已按最新类目规则重新生成，人工确认后自动提交。</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- SERVICE KEYWORDS TICKER -->
+<!-- KEYWORD TICKER · wallTrack auto-doubled by plugin -->
 <div class="kwticker">
-  <div class="marquee"><div class="marquee-in">
-    <span class="ch" data-zh="入驻上架" data-en="Onboarding">入驻上架</span><span class="ch" data-zh="广告投放" data-en="Retail ads">广告投放</span><span class="ch" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span><span class="ch" data-zh="市场情报" data-en="Market intel">市场情报</span><span class="ch" data-zh="收库存" data-en="Inventory buyout">收库存</span><span class="ch" data-zh="ODM 新品" data-en="ODM launch">ODM 新品</span><span class="ch" data-zh="店铺代运营" data-en="Managed store ops">店铺代运营</span><span class="ch" data-zh="平台情报" data-en="Platform intelligence">平台情报</span><span class="ch" data-zh="分销撮合" data-en="Distribution matching">分销撮合</span><span class="ch" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span><span class="ch" data-zh="合规代建" data-en="Compliance build-out">合规代建</span><span class="ch" data-zh="展会对接" data-en="Expo matchmaking">展会对接</span><span class="ch" data-zh="入驻上架" data-en="Onboarding">入驻上架</span><span class="ch" data-zh="广告投放" data-en="Retail ads">广告投放</span><span class="ch" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span><span class="ch" data-zh="市场情报" data-en="Market intel">市场情报</span><span class="ch" data-zh="收库存" data-en="Inventory buyout">收库存</span><span class="ch" data-zh="ODM 新品" data-en="ODM launch">ODM 新品</span><span class="ch" data-zh="店铺代运营" data-en="Managed store ops">店铺代运营</span><span class="ch" data-zh="平台情报" data-en="Platform intelligence">平台情报</span><span class="ch" data-zh="分销撮合" data-en="Distribution matching">分销撮合</span><span class="ch" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span><span class="ch" data-zh="合规代建" data-en="Compliance build-out">合规代建</span><span class="ch" data-zh="展会对接" data-en="Expo matchmaking">展会对接</span>
-  </div></div>
+  <div class="marquee" id="wallTrack">
+    <span class="kw">Amazon VC</span><span class="kw">Walmart</span><span class="kw">Target+</span><span class="kw">Lowe's</span><span class="kw">The Home Depot</span><span class="kw">Best Buy</span><span class="kw">Wayfair</span><span class="kw">Costco</span><span class="kw">Kohl's</span><span class="kw">Mirakl</span><span class="kw">Mercado Libre</span><span class="kw">Bol</span><span class="kw">AEON</span><span class="kw">Woolworths</span>
+  </div>
 </div>
 
 <!-- STATS -->
 <div class="stats">
   <div class="wrap">
-    <div class="stat reveal"><div class="num">300+</div><div class="lbl" data-zh="全球零售渠道覆盖" data-en="Global retail channels covered">全球零售渠道覆盖</div></div>
-    <div class="stat reveal"><div class="num">711</div><div class="lbl" data-zh="条市场情报每周更新" data-en="Market intel reports, updated weekly">条市场情报每周更新</div></div>
-    <div class="stat reveal"><div class="num">7×24</div><div class="lbl" data-zh="托管运营全天候在线" data-en="Managed operations, always on">托管运营全天候在线</div></div>
-    <div class="stat reveal"><div class="num">6+</div><div class="lbl" data-zh="国家和地区纵深覆盖" data-en="Countries &amp; regions covered">国家和地区纵深覆盖</div></div>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="s-n">300<i>+</i></div><div class="s-l" data-zh="线下连锁与商超渠道" data-en="Offline chain &amp; big-box doors">线下连锁与商超渠道</div></div>
+      <div class="stat reveal"><div class="s-n"><i>~</i>50</div><div class="s-l" data-zh="主流线上平台与站点" data-en="Major online marketplaces">主流线上平台与站点</div></div>
+      <div class="stat reveal"><div class="s-n">7<i>×</i>24</div><div class="s-l" data-zh="AI 盯店与情报扫描" data-en="AI shelf-watch &amp; intel scans">AI 盯店与情报扫描</div></div>
+      <div class="stat reveal"><div class="s-n">48<i>h</i></div><div class="s-l" data-zh="新品初评报告交付" data-en="First assessment delivered">新品初评报告交付</div></div>
+    </div>
   </div>
 </div>
 
-
-
-<!-- PRODUCTS · PLATFORM VERTICALS -->
+<!-- 01 · PLATFORM PRODUCTS -->
 <section id="products">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-tag">01 · 平台产品 / Platform products</div>
+      <div class="sec-tag" data-zh="01 · 品牌与渠道 · 平台产品" data-en="01 · Brands · Platform products">01 · 品牌与渠道 · 平台产品</div>
       <h2 class="sec-title" data-zh="一个平台，一款产品" data-en="One platform, one product">一个平台，一款产品</h2>
-      <p class="sec-sub" data-zh="渠道加速业务落到平台，就是下面这些具体产品——每个平台一款完整产品，帮品牌入驻、上架、拿到该平台流量；平台情报每周更新，规则一变能力同步刷新。库存变现（收库存）与品牌兑现（ODM）两条业务，在下方单独展开。" data-en="Our channel-acceleration business, made concrete per platform — one complete product per platform: get your brand in, listed, and winning that platform's traffic, with weekly platform intelligence that refreshes as rules change. Our inventory buyout and brand / ODM lines are detailed further below.">渠道加速业务落到平台，就是下面这些具体产品——每个平台一款完整产品，帮品牌入驻、上架、拿到该平台流量；平台情报每周更新，规则一变能力同步刷新。库存变现（收库存）与品牌兑现（ODM）两条业务，在下方单独展开。</p>
-      <div class="cta-row reveal" style="justify-content:center;margin-top:8px">
-        <a class="btn btn-g" href="#outcomes" data-zh="库存变现 · 收库存" data-en="Inventory buyout">库存变现 · 收库存</a>
-        <a class="btn btn-g" href="#mms" data-zh="品牌兑现 · ODM 新品" data-en="Brand &amp; ODM line">品牌兑现 · ODM 新品</a>
-        <a class="btn btn-g" href="#catalog" data-zh="渠道加速 · 平台产品 ↓" data-en="Channel products ↓">渠道加速 · 平台产品 ↓</a>
-      </div>
+      <p class="sec-sub" data-zh="每个平台都是一款完整商品：入驻资料、Listing、广告与情报按平台组装，配独立 sell-on 子域名入口与专属 Agent。收费规则四条，先看清楚再下单。" data-en="Each platform ships as one complete product — onboarding assets, listings, ads and intel assembled per platform, with a dedicated sell-on subdomain and its own agent. Four pricing rules, up front.">每个平台都是一款完整商品：入驻资料、Listing、广告与情报按平台组装，配独立 sell-on 子域名入口与专属 Agent。收费规则四条，先看清楚再下单。</p>
+    </div>
+    <div class="pay-row reveal">
+      <div class="pay paid"><b data-zh="入驻资料制作" data-en="Asset production">入驻资料制作</b><span class="pi" data-zh="收费" data-en="Paid">收费</span></div>
+      <div class="pay free"><b data-zh="提交入驻" data-en="Submission">提交入驻</b><span class="pi" data-zh="免费" data-en="Free">免费</span></div>
+      <div class="pay paid"><b data-zh="AI 评估" data-en="AI assessment">AI 评估</b><span class="pi" data-zh="收费" data-en="Paid">收费</span></div>
+      <div class="pay book"><b data-zh="人工咨询" data-en="Human consult">人工咨询</b><span class="pi" data-zh="预约" data-en="By appointment">预约</span></div>
     </div>
     <div class="pf-grid reveal">
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on Amazon</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Amazon')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Amazon</span><span class="pf-region">Global</span></div>
+        <div class="pf-tags"><span class="pf-tag">VC</span><span class="pf-tag">FBA</span><span class="pf-tag">Seller Central</span></div>
+        <div class="pf-dom"><b>sell-on</b>.amazon.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Amazon')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on Walmart</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Walmart')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Walmart</span><span class="pf-region">North America</span></div>
+        <div class="pf-tags"><span class="pf-tag">Marketplace</span><span class="pf-tag">WFS</span><span class="pf-tag">Omnichannel</span></div>
+        <div class="pf-dom"><b>sell-on</b>.walmart.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Walmart')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on Target</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Target')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Target</span><span class="pf-region">North America</span></div>
+        <div class="pf-tags"><span class="pf-tag">Target+</span><span class="pf-tag">Dropship</span><span class="pf-tag">Stores</span></div>
+        <div class="pf-dom"><b>sell-on</b>.target.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Target')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on Lowe's</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Lowe\'s')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Lowe's</span><span class="pf-region">North America</span></div>
+        <div class="pf-tags"><span class="pf-tag">Marketplace</span><span class="pf-tag">DIY</span><span class="pf-tag">Pro</span></div>
+        <div class="pf-dom"><b>sell-on</b>.lowes.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Lowe\'s')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on The Home Depot</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('The Home Depot')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">The Home Depot</span><span class="pf-region">North America</span></div>
+        <div class="pf-tags"><span class="pf-tag">Marketplace</span><span class="pf-tag">Pro Xtra</span><span class="pf-tag">B2B</span></div>
+        <div class="pf-dom"><b>sell-on</b>.homedepot.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('The Home Depot')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on Best Buy</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Best Buy')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Best Buy</span><span class="pf-region">North America</span></div>
+        <div class="pf-tags"><span class="pf-tag">Marketplace</span><span class="pf-tag">Tech</span><span class="pf-tag">Omni</span></div>
+        <div class="pf-dom"><b>sell-on</b>.bestbuy.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Best Buy')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">US · 北美</div>
-        <h4>Sell on Wayfair</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Wayfair')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Wayfair</span><span class="pf-region">North America</span></div>
+        <div class="pf-tags"><span class="pf-tag">Dropship</span><span class="pf-tag">Home</span><span class="pf-tag">CastleGate</span></div>
+        <div class="pf-dom"><b>sell-on</b>.wayfair.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Wayfair')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">FR · 欧洲</div>
-        <h4>Sell on Mirakl</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Mirakl')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Mirakl</span><span class="pf-region">Europe</span></div>
+        <div class="pf-tags"><span class="pf-tag">Dept. Stores</span><span class="pf-tag">EU</span><span class="pf-tag">Marketplace OS</span></div>
+        <div class="pf-dom"><b>sell-on</b>.mirakl.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Mirakl')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">LATAM · 拉美</div>
-        <h4>Sell on Mercado Libre</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Mercado Libre')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Mercado Libre</span><span class="pf-region">LATAM</span></div>
+        <div class="pf-tags"><span class="pf-tag">LATAM #1</span><span class="pf-tag">Full</span><span class="pf-tag">Envíos</span></div>
+        <div class="pf-dom"><b>sell-on</b>.mercadolibre.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Mercado Libre')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
       <div class="pf">
-        <span class="pf-live" data-zh="开箱即用" data-en="Ready">开箱即用</span>
-        <div class="pf-mkt">NL · 欧洲</div>
-        <h4>Sell on Bol</h4>
-        <div class="pf-tags">
-          <span class="pf-tag" data-zh="入驻上架" data-en="Onboarding">入驻上架</span>
-          <span class="pf-tag" data-zh="广告投放" data-en="Ads">广告投放</span>
-          <span class="pf-tag" data-zh="内容种草 · UGC" data-en="Seeding &amp; UGC">内容种草 · UGC</span>
-          <span class="pf-tag" data-zh="平台情报" data-en="Intelligence">平台情报</span>
-          <span class="pf-tag" data-zh="运营答疑" data-en="Ops Q&amp;A">运营答疑</span>
-        </div>
-        <a class="pf-cta" onclick="pickPlatform('Bol')" data-zh="咨询这款产品 →" data-en="Ask about this →">咨询这款产品 →</a>
+        <div class="pf-head"><span class="pf-name">Bol</span><span class="pf-region">Europe</span></div>
+        <div class="pf-tags"><span class="pf-tag">NL/BE</span><span class="pf-tag">Marketplace</span><span class="pf-tag">Retail Media</span></div>
+        <div class="pf-dom"><b>sell-on</b>.bol.adventureretail.com</div>
+        <button class="pf-cta" onclick="pickPlatform('Bol')" data-zh="咨询这款产品" data-en="Ask about this">咨询这款产品</button>
       </div>
     </div>
-    <p class="mkt-note reveal" data-zh="面向品牌方开箱即用——你说出目标平台，我们配好整套能力；想上的平台不在清单里，告诉我们，按需求接入。" data-en="Ready out of the box for brands — name your target platform and we assemble the full stack. Need a platform not listed? Tell us and we plug it in.">面向品牌方开箱即用——你说出目标平台，我们配好整套能力；想上的平台不在清单里，告诉我们，按需求接入。</p>
+    <p class="pf-note reveal" data-zh="每个平台都有独立 sell-on 子域名入口与专属 Agent；想上的平台不在清单里，注册后告诉我们，按需求接入。" data-en="Every platform includes its own sell-on subdomain and a dedicated agent. Need one not listed? Register and tell us — we plug it in.">每个平台都有独立 sell-on 子域名入口与专属 Agent；想上的平台不在清单里，注册后告诉我们，按需求接入。</p>
   </div>
 </section>
-
-<!-- CAPABILITIES INDEX -->
-<section id="capabilities" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">能力索引 / Capabilities per platform</div>
-      <h2 class="sec-title" data-zh="十一项大能力，按你选的平台组装" data-en="Eleven capabilities, assembled per platform">十一项大能力，按你选的平台组装</h2>
-      <p class="sec-sub" data-zh="能力池持续对标扩张、不设上限；交付不堆能力——每款平台产品只装该平台需要的能力，垂直做深。" data-en="Our capability pool keeps expanding — but products never stack features. Each platform product carries only what that platform needs, built deep.">能力池持续对标扩张、不设上限；交付不堆能力——每款平台产品只装该平台需要的能力，垂直做深。</p>
-    </div>
-    <div class="pf-grid reveal">
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-01</div>
-        <h4 data-zh="市场情报" data-en="Market Intelligence">市场情报</h4>
-        <p data-zh="选品、定价、竞品、渠道趋势，每周看清再下注" data-en="Selection, pricing, competitors, channels — see clearly weekly">选品、定价、竞品、渠道趋势，每周看清再下注</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-02</div>
-        <h4 data-zh="品牌加速" data-en="Brand Acceleration">品牌加速</h4>
-        <p data-zh="300+ 商超入驻到动销，上架只是开始" data-en="300+ retail doors, from listing to sell-through">300+ 商超入驻到动销，上架只是开始</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-03</div>
-        <h4 data-zh="刊登铺货" data-en="Listing Distribution">刊登铺货</h4>
-        <p data-zh="商品信息一次整理，逐平台适配刊登" data-en="Prepare once, list right per platform">商品信息一次整理，逐平台适配刊登</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-04</div>
-        <h4 data-zh="运营托管" data-en="Managed Operations">运营托管</h4>
-        <p data-zh="店铺日常 7×24 托管，只有异常推到你桌面" data-en="24/7 managed ops — only exceptions reach you">店铺日常 7×24 托管，只有异常推到你桌面</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-05</div>
-        <h4 data-zh="客服联络" data-en="Contact Hub">客服联络</h4>
-        <p data-zh="三入口对话汇入统一收件箱，AI 先答" data-en="Three entries, one inbox, AI first reply">三入口对话汇入统一收件箱，AI 先答</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-06</div>
-        <h4 data-zh="教育训练" data-en="Academy">教育训练</h4>
-        <p data-zh="按平台规则实训团队，沙盘演练过审发证" data-en="Platform-rule training, drills and certification">按平台规则实训团队，沙盘演练过审发证</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-07</div>
-        <h4 data-zh="展会撮合" data-en="Expo Connect">展会撮合</h4>
-        <p data-zh="五大海外市场，展前建联到展后成交" data-en="Five regions, pre-show outreach to closed deals">五大海外市场，展前建联到展后成交</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-08</div>
-        <h4 data-zh="声量投放" data-en="Buzz &amp; Ads">声量投放</h4>
-        <p data-zh="广告、样品、红人、测评四线统一复盘" data-en="Ads, samples, creators, reviews — one plan">广告、样品、红人、测评四线统一复盘</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-09</div>
-        <h4 data-zh="新品落地" data-en="NPI Pipeline">新品落地</h4>
-        <p data-zh="选品定义到量产导入，出厂即商超标准" data-en="From spec to mass production, retail-grade">选品定义到量产导入，出厂即商超标准</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-10</div>
-        <h4 data-zh="利润守护" data-en="Profit Guard">利润守护</h4>
-        <p data-zh="扣款归因、证据归集、索赔到回款" data-en="Deductions attributed, claimed, recovered">扣款归因、证据归集、索赔到回款</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="能力" data-en="Capability">能力</span>
-        <div class="pf-mkt">P-11</div>
-        <h4 data-zh="履约发货" data-en="Fulfillment Pro">履约发货</h4>
-        <p data-zh="规范库内置，打单贴标一次合规" data-en="Rulebooks built in, first-time-compliant shipping">规范库内置，打单贴标一次合规</p>
-      </div>
-    </div>
-    <p class="mkt-note reveal" data-zh="十一项大能力只是索引——客户需求照单全收，能力池持续对标扩张；能力落到你的平台，才是交付给你的产品。" data-en="These eleven are just the index — every client need is taken in, and the pool keeps growing. A capability becomes your product only when it lands on your platform.">十一项大能力只是索引——客户需求照单全收，能力池持续对标扩张；能力落到你的平台，才是交付给你的产品。</p>
-  </div>
-</section>
-
-<!-- PRODUCT CATALOG · SKILL LINES -->
-<section id="catalog" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">产品目录 / Skill-line products</div>
-      <h2 class="sec-title" data-zh="十三个产品系列，款款是成品" data-en="Thirteen product series, all shipped">十三个产品系列，款款是成品</h2>
-      <p class="sec-sub" data-zh="十一项大能力落到具体业务场景，由这十三个产品系列承接——全部有实物支撑，按需组装，能力持续下发。" data-en="The eleven capabilities reach concrete business scenarios through these thirteen product series — all backed by working assets, assembled on demand, continuously updated.">十一项大能力落到具体业务场景，由这十三个产品系列承接——全部有实物支撑，按需组装，能力持续下发。</p>
-    </div>
-    <div class="pf-grid reveal">
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="全渠道发行" data-en="Multi-Channel Publisher">全渠道发行</h4>
-        <p data-zh="一套内容，18 个平台同步上架发行" data-en="One content set, published across 18 platforms">一套内容，18 个平台同步上架发行</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="选品侦察兵" data-en="Product Scout">选品侦察兵</h4>
-        <p data-zh="全平台机会打分，先看清再下场" data-en="Opportunity scoring across platforms — see clearly before you bet">全平台机会打分，先看清再下场</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="客服联络中心" data-en="Contact Center">客服联络中心</h4>
-        <p data-zh="聊天、邮件、退货、评论、工单，一个收件箱全管" data-en="Chat, email, returns, reviews, tickets — one inbox for all">聊天、邮件、退货、评论、工单，一个收件箱全管</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="视觉素材工坊" data-en="Image Studio">视觉素材工坊</h4>
-        <p data-zh="主图、场景图、A+ 页面，批量产出" data-en="Main images, scenes and A+ pages, in batches">主图、场景图、A+ 页面，批量产出</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="刊登引擎" data-en="Listing Engine">刊登引擎</h4>
-        <p data-zh="标题、卖点、详情、诊断，铺货一次到位" data-en="Titles, bullets, details, diagnostics — list once, done right">标题、卖点、详情、诊断，铺货一次到位</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="竞品雷达" data-en="Competitor Radar">竞品雷达</h4>
-        <p data-zh="竞品、市场、买家之声，多维对标" data-en="Competitors, markets, voice of buyer — multi-dimensional benchmarking">竞品、市场、买家之声，多维对标</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="数据情报台" data-en="Data Intel">数据情报台</h4>
-        <p data-zh="38 个渠道情报，711 条选品情报每周更新" data-en="Intel across 38 channels, 711 product signals weekly">38 个渠道情报，711 条选品情报每周更新</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="广告投放台" data-en="Ads Manager">广告投放台</h4>
-        <p data-zh="平台零售广告，投放与归因一体" data-en="Retail ads on-platform — campaigns and attribution in one">平台零售广告，投放与归因一体</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="销售助推" data-en="Sales Booster">销售助推</h4>
-        <p data-zh="话术、报价、跟进节奏，转化可复用" data-en="Scripts, quotes, follow-up cadence — repeatable conversion">话术、报价、跟进节奏，转化可复用</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="内容工厂" data-en="Content Factory">内容工厂</h4>
-        <p data-zh="脚本、种草、定制文案，按平台调性产出" data-en="Scripts, seeding, custom copy — tuned to each platform">脚本、种草、定制文案，按平台调性产出</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="监测哨兵" data-en="Market Monitor">监测哨兵</h4>
-        <p data-zh="排名、促销、竞品异动，实时预警" data-en="Rank, promos, competitor moves — real-time alerts">排名、促销、竞品异动，实时预警</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="运营中枢" data-en="Ops Hub">运营中枢</h4>
-        <p data-zh="履约、项目协同，执行不掉链" data-en="Fulfillment and project coordination — execution that holds">履约、项目协同，执行不掉链</p>
-      </div>
-      <div class="pf">
-        <span class="pf-live" data-zh="成品" data-en="Ready">成品</span>
-        <div class="pf-mkt">Skill</div>
-        <h4 data-zh="知识文库" data-en="Knowledge Base">知识文库</h4>
-        <p data-zh="关务、模板、SOP，开箱即用" data-en="Customs, templates, SOPs — ready out of the box">关务、模板、SOP，开箱即用</p>
-      </div>
-    </div>
-    <p class="mkt-note reveal" data-zh="十三个产品系列 + 42 个渠道情报库 + 每周 711 条选品情报——Agent、Skill、Data 三种形态全部有实物支撑；你说出业务场景，我们按场景组装成品。" data-en="Thirteen product series, 42 channel intelligence bases, and 711 weekly product signals — agents, skills and data, all backed by working assets. Name your scenario and we assemble the package.">十三个产品系列 + 42 个渠道情报库 + 每周 711 条选品情报——Agent、Skill、Data 三种形态全部有实物支撑；你说出业务场景，我们按场景组装成品。</p>
-  </div>
-</section>
-
-<!-- OUTCOMES -->
