@@ -5,7 +5,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   const LANG_KEY = 'ar_lang'
   let lang = 'zh'
   let pendingClient: any = null
-  let pendingPlatform: string | null = null
 
   const $ = (id: string): any => document.getElementById(id)
 
@@ -27,31 +26,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   const validMail = (m: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)
-
-  // ---- ROI 计算器（滑杆单位 $100K → ×1e5）----
-  const fmtM = (v: number) => {
-    if (v < 1e6) return '$' + Math.round(v / 1e3) + 'K'
-    const m = v / 1e6
-    const s = m.toFixed(1)
-    return '$' + (s.endsWith('.0') && m >= 10 ? s.slice(0, -2) : s) + 'M'
-  }
-  const calcRoi = () => {
-    const rev = parseFloat($('roiRev')?.value || '120') * 1e5
-    const mar = parseFloat($('roiMar')?.value || '14') / 100
-    const rOut = $('roiRevOut'), mOut = $('roiMarOut')
-    if (rOut) rOut.textContent = fmtM(rev)
-    if (mOut) mOut.textContent = Math.round(mar * 100) + '%'
-    const mAdj = Math.max(.5, Math.min(2, mar / .14))
-    const span = (id: string, lo: number, hi: number) => {
-      const el = $(id); if (el) el.textContent = fmtM(lo) + ' – ' + fmtM(hi)
-    }
-    span('roiA', rev * .085 * mAdj, rev * .137 * mAdj)
-    span('roiB', rev * .045, rev * .065)
-    span('roiC', rev * .18, rev * .28)
-    const pts = Math.round(.085 * mAdj * 1000) / 10
-    const a2 = $('roiA2')
-    if (a2) a2.textContent = lang === 'zh' ? '利润率扩张 +' + pts + 'pt 起' : 'margin expansion +' + pts + 'pt floor'
-  }
 
   const renderPortal = () => {
     const c = getClient()
@@ -83,14 +57,18 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
     renderPortal()
     document.title = l === 'zh'
-      ? 'Adventure Retail · 库存变现 × 品牌兑现 × 渠道加速'
-      : 'Adventure Retail · Inventory, Brands & Channel Acceleration'
-    calcRoi()
+      ? 'Adventure Retail · ODM × OEM × OBM · 措施兑现业绩'
+      : 'Adventure Retail · ODM × OEM × OBM · Measures That Deliver GMV'
     if (!silent) toast(l === 'zh' ? '已切换为中文' : 'Switched to English')
   }
 
   // ---- 注册弹窗 ----
-  const openReg = () => { $('regModal')?.classList.add('open'); backToStep1() }
+  const openReg = (type?: string) => {
+    $('regModal')?.classList.add('open'); backToStep1()
+    if (type) document.querySelectorAll('#typeRow .ttype').forEach((b: any) => {
+      b.classList.toggle('on', b.dataset.zh === type || String(b.dataset.en).toLowerCase() === String(type).toLowerCase())
+    })
+  }
   const closeReg = () => { $('regModal')?.classList.remove('open') }
   const backToStep1 = () => {
     if ($('regStep1')) $('regStep1').style.display = ''
@@ -156,10 +134,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       pendingClient = null
       closeReg(); renderPortal()
       toast(lang === 'zh' ? '验证成功，已进入客户专区' : 'Verified — welcome to the portal')
-      if (pendingPlatform) {
-        const p = pendingPlatform; pendingPlatform = null
-        prefillPlatformConsult(p)
-      }
       $('portal')?.scrollIntoView({ behavior: 'smooth' })
     } catch {
       toast(lang === 'zh' ? '验证失败，请稍后重试' : 'Verify failed, please try again')
@@ -167,31 +141,22 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   // ---- 客户专区 ----
+  const consultModel = () => {
+    const c = getClient()
+    if (!c) {
+      openReg()
+      toast(lang === 'zh' ? '注册并验证后即可一对一咨询' : 'Register & verify to start the consultation')
+      return
+    }
+    showPane('consult')
+    $('portal')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   const showPane = (p: string) => {
     $('pane-consult')?.classList.toggle('on', p === 'consult')
     $('pane-insight')?.classList.toggle('on', p === 'insight')
     $('tabConsult')?.classList.toggle('on', p === 'consult')
     $('tabInsight')?.classList.toggle('on', p === 'insight')
-  }
-
-  // ---- 平台卡 CTA：带产品上下文进咨询 ----
-  const prefillPlatformConsult = (p: string) => {
-    showPane('consult')
-    const ta = $('consultMsg')
-    if (ta && !ta.value.trim()) {
-      ta.value = lang === 'zh' ? `我想了解 Sell on ${p} 这款产品：` : `I'd like to know more about Sell on ${p}: `
-    }
-    $('portal')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  const pickPlatform = (p: string) => {
-    if (!getClient()) {
-      pendingPlatform = p
-      openReg()
-      toast(lang === 'zh' ? `注册验证后即可咨询 Sell on ${p}` : `Register & verify to ask about Sell on ${p}`, true)
-      return
-    }
-    prefillPlatformConsult(p)
   }
 
   const sendConsult = async () => {
@@ -242,7 +207,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   // 暴露给 raw HTML 的 inline onclick
   Object.assign(window as any, {
     setLang, openReg, closeReg, backToStep1, sendCode, resendCode, verifyCode,
-    showPane, sendConsult, sendReport, logout, pickPlatform
+    showPane, consultModel, sendConsult, sendReport, logout
   })
 
   nuxtApp.hook('app:mounted', () => {
@@ -265,19 +230,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       document.querySelectorAll('#repMkts .mchip').forEach(x => x.classList.remove('on')); b.classList.add('on')
     })
 
-    // Solutions 支柱 tabs
-    document.querySelectorAll('.caps .tab').forEach((b: any) => b.addEventListener('click', () => {
-      const idx = b.dataset.panel
-      b.parentElement.querySelectorAll('.tab').forEach((x: any) => {
-        x.classList.toggle('on', x === b)
-        x.setAttribute('aria-selected', x === b ? 'true' : 'false')
-      })
-      b.closest('.caps')?.querySelectorAll('.panel').forEach((p: any, i: number) => p.classList.toggle('active', String(i) === idx))
-    }))
 
-    // ROI 计算器滑杆（初始值已由 setLang → calcRoi 计算）
-    $('roiRev')?.addEventListener('input', calcRoi)
-    $('roiMar')?.addEventListener('input', calcRoi)
 
     // 品牌墙无缝滚动
     const t = $('wallTrack')
