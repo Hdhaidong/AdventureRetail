@@ -14,8 +14,18 @@ export default defineEventHandler(async (event) => {
     message: String(body?.message || ''),
     ts: Date.now()
   }
+  // 本站 CRM 落库：无论平台是否配置，线索都不丢（客户专区 CRM 页签与管理台 /crm 可见）
+  const saved = await addLead({
+    kind: 'consult',
+    name: lead.name,
+    email: lead.email,
+    company: lead.company,
+    type: lead.type,
+    topic: lead.topic,
+    message: lead.message
+  })
   const fwd = await forwardToPlatform('/api/leads/consult', lead)
   if (!fwd.forwarded) console.log('[lead:consult]', JSON.stringify(lead))
 
-  return { ok: true }
+  return { ok: true, leadId: saved.id }
 })

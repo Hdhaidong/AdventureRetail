@@ -60,14 +60,14 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'zh-CN' },
-      title: 'Adventure Retail · ODM × OEM × OBM · 措施兑现业绩',
+      title: 'Adventure Retail · 把产品接进 AI 时代的货架',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: DESC_ZH },
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Adventure Retail' },
-        { property: 'og:title', content: 'Adventure Retail · ODM × OEM × OBM · 措施兑现业绩' },
+        { property: 'og:title', content: 'Adventure Retail · 把产品接进 AI 时代的货架' },
         { property: 'og:description', content: DESC_ZH },
         { property: 'og:url', content: SITE + '/' },
         { property: 'og:image', content: SITE + '/assets/hero-port.jpg' },
